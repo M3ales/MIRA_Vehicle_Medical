@@ -1,0 +1,12 @@
+name = "ACE Vehicle Medical";
+tooltipOwned="ACE Vehicle Medical";
+picture = "";
+logoSmall = "";
+logo = "";
+logoOver = "";
+hideName = 0;
+hidePicture = 0;
+actionName = "Github";
+action = "https://github.com/M3ales/MIRA_mods";
+description = "Adds ACE medical menu showing wounded to vehicles";
+overview = "Adds ACE medical menu showing wounded to vehicles";
