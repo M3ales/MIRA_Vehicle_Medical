@@ -28,18 +28,6 @@ class CfgVehicles
 {
     class Air;
     class Helicopter: Air {
-        class ACE_Actions {
-            class ACE_MainActions {
-                class MIRA_Medical {
-                    displayName = "Medical";
-                    condition = "alive _target";
-                    statement = "";
-                    exceptions[] = {"isNotSwimming"};
-                    insertChildren = "_this call MIRA_fnc_buildPassengerActions";
-                };
-            };
-        };
-
         class ACE_SelfActions {
             class MIRA_Medical {
                 displayName = "Medical";

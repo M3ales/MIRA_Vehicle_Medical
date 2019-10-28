@@ -24,7 +24,7 @@ private _actions = [];
 	private _unit = _x;
 	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
 		private _unitname = [_unit] call ace_common_fnc_getName;
-		diag_log format["Adding action for '%1'", _unitname];
+		diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
 		private _icon = [
 			"",
 			"A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_driver_ca.paa",

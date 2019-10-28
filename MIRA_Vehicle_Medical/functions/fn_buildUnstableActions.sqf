@@ -44,8 +44,9 @@ private _cardiacArrest = _unit getVariable ["ace_medical_inCardiacArrest", false
 if (_cardiacArrest) then {
 	diag_log format["'%1' is in Cardiac Arrest", _unit];
 	private _action = ["MIRA_Cardiac", "Cardiac Arrest", "", {
-		params ["", "", "_parameters"];
+		params ["_player", "_target", "_parameters"];
 		_parameters params ["_unit"];
+		diag_log format["Unit is: %1 -- %2", _unit, _target];
 		[_unit] call ace_medical_gui_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
