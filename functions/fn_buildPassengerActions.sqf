@@ -40,10 +40,12 @@ _conditions = {
 
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
-	params ["_target", "_player", "_params", "_actionData"];
+	params ["_target", "_player", "_parameters", "_actionData"];
 	_parameters params ["_unit"];
 	
+	diag_log format[">>>>>>>>>>> Modifier Func [%1]", str _unit];
 	_statusIcons = [
+		"",
 		"\MIRA_Vehicle_Medical\ui\unconscious_white.paa",
 		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
 		"\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa"
@@ -54,13 +56,38 @@ _modifierFunc = {
 	_cardiac = _unit call MIRA_Vehicle_Medical_fnc_isCardiacArrest;
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious
-	if(_sleepy && !_bleeding && !_cardiac) exitWith {
+	diag_log format[
+		"[B: %1, U: %2 , C: %3] - %4", 
+		_bleeding, 
+		_sleepy,
+		_cardiac,
+		str (_bleeding && _sleepy && cardiac)
+	];
+	if(!_sleepy && !_bleeding && !_cardiac) then {
+		//healthy, default icon
+		diag_log "Healthy";
 		_actionData set [2, _statusIcons select 0];
+	}
+	else {
+		if(_sleepy && !_bleeding && !_cardiac) then {
+			//only unconscious, use unconscious icon
+			diag_log "Sleepy";
+			_actionData set [2, _statusIcons select 1];
+		}
+		else {
+			if(!_cardiac) then {
+				//not only unconscious, but not in cardiac, must be bleeding
+				diag_log "Bleeding";
+				_actionData set [2, _statusIcons select 2];
+			}
+			else {
+				//must be in cardiac, takes priority over bleeding
+				diag_log "Cardiac Arrest";
+				_actionData set [2, _statusIcons select 3];
+			};
+		};
 	};
-	if(_bleeding && !_cardiac) exitWith {
-		_actionData set [2, _statusIcons select 1];
-	};
-	_actionData set [2, _statusIcons select 2];
+	diag_log format[">>>>>>>>>>> Done Modifier Func [%1]", _unit];
 };
 
  //foreach player/npc in vehicle
