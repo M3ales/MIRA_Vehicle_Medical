@@ -13,7 +13,7 @@
  * Example:
  * [vehicle player, player] call MIRA_fnc_buildPassengerActions
  *
- * Public: No
+ * Public: Yes
  */
 params["_vehicle", "_player"];
 

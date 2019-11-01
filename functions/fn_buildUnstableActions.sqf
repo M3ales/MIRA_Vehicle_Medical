@@ -14,7 +14,7 @@
  * Example:
  * [_player,_target,[_unit]] call MIRA_fnc_buildUnstableActions
  *
- * Public: No
+ * Public: Yes
  */
  //discard default _player and _target params, don't need them, called by ace.
 params ["", "", "_parameters"];
@@ -36,7 +36,7 @@ if (_unit call MIRA_Vehicle_Medical_fnc_isBleeding) then {
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_gui_fnc_openMenu;
+			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
@@ -47,7 +47,7 @@ if (_unit call MIRA_Vehicle_Medical_fnc_isUnconscious) then {
 	_action = ["MIRA_Sleepy", "Unconscious", "\MIRA_Vehicle_Medical\ui\unconscious_white.paa", {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_gui_fnc_openMenu;
+			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
@@ -56,10 +56,10 @@ if (_unit call MIRA_Vehicle_Medical_fnc_isUnconscious) then {
 if (_unit call MIRA_Vehicle_Medical_fnc_isCardiacArrest) then {
 	diag_log format["'%1' is in Cardiac Arrest", _unit];
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", "\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa", {
-		params ["_player", "_target", "_parameters"];
-		_parameters params ["_unit"];
-		diag_log format["Unit is: %1 -- %2", _unit, _target];
-		[_unit] call ace_medical_gui_fnc_openMenu;
+			params ["_player", "_target", "_parameters"];
+			_parameters params ["_unit"];
+			diag_log format["Unit is: %1 -- %2", _unit, _target];
+			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };

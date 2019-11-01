@@ -11,7 +11,7 @@
  * Example:
  * [_unit] call MIRA_Vehicle_Medical_fnc_isCardiacArrest
  *
- * Public: No
+ * Public: Yes
  */
 params["_unit"];
 
