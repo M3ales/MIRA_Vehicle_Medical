@@ -25,10 +25,15 @@ diag_log format["Building actions for unstable unit '%1'", _unit];
 _actions = [];
 
 //add bleeding action if applicable
-_bleeding = [_unit] call ace_medical_blood_fnc_isBleeding;
-if (_bleeding) then {
+if (_unit call MIRA_Vehicle_Medical_fnc_isBleeding) then {
+	//TODO: collect all wounds, and colour icon based on severity, only have red done for now
+	_icon = [
+		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
+		"\MIRA_Vehicle_Medical\ui\bleeding_yellow.paa",
+		"\MIRA_Vehicle_Medical\ui\bleeding_white.paa"
+	] select 0;
 	diag_log format["'%1' is Bleeding", _unit];
-	_action = ["MIRA_Bleeding", "Bleeding", "", {
+	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_gui_fnc_openMenu;
@@ -37,10 +42,9 @@ if (_bleeding) then {
 };
 
 //add unconscious action if applicable
-_uncon = _unit getVariable ["ACE_isUnconscious", false];
-if (_uncon) then {
+if (_unit call MIRA_Vehicle_Medical_fnc_isUnconscious) then {
 	diag_log format["'%1' is Unconscious", _unit];
-	_action = ["MIRA_Sleepy", "Unconscious", "", {
+	_action = ["MIRA_Sleepy", "Unconscious", "\MIRA_Vehicle_Medical\ui\unconscious_white.paa", {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_gui_fnc_openMenu;
@@ -49,10 +53,9 @@ if (_uncon) then {
 };
 
 //add cardiac arrest action if applicable
-_cardiacArrest = _unit getVariable ["ace_medical_inCardiacArrest", false];
-if (_cardiacArrest) then {
+if (_unit call MIRA_Vehicle_Medical_fnc_isCardiacArrest) then {
 	diag_log format["'%1' is in Cardiac Arrest", _unit];
-	_action = ["MIRA_Cardiac", "Cardiac Arrest", "", {
+	_action = ["MIRA_Cardiac", "Cardiac Arrest", "\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa", {
 		params ["_player", "_target", "_parameters"];
 		_parameters params ["_unit"];
 		diag_log format["Unit is: %1 -- %2", _unit, _target];

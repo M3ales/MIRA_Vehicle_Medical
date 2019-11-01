@@ -13,13 +13,16 @@ class CfgPatches
 
 class CfgFunctions
 {
-	class MIRA{
+	class MIRA_Vehicle_Medical{
         class VehicleMedical{
-            tag = "MIRA";
+            tag = "MIRA_Vehicle_Medical";
             requiredAddons[]={};
             file="MIRA_Vehicle_Medical\functions";
             class buildPassengerActions{};
             class buildUnstableActions{};
+            class isBleeding{};
+            class isCardiacArrest{};
+            class isUnconscious{};
         };
 	};
 };
@@ -33,7 +36,7 @@ class CfgVehicles
                 displayName = "Medical";
                 condition = "alive _target";
                 statement = "";
-                insertChildren = "_this call MIRA_fnc_buildPassengerActions";
+                insertChildren = "_this call MIRA_Vehicle_Medical_fnc_buildPassengerActions";
             };
         };
     };
