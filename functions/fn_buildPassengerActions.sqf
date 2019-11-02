@@ -106,8 +106,9 @@ _modifierFunc = {
 			_unitname,
 			_icon,
 			{
-				//erase self actions from cache for vehicle to make sure no duplicates and up to date
-				[vehicle _target, "ace_interact_menu_ATCache_ACE_SelfActions"] call ace_common_fnc_eraseCache;
+				params ["", "", "_parameters"];
+				_parameters params ["_unit"];
+				[_unit] call ace_medical_menu_fnc_openMenu;
 			},
 			_conditions,
 			{
@@ -122,7 +123,7 @@ _modifierFunc = {
 			[_unit],
 			{[0, 0, 0]},
 			2,
-			[false, false, false, true, false],
+			[false, false, false, false, false],
 			_modifierFunc
 		] call ace_interact_menu_fnc_createAction;
 		//add built action to array
