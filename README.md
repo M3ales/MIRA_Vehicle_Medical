@@ -13,3 +13,6 @@ Simple script mod which adds an ace interaction to vehicles (Helicopters only at
 
 
 ![arma3_x64_2019-10-28_23-37-40](https://user-images.githubusercontent.com/18268386/67720299-37744980-f9dc-11e9-8e75-1280c7748f56.png)
+(No icons)
+
+![How it works](https://user-images.githubusercontent.com/18268386/68652295-cf704800-0531-11ea-962e-0ee4e068e6a2.png)
