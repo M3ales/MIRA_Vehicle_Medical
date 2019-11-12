@@ -3,7 +3,7 @@ class CfgPatches {
 	{
 		name = "ACE Vehicle Medical";
 		author = "M3ales";
-		url = "https://github.com/M3ales/MIRA_mods";
+		url = "https://github.com/M3ales/MIRA_Vehicle_Medical";
 		requiredAddons[] = {"ace_interact_menu", "ace_medical", "ace_medical_gui"};
 		units[] = {};
 		weapons[] = {};
