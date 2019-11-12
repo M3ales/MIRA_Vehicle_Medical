@@ -17,28 +17,30 @@
  * Public: Yes
  */
  //discard default _player and _target params, don't need them, called by ace.
+ #include "function_macros.hpp"
+
 params ["", "", "_parameters"];
 _parameters params ["_unit"];
 
-diag_log format["Building actions for unstable unit '%1'", _unit];
+//diag_log format["Building actions for unstable unit '%1'", _unit];
 
 _actions = [];
 
 
 //add cardiac arrest action if applicable
-if (_unit call MIRA_Vehicle_Medical_fnc_isCardiacArrest) then {
+if (_unit call FUNC(isCardiacArrest)) then {
 	diag_log format["'%1' is in Cardiac Arrest", _unit];
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", "\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa", {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
 			diag_log format["Unit is: %1 -- %2", _unit, _target];
-			[_unit] call ace_medical_menu_fnc_openMenu;
-		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
+			[_unit] call FUNC_ACE(medical_menu,openMenu);
+		}, {true}, {}, [_unit]] call FUNC_ACE(interact_menu,createAction);
 	_actions pushBack [_action, [], _unit];
 };
 
 //add bleeding action if applicable
-if (_unit call MIRA_Vehicle_Medical_fnc_isBleeding) then {
+if (_unit call FUNC(isBleeding)) then {
 	//TODO: collect all wounds, and colour icon based on severity, only have red done for now
 	_icon = [
 		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
@@ -49,19 +51,19 @@ if (_unit call MIRA_Vehicle_Medical_fnc_isBleeding) then {
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
-		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
+			[_unit] call FUNC_ACE(medical_menu,openMenu);
+		}, {true}, {}, [_unit]] call FUNC_ACE(interact_menu,createAction);
 	_actions pushBack [_action, [], _unit];
 };
 
 //add unconscious action if applicable
-if (_unit call MIRA_Vehicle_Medical_fnc_isUnconscious) then {
+if (_unit call FUNC(isUnconscious)) then {
 	diag_log format["'%1' is Unconscious", _unit];
 	_action = ["MIRA_Sleepy", "Unconscious", "\MIRA_Vehicle_Medical\ui\unconscious_white.paa", {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
-		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
+			[_unit] call FUNC_ACE(medical_menu,openMenu);
+		}, {true}, {}, [_unit]] call FUNC_ACE(interact_menu,createAction);
 	_actions pushBack [_action, [], _unit];
 };
 

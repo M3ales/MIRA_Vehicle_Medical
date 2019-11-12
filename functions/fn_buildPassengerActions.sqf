@@ -15,9 +15,11 @@
  *
  * Public: Yes
  */
+#include "function_macros.hpp"
+
 params["_vehicle", "_player"];
 
-diag_log format["Building actions for vehicle '%1'", _vehicle];
+//diag_log format["Building actions for vehicle '%1'", _vehicle];
 
  _actions = [];
 
@@ -26,7 +28,7 @@ _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
 	//display action if any are true
-	if(_unit call MIRA_Vehicle_Medical_fnc_isBleeding || _unit call MIRA_Vehicle_Medical_fnc_isUnconscious || _unit call MIRA_Vehicle_Medical_fnc_isCardiacArrest) exitWith {true};
+	if(_unit call FUNC(isBleeding) || _unit call FUNC(isUnconscious) || _unit call FUNC(isCardiacArrest)) exitWith {true};
 	false
 };
 
@@ -34,8 +36,7 @@ _conditions = {
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
 	_parameters params ["_unit"];
-	
-	diag_log format[">>>>>>>>>>> Modifier Func [%1]", str _unit];
+
 	_statusIcons = [
 		"",
 		"\MIRA_Vehicle_Medical\ui\unconscious_white.paa",
@@ -43,18 +44,12 @@ _modifierFunc = {
 		"\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa"
 	];
 
-	_bleeding = _unit call MIRA_Vehicle_Medical_fnc_isBleeding;
-	_sleepy = _unit call MIRA_Vehicle_Medical_fnc_isUnconscious;
-	_cardiac = _unit call MIRA_Vehicle_Medical_fnc_isCardiacArrest;
+	_bleeding = _unit call FUNC(isBleeding);
+	_sleepy = _unit call FUNC(isUnconscious);
+	_cardiac = _unit call FUNC(isCardiacArrest);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious
-	diag_log format[
-		"[B: %1, U: %2 , C: %3] - %4", 
-		_bleeding, 
-		_sleepy,
-		_cardiac,
-		str (_bleeding && _sleepy && cardiac)
-	];
+	//diag_log format["[B: %1, U: %2 , C: %3] - %4", _bleeding, _sleepy, _cardiac, str (_bleeding && _sleepy && cardiac)];
 	if(!_sleepy && !_bleeding && !_cardiac) then {
 		//healthy, default icon
 		diag_log "Healthy";
@@ -79,7 +74,6 @@ _modifierFunc = {
 			};
 		};
 	};
-	diag_log format[">>>>>>>>>>> Done Modifier Func [%1]", _unit];
 };
 
  //foreach player/npc in vehicle
@@ -88,8 +82,8 @@ _modifierFunc = {
 	//ignore drone pilot(s)
 	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
 		//get unit name from ace common to display
-		 _unitname = [_unit] call ace_common_fnc_getName;
-		diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
+		 _unitname = [_unit] call FUNC_ACE(common,getName);
+		//diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
 		//icon is blank, defined by modififer func
 		_icon = "";
 		//build the action, use additional params to have runOnHover = true
@@ -100,14 +94,14 @@ _modifierFunc = {
 			{
 				params ["", "", "_parameters"];
 				_parameters params ["_unit"];
-				[_unit] call ace_medical_menu_fnc_openMenu;
+				[_unit] call FUNC_ACE(medical_menu,openMenu);
 			},
 			_conditions,
 			{
 				//when creating children, only create children of unit who is being hovered over, otherwise empty children
 				//probably performance thing, unsure
 				if(ace_interact_menu_selectedTarget isEqualTo _target) then {
-					_this call MIRA_Vehicle_Medical_fnc_buildUnstableActions;
+					_this call FUNC(buildUnstableActions);
 				}else {
 					[]
 				};
@@ -117,7 +111,7 @@ _modifierFunc = {
 			2,
 			[false, false, false, false, false],
 			_modifierFunc
-		] call ace_interact_menu_fnc_createAction;
+		] call FUNC_ACE(interact_menu,createAction);
 		//add built action to array
 		_actions pushBack[_action, [], _unit];
 	};

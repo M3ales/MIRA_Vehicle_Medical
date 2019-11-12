@@ -1,32 +1,34 @@
+#include "config_macros.hpp"
+
 class CfgPatches {
-	class MIRA_Vehicle_Medical
+	class ADDON
 	{
-		name = "ACE Vehicle Medical";
+		name = QUOTE(ADDON_NAME);
 		author = "M3ales";
 		url = "https://github.com/M3ales/MIRA_Vehicle_Medical";
-		requiredAddons[] = {"ace_interact_menu", "ace_medical", "ace_medical_gui"};
+		requiredAddons[] = {"ace_interact_menu", "ace_medical"};
 		units[] = {};
 		weapons[] = {};
 	};
 };
 
 class CfgMods {
-    dir = "@MIRA_Vehicle_Medical";
-	name = "ACE Vehicle Medical";
+    dir = QUOTE(CONCAT(@,ADDON_NAME));
+	name = QUOTE(ADDON_NAME);
 	picture = "";
 	logo = "";
 	logoOver = "";
-	tooltip = "Arma 3 Typhon";
+	tooltip = "";
 	action = "https://github.com/M3ales/MIRA_Vehicle_Medical";
 	overview = "Adds a medical menu accessible from self interact, while inside a vehicle - displays only priority patients who are unstable.";
 }
 
 class CfgFunctions {
-	class MIRA_Vehicle_Medical {
+	class ADDON {
         class VehicleMedical {
-            tag = "MIRA_Vehicle_Medical";
-            requiredAddons[] = {"ace_interact_menu",  "ace_medical", "ace_medical_gui"};
-            file = "MIRA_Vehicle_Medical\functions";
+            tag = QUOTE(ADDON_NAME);
+            requiredAddons[] = {"ace_interact_menu",  "ace_medical"};
+            file = QUOTE(CONCAT(ADDON_NAME,\functions));
             class buildPassengerActions {};
             class buildUnstableActions {};
             class isBleeding {};
@@ -36,16 +38,4 @@ class CfgFunctions {
 	};
 };
 
-class CfgVehicles {
-    class Air;
-    class Helicopter: Air {
-        class ACE_SelfActions {
-            class MIRA_Medical {
-                displayName = "Medical";
-                condition = "alive _target";
-                statement = "";
-                insertChildren = "_this call MIRA_Vehicle_Medical_fnc_buildPassengerActions";
-            };
-        };
-    };
-};
+#include "CfgVehicles.hpp"

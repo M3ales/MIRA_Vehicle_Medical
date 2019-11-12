@@ -7,6 +7,6 @@ logoOver = "";
 hideName = 0;
 hidePicture = 0;
 actionName = "Github";
-action = "https://github.com/M3ales/MIRA_mods";
+action = "https://github.com/M3ales/MIRA_Vehicle_Medical";
 description = "Adds ACE medical menu showing wounded to vehicles";
 overview = "Adds ACE medical menu showing wounded to vehicles";
