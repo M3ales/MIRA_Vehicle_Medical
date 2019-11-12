@@ -13,7 +13,7 @@ class CfgPatches {
 };
 
 class CfgMods {
-    dir = QUOTE(CONCAT(@,ADDON_NAME));
+    dir = QUOTE(CONCAT(@,ADDON));
 	name = QUOTE(ADDON_NAME);
 	picture = "";
 	logo = "";
@@ -26,9 +26,9 @@ class CfgMods {
 class CfgFunctions {
 	class ADDON {
         class VehicleMedical {
-            tag = QUOTE(ADDON_NAME);
+            tag = QUOTE(ADDON);
             requiredAddons[] = {"ace_interact_menu",  "ace_medical"};
-            file = QUOTE(CONCAT(ADDON_NAME,\functions));
+            file = QUOTE(CONCAT(ADDON,\functions));
             class buildPassengerActions {};
             class buildUnstableActions {};
             class isBleeding {};
