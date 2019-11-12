@@ -21,14 +21,6 @@ diag_log format["Building actions for vehicle '%1'", _vehicle];
 
  _actions = [];
 
-//cache commonly redefined static vars here instead of in foreach
- _roleIcons = [
-	"",
-	"A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_driver_ca.paa",
-	"A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_gunner_ca.paa",
-	"A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_commander_ca.paa"
-];
-
 //conditions to display the unit's action
 _conditions = {
 	params ["", "", "_parameters"];
@@ -98,8 +90,8 @@ _modifierFunc = {
 		//get unit name from ace common to display
 		 _unitname = [_unit] call ace_common_fnc_getName;
 		diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
-		//get the icon, picks one based on crew role
-		_icon = _roleIcons select (([driver _vehicle, gunner _vehicle, commander _vehicle] find _unit) + 1);
+		//icon is blank, defined by modififer func
+		_icon = "";
 		//build the action, use additional params to have runOnHover = true
 		_action = [
 			format["%1", _unit],
