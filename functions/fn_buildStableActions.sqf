@@ -19,8 +19,8 @@ if(_unit call FUNC(needsBandage)) then {
 	_requiredBandages = 0;
 	{
 		_x params ["", "_bodyPartN", "_amountOf", "_bleeding"];
-		if ({_amountOf * _bleeding > 0}) then {
-			_requiredBandages += 1;
+		if ((_amountOf * _bleeding) > 0) then {
+			_requiredBandages = _requiredBandages + 1;
 		};
 	} forEach _unit call FUNC(getOpenWounds);
 	LOG(format["'%1' is has unbandadged wounds", _unit]);

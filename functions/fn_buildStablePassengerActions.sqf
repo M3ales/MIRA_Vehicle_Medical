@@ -50,7 +50,6 @@ _modifierFunc = {
 	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
 		//get unit name from ace common to display
 		 _unitname = [_unit] call ace_common_fnc_getName;
-		//diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
 		//icon is blank, defined by modififer func
 		_icon = "";
 		//build the action, use additional params to have runOnHover = true
