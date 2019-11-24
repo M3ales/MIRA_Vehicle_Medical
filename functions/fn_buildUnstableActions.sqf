@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 /*
  * Author: M3ales
  * Builds a set of subactions for a given passenger, listing their afflictions.
@@ -17,23 +18,19 @@
  * Public: Yes
  */
  //discard default _player and _target params, don't need them, called by ace.
- #include "function_macros.hpp"
 
 params ["", "", "_parameters"];
 _parameters params ["_unit"];
-
-//diag_log format["Building actions for unstable unit '%1'", _unit];
 
 _actions = [];
 
 
 //add cardiac arrest action if applicable
 if (_unit call FUNC(isCardiacArrest)) then {
-	diag_log format["'%1' is in Cardiac Arrest", _unit];
+	LOG(format["'%1' is in Cardiac Arrest", _unit]);
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
-			diag_log format["Unit is: %1 -- %2", _unit, _target];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
@@ -47,7 +44,7 @@ if (_unit call FUNC(isBleeding)) then {
 		QUOTE(ICON_PATH(bleeding_yellow)),
 		QUOTE(ICON_PATH(bleeding_white))
 	] select 0;
-	diag_log format["'%1' is Bleeding", _unit];
+	LOG(format["'%1' is Bleeding", _unit]);
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
@@ -58,7 +55,7 @@ if (_unit call FUNC(isBleeding)) then {
 
 //add unconscious action if applicable
 if (_unit call FUNC(isUnconscious)) then {
-	diag_log format["'%1' is Unconscious", _unit];
+	LOG(format["'%1' is Unconscious", _unit]);
 	_action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];

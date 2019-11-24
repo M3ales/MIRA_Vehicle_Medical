@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 params["_unit"];
 
 private _needsBandage = false;

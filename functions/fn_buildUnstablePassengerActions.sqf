@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 /*
  * Author: esteldunedain, with minor changes by M3ales
  * Builds an array of actions, one for each passenger, with their name as the display.
@@ -15,11 +16,8 @@
  *
  * Public: Yes
  */
-#include "function_macros.hpp"
 
 params["_vehicle", "_player"];
-
-//diag_log format["Building actions for vehicle '%1'", _vehicle];
 
  _actions = [];
 
@@ -45,27 +43,26 @@ _modifierFunc = {
 	_cardiac = _unit call FUNC(isCardiacArrest);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious
-	//diag_log format["[B: %1, U: %2 , C: %3] - %4", _bleeding, _sleepy, _cardiac, str (_bleeding && _sleepy && cardiac)];
 	if(!_sleepy && !_bleeding && !_cardiac) then {
 		//healthy, default icon
-		diag_log "Healthy";
+		LOG("Healthy");
 		_actionData set [2, _statusIcons select 0];
 	}
 	else {
 		if(_sleepy && !_bleeding && !_cardiac) then {
 			//only unconscious, use unconscious icon
-			diag_log "Sleepy";
+			LOG("Sleepy");
 			_actionData set [2, _statusIcons select 1];
 		}
 		else {
 			if(!_cardiac) then {
 				//not only unconscious, but not in cardiac, must be bleeding
-				diag_log "Bleeding";
+				LOG("Bleeding");
 				_actionData set [2, _statusIcons select 2];
 			}
 			else {
 				//must be in cardiac, takes priority over bleeding
-				diag_log "Cardiac Arrest";
+				LOG("Cardiac Arrest");
 				_actionData set [2, _statusIcons select 3];
 			};
 		};
@@ -79,7 +76,6 @@ _modifierFunc = {
 	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
 		//get unit name from ace common to display
 		 _unitname = [_unit] call ace_common_fnc_getName;
-		//diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
 		//icon is blank, defined by modififer func
 		_icon = "";
 		//build the action, use additional params to have runOnHover = true

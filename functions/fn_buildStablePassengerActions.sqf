@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 /*
  * Author: esteldunedain, with minor changes by M3ales
  * Builds an array of actions, one for each passenger, with their name as the display.
@@ -15,12 +16,8 @@
  *
  * Public: Yes
  */
-#include "function_macros.hpp"
 
 params["_vehicle", "_player"];
-
-//diag_log format["Building actions for vehicle '%1'", _vehicle];
-
  _actions = [];
 
 //conditions to display the unit's action
@@ -40,9 +37,9 @@ _modifierFunc = {
 
 	_statusIcons = [
 		"",
-		"\MIRA_Vehicle_Medical\ui\unconscious_white.paa",
-		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
-		"\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa"
+		QUOTE(ICON_PATH(unconscious_white)),
+		QUOTE(ICON_PATH(bleeding_red)),
+		QUOTE(ICON_PATH(cardiac_arrest_red))
 	];
 };
 
