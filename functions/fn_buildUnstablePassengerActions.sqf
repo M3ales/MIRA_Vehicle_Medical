@@ -11,7 +11,7 @@
  * Children actions <ARRAY>
  *
  * Example:
- * [vehicle player, player] call MIRA_fnc_buildPassengerActions
+ * [vehicle player, player] call MIRA_fnc_buildUnstablePassengerActions
  *
  * Public: Yes
  */
@@ -38,12 +38,8 @@ _modifierFunc = {
 	_parameters params ["_unit"];
 
 	_statusIcons = [
-		"",
-		"\MIRA_Vehicle_Medical\ui\unconscious_white.paa",
-		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
-		"\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa"
+		""
 	];
-
 	_bleeding = _unit call FUNC(isBleeding);
 	_sleepy = _unit call FUNC(isUnconscious);
 	_cardiac = _unit call FUNC(isCardiacArrest);
@@ -82,7 +78,7 @@ _modifierFunc = {
 	//ignore drone pilot(s)
 	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
 		//get unit name from ace common to display
-		 _unitname = [_unit] call FUNC_ACE(common,getName);
+		 _unitname = [_unit] call ace_common_fnc_getName;
 		//diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
 		//icon is blank, defined by modififer func
 		_icon = "";
@@ -94,7 +90,7 @@ _modifierFunc = {
 			{
 				params ["", "", "_parameters"];
 				_parameters params ["_unit"];
-				[_unit] call FUNC_ACE(medical_menu,openMenu);
+				[_unit] call ace_medical_menu_fnc_openMenu;
 			},
 			_conditions,
 			{
@@ -111,7 +107,7 @@ _modifierFunc = {
 			2,
 			[false, false, false, false, false],
 			_modifierFunc
-		] call FUNC_ACE(interact_menu,createAction);
+		] call ace_interact_menu_fnc_createAction;
 		//add built action to array
 		_actions pushBack[_action, [], _unit];
 	};

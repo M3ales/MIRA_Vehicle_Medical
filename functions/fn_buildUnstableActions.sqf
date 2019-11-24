@@ -30,12 +30,12 @@ _actions = [];
 //add cardiac arrest action if applicable
 if (_unit call FUNC(isCardiacArrest)) then {
 	diag_log format["'%1' is in Cardiac Arrest", _unit];
-	_action = ["MIRA_Cardiac", "Cardiac Arrest", "\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa", {
+	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
 			diag_log format["Unit is: %1 -- %2", _unit, _target];
-			[_unit] call FUNC_ACE(medical_menu,openMenu);
-		}, {true}, {}, [_unit]] call FUNC_ACE(interact_menu,createAction);
+			[_unit] call ace_medical_menu_fnc_openMenu;
+		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
 
@@ -43,27 +43,27 @@ if (_unit call FUNC(isCardiacArrest)) then {
 if (_unit call FUNC(isBleeding)) then {
 	//TODO: collect all wounds, and colour icon based on severity, only have red done for now
 	_icon = [
-		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
-		"\MIRA_Vehicle_Medical\ui\bleeding_yellow.paa",
-		"\MIRA_Vehicle_Medical\ui\bleeding_white.paa"
+		QUOTE(ICON_PATH(bleeding_red)),
+		QUOTE(ICON_PATH(bleeding_yellow)),
+		QUOTE(ICON_PATH(bleeding_white))
 	] select 0;
 	diag_log format["'%1' is Bleeding", _unit];
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call FUNC_ACE(medical_menu,openMenu);
-		}, {true}, {}, [_unit]] call FUNC_ACE(interact_menu,createAction);
+			[_unit] call ace_medical_menu_fnc_openMenu;
+		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
 
 //add unconscious action if applicable
 if (_unit call FUNC(isUnconscious)) then {
 	diag_log format["'%1' is Unconscious", _unit];
-	_action = ["MIRA_Sleepy", "Unconscious", "\MIRA_Vehicle_Medical\ui\unconscious_white.paa", {
+	_action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
 			params ["", "", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call FUNC_ACE(medical_menu,openMenu);
-		}, {true}, {}, [_unit]] call FUNC_ACE(interact_menu,createAction);
+			[_unit] call ace_medical_menu_fnc_openMenu;
+		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
 

@@ -6,7 +6,14 @@ class CfgVehicles {
                 displayName = "Medical";
                 condition = "alive _target";
                 statement = "";
-                insertChildren = QUOTE(_this call FUNC(buildPassengerActions));
+                class MIRA_Stable {
+                    displayName = "Stable";
+                    insertChildren = QUOTE(_this call FUNC(buildStablePassengerActions));
+                };
+                class MIRA_Unstable {
+                    displayName = "Unstable";
+                    insertChildren = QUOTE(_this call FUNC(buildUnstablePassengerActions));
+                };
             };
         };
     };
