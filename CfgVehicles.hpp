@@ -8,10 +8,12 @@ class CfgVehicles {
                 statement = "";
                 class MIRA_Stable {
                     displayName = "Stable";
+                    statement = "systemChat ""Stable Function"";";
                     insertChildren = QUOTE(_this call FUNC(buildStablePassengerActions));
                 };
                 class MIRA_Unstable {
                     displayName = "Unstable";
+                    statement = "systemChat ""Unstable Function"";";
                     insertChildren = QUOTE(_this call FUNC(buildUnstablePassengerActions));
                 };
             };

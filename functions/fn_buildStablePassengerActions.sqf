@@ -25,7 +25,6 @@ _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
 	//display action if any are true
-	if(_unit call FUNC(isBleeding) || _unit call FUNC(isUnconscious)) exitWith {false};
 	if(_unit call FUNC(needsBandage) || count (_unit call FUNC(getStitchableWounds)) > 0) exitWith {true};
 	false
 };
@@ -47,12 +46,15 @@ _modifierFunc = {
 {
 	_unit = _x;
 	//ignore drone pilot(s)
-	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
+	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
 		 _unitname = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
 		_icon = "";
 		//build the action, use additional params to have runOnHover = true
+		if(_unit == _player) then {
+			_unitname = "You";
+		};
 		_action = [
 			format["%1", _unit],
 			_unitname,

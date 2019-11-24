@@ -36,7 +36,10 @@ _modifierFunc = {
 	_parameters params ["_unit"];
 
 	_statusIcons = [
-		""
+		"",
+		QUOTE(ICON_PATH(unconscious_white)),
+		QUOTE(ICON_PATH(bleeding_red)),
+		QUOTE(ICON_PATH(cardiac_arrest_red))
 	];
 	_bleeding = _unit call FUNC(isBleeding);
 	_sleepy = _unit call FUNC(isUnconscious);
@@ -73,11 +76,14 @@ _modifierFunc = {
 {
 	_unit = _x;
 	//ignore drone pilot(s)
-	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
+	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
 		 _unitname = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
 		_icon = "";
+		if(_unit == _player) then {
+			_unitname = "You";
+		};
 		//build the action, use additional params to have runOnHover = true
 		_action = [
 			format["%1", _unit],
