@@ -8,12 +8,10 @@ class CfgVehicles {
                 statement = "";
                 class MIRA_Stable {
                     displayName = "Stable";
-                    statement = "systemChat ""Stable Function"";";
                     insertChildren = QUOTE(_this call FUNC(buildStablePassengerActions));
                 };
                 class MIRA_Unstable {
                     displayName = "Unstable";
-                    statement = "systemChat ""Unstable Function"";";
                     insertChildren = QUOTE(_this call FUNC(buildUnstablePassengerActions));
                 };
             };
@@ -26,7 +24,14 @@ class CfgVehicles {
                 displayName = "Medical";
                 condition = "alive _target";
                 statement = "";
-                insertChildren = QUOTE(_this call FUNC(buildPassengerActions));
+                class MIRA_Stable {
+                    displayName = "Stable";
+                    insertChildren = QUOTE(_this call FUNC(buildStablePassengerActions));
+                };
+                class MIRA_Unstable {
+                    displayName = "Unstable";
+                    insertChildren = QUOTE(_this call FUNC(buildUnstablePassengerActions));
+                };
             };
         };
     };

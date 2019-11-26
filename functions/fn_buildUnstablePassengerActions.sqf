@@ -72,7 +72,7 @@ _modifierFunc = {
 	};
 };
 
- //foreach player/npc in vehicle
+//foreach player/npc in vehicle
 {
 	_unit = _x;
 	//ignore drone pilot(s)

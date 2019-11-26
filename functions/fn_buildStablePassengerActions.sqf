@@ -12,7 +12,7 @@
  * Children actions <ARRAY>
  *
  * Example:
- * [vehicle player, player] call MIRA_fnc_buildUnstablePassengerActions
+ * [vehicle player, player] call MIRA_Vehicle_Medical_fnc_buildUnstablePassengerActions
  *
  * Public: Yes
  */
@@ -25,10 +25,11 @@ _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
 	//display action if any are true
-	if(_unit call FUNC(needsBandage) || count (_unit call FUNC(getStitchableWounds)) > 0) exitWith {true};
+	if(_unit call FUNC(isBleeding)) exitWith {false};
+	_stitch = _unit call FUNC(getStitchableWounds);
+	if(_unit call FUNC(needsBandage) || count _stitch > 0) exitWith {true};
 	false
 };
-
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
@@ -36,10 +37,16 @@ _modifierFunc = {
 
 	_statusIcons = [
 		"",
-		QUOTE(ICON_PATH(unconscious_white)),
-		QUOTE(ICON_PATH(bleeding_red)),
-		QUOTE(ICON_PATH(cardiac_arrest_red))
+		QUOTE(ICON_PATH(bandage)),
+		QUOTE(ICON_PATH(stitch))
 	];
+	if(_unit call FUNC(needsBandage)) then {
+		_actionData set [2, _statusIcons select 1];
+	};
+	_stitch = _unit call FUNC(getStitchableWounds);
+	if(count _stitch > 0) then {
+		_actionData set [2, _statusIcons select 2];
+	};
 };
 
  //foreach player/npc in vehicle
