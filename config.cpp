@@ -29,11 +29,16 @@ class CfgFunctions {
             tag = QUOTE(ADDON);
             requiredAddons[] = {"ace_interact_menu",  "ace_medical"};
             file = QUOTE(CONCAT(ADDON,\functions));
-            class buildPassengerActions {};
+            class buildUnstablePassengerActions {};
             class buildUnstableActions {};
             class isBleeding {};
             class isCardiacArrest {};
             class isUnconscious {};
+			class buildStablePassengerActions {};
+			class buildStableActions {};
+			class getOpenWounds {};
+			class getStitchableWounds {};
+			class needsBandage {};
         };
 	};
 };

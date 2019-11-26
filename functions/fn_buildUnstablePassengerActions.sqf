@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 /*
  * Author: esteldunedain, with minor changes by M3ales
  * Builds an array of actions, one for each passenger, with their name as the display.
@@ -11,15 +12,12 @@
  * Children actions <ARRAY>
  *
  * Example:
- * [vehicle player, player] call MIRA_fnc_buildPassengerActions
+ * [vehicle player, player] call MIRA_fnc_buildUnstablePassengerActions
  *
  * Public: Yes
  */
-#include "function_macros.hpp"
 
 params["_vehicle", "_player"];
-
-//diag_log format["Building actions for vehicle '%1'", _vehicle];
 
  _actions = [];
 
@@ -39,53 +37,53 @@ _modifierFunc = {
 
 	_statusIcons = [
 		"",
-		"\MIRA_Vehicle_Medical\ui\unconscious_white.paa",
-		"\MIRA_Vehicle_Medical\ui\bleeding_red.paa",
-		"\MIRA_Vehicle_Medical\ui\cardiac_arrest_red.paa"
+		QUOTE(ICON_PATH(unconscious_white)),
+		QUOTE(ICON_PATH(bleeding_red)),
+		QUOTE(ICON_PATH(cardiac_arrest_red))
 	];
-
 	_bleeding = _unit call FUNC(isBleeding);
 	_sleepy = _unit call FUNC(isUnconscious);
 	_cardiac = _unit call FUNC(isCardiacArrest);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious
-	//diag_log format["[B: %1, U: %2 , C: %3] - %4", _bleeding, _sleepy, _cardiac, str (_bleeding && _sleepy && cardiac)];
 	if(!_sleepy && !_bleeding && !_cardiac) then {
 		//healthy, default icon
-		diag_log "Healthy";
+		LOG("Healthy");
 		_actionData set [2, _statusIcons select 0];
 	}
 	else {
 		if(_sleepy && !_bleeding && !_cardiac) then {
 			//only unconscious, use unconscious icon
-			diag_log "Sleepy";
+			LOG("Sleepy");
 			_actionData set [2, _statusIcons select 1];
 		}
 		else {
 			if(!_cardiac) then {
 				//not only unconscious, but not in cardiac, must be bleeding
-				diag_log "Bleeding";
+				LOG("Bleeding");
 				_actionData set [2, _statusIcons select 2];
 			}
 			else {
 				//must be in cardiac, takes priority over bleeding
-				diag_log "Cardiac Arrest";
+				LOG("Cardiac Arrest");
 				_actionData set [2, _statusIcons select 3];
 			};
 		};
 	};
 };
 
- //foreach player/npc in vehicle
+//foreach player/npc in vehicle
 {
 	_unit = _x;
 	//ignore drone pilot(s)
-	if(_unit != _player && { getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot" }) then {
+	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
-		 _unitname = [_unit] call FUNC_ACE(common,getName);
-		//diag_log format["Adding action for '%1' (%2)", _unit, _unitname];
+		 _unitname = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
 		_icon = "";
+		if(_unit == _player) then {
+			_unitname = "You";
+		};
 		//build the action, use additional params to have runOnHover = true
 		_action = [
 			format["%1", _unit],
@@ -94,7 +92,7 @@ _modifierFunc = {
 			{
 				params ["", "", "_parameters"];
 				_parameters params ["_unit"];
-				[_unit] call FUNC_ACE(medical_menu,openMenu);
+				[_unit] call ace_medical_menu_fnc_openMenu;
 			},
 			_conditions,
 			{
@@ -111,7 +109,7 @@ _modifierFunc = {
 			2,
 			[false, false, false, false, false],
 			_modifierFunc
-		] call FUNC_ACE(interact_menu,createAction);
+		] call ace_interact_menu_fnc_createAction;
 		//add built action to array
 		_actions pushBack[_action, [], _unit];
 	};
