@@ -66,4 +66,28 @@ if (_isUncon) then {
 	_actions pushBack [_action, [], _unit];
 };
 
+_hasLowBP = GVAR(UnstableTrackLowBP) && _unit call FUNC(hasLowBP);
+if(_hasLowBP) then {
+	LOG(format["'%1' has low BP", _unit]);
+	_bp = [_player, _unit] call FUNC(displayBP);
+	_action = ["MIRA_LowBP", format["Blood Pressure (%1)", _bp] , QUOTE(ICON_PATH(bp_low)), {
+			params ["_player", "_target", "_parameters"];
+			_parameters params ["_unit"];
+			[_unit] call ace_medical_menu_fnc_openMenu;
+		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _unit];
+};
+
+_hasLowHR = GVAR(UnstableTrackLowHR) && _unit call FUNC(hasLowHR);
+if(_hasLowHR) then {
+	LOG(format["'%1' has low HR", _unit]);
+	_hr = [_player, _unit] call FUNC(displayHR);
+	_action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
+			params ["_player", "_target", "_parameters"];
+			_parameters params ["_unit"];
+			[_unit] call ace_medical_menu_fnc_openMenu;
+		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _unit];
+};
+
 _actions
