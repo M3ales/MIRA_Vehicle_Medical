@@ -19,7 +19,7 @@
  */
  //discard default _player and _target params, don't need them, called by ace.
 
-params ["", "", "_parameters"];
+params ["_player", "_target", "_parameters"];
 _parameters params ["_unit"];
 
 _actions = [];
@@ -66,7 +66,7 @@ if (_isUncon) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowBP = GVAR(Unstable_TrackLowBP) && _unit call FUNC(hasLowBP);
+_hasLowBP = GVAR(Unstable_TrackLowBP) && [_unit, _player, false] call FUNC(hasLowBP);
 if(_hasLowBP) then {
 	LOG(format["'%1' has low BP", _unit]);
 	_bp = [_player, _unit] call FUNC(displayBP);
@@ -85,7 +85,7 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowHR = GVAR(Unstable_TrackLowHR) && _unit call FUNC(hasLowHR);
+_hasLowHR = GVAR(Unstable_TrackLowHR) && [_unit, _player, false] call FUNC(hasLowHR);
 if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
 	_hr = [_player, _unit] call FUNC(displayHR);

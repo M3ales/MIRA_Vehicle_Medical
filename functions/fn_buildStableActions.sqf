@@ -35,7 +35,7 @@ if(_needsBandage) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
+_hasLowBP = GVAR(Stable_TrackLowBP) && [_unit, _player, true] call FUNC(hasLowBP);
 if(_hasLowBP) then {
 	LOG(format["'%1' has low BP", _unit]);
 	_bp = [_player, _unit] call FUNC(displayBP);
@@ -54,7 +54,7 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
+_hasLowHR = GVAR(Stable_TrackLowHR) && [_unit, _player, true] call FUNC(hasLowHR);
 if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
 	_hr = [_player, _unit] call FUNC(displayHR);

@@ -29,8 +29,8 @@ _conditions = {
 	_stitch = _unit call FUNC(getStitchableWounds);
 	_needsBandage = GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage);
 	_needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitch > 0;
-	_lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
-	_lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
+	_lowBP = GVAR(Stable_TrackLowBP) && [_unit, _player, true] call FUNC(hasLowBP);
+	_lowHR = GVAR(Stable_TrackLowHR) && [_unit, _player, true] call FUNC(hasLowHR);
 	if(_needsBandage || _needsStitch || _lowBP || _lowHR) exitWith {true};
 	false
 };
