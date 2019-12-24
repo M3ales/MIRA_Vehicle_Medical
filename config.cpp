@@ -23,24 +23,10 @@ class CfgMods {
 	overview = "Adds a medical menu accessible from self interact, while inside a vehicle - displays only priority patients who are unstable.";
 }
 
-class CfgFunctions {
-	class ADDON {
-        class VehicleMedical {
-            tag = QUOTE(ADDON);
-            requiredAddons[] = {"ace_interact_menu",  "ace_medical"};
-            file = QUOTE(CONCAT(ADDON,\functions));
-            class buildUnstablePassengerActions {};
-            class buildUnstableActions {};
-            class isBleeding {};
-            class isCardiacArrest {};
-            class isUnconscious {};
-			class buildStablePassengerActions {};
-			class buildStableActions {};
-			class getOpenWounds {};
-			class getStitchableWounds {};
-			class needsBandage {};
-        };
-	};
-};
+class Extended_PreInit_EventHandlers {
+    class ADDON {
+        init = QUOTE(call COMPILE_FILE(XEH_preInit));
+    };
+}; 
 
 #include "CfgVehicles.hpp"
