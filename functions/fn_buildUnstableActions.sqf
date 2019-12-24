@@ -24,9 +24,9 @@ _parameters params ["_unit"];
 
 _actions = [];
 
-
 //add cardiac arrest action if applicable
-if (_unit call FUNC(isCardiacArrest)) then {
+_cardiacArrest = GVAR(TrackCardiacArrest) &&_unit call FUNC(isCardiacArrest);
+if (_cardiacArrest) then {
 	LOG(format["'%1' is in Cardiac Arrest", _unit]);
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
 			params ["_player", "_target", "_parameters"];
@@ -36,8 +36,9 @@ if (_unit call FUNC(isCardiacArrest)) then {
 	_actions pushBack [_action, [], _unit];
 };
 
+_isBleeding = GVAR(TrackBleeding) && _unit call FUNC(isBleeding);
 //add bleeding action if applicable
-if (_unit call FUNC(isBleeding)) then {
+if (_isBleeding) then {
 	//TODO: collect all wounds, and colour icon based on severity, only have red done for now
 	_icon = [
 		QUOTE(ICON_PATH(bleeding_red)),
@@ -54,7 +55,8 @@ if (_unit call FUNC(isBleeding)) then {
 };
 
 //add unconscious action if applicable
-if (_unit call FUNC(isUnconscious)) then {
+_isUncon = GVAR(TrackUnconscious) && _unit call FUNC(isUnconscious);
+if (_isUncon) then {
 	LOG(format["'%1' is Unconscious", _unit]);
 	_action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
 			params ["", "", "_parameters"];

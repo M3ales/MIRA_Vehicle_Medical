@@ -9,7 +9,6 @@ PREP(buildStableActions);
 PREP(getOpenWounds);
 PREP(getStitchableWounds);
 PREP(needsBandage);
-//others
 PREP(hasLowHR);
 PREP(displayHR);
 PREP(hasLowBP);
