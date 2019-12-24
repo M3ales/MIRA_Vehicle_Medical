@@ -43,7 +43,7 @@ if(_hasLowBP) then {
 	if(GVAR(Stable_TrackIV)) then {
 		_iv =  _unit call FUNC(getTotalIV);
 		if(_iv > 0) then {
-			_name = format["Blood Pressure (%1) [%2ml]", _bp,];
+			_name = format["Blood Pressure (%1) [%2ml]", _bp, _iv];
 		};
 	};
 	_action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
