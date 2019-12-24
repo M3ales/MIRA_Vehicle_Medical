@@ -29,7 +29,9 @@ _conditions = {
 	_stitch = _unit call FUNC(getStitchableWounds);
 	_needsBandage = GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage);
 	_needsStitch = GVAR(TrackStitchableWounds) && count _stitch > 0;
-	if(_needsBandage || _needsStitch) exitWith {true};
+	_lowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
+	_lowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
+	if(_needsBandage || _needsStitch || _lowBP || _lowHR) exitWith {true};
 	false
 };
 //modify the icon to show the worst 'wound' type
@@ -40,7 +42,9 @@ _modifierFunc = {
 	_statusIcons = [
 		"",
 		QUOTE(ICON_PATH(bandage)),
-		QUOTE(ICON_PATH(stitch))
+		QUOTE(ICON_PATH(stitch)),
+		QUOTE(ICON_PATH(bp_low)),
+		QUOTE(ICON_PATH(hr_low))
 	];
 	if(GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
 		_actionData set [2, _statusIcons select 1];
@@ -49,6 +53,15 @@ _modifierFunc = {
 	if(GVAR(TrackStitchableWounds) && count _stitch > 0) then {
 		_actionData set [2, _statusIcons select 2];
 	};
+	_lowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
+	if(_lowBP) then {
+		_actionData set [2, _statusIcons select 3];
+	};
+	_lowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
+	if(_lowHR) then {
+		_actionData set [2, _statusIcons select 4];
+	};
+	
 };
 
  //foreach player/npc in vehicle

@@ -38,7 +38,8 @@ if(_needsBandage) then {
 _hasLowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
 if(_hasLowBP) then {
 	LOG(format["'%1' has low BP", _unit]);
-	_action = ["MIRA_LowBP", format["Low Blood Pressure (%1)", [_unit] call ace_medical_status_fnc_getBloodPressure] , QUOTE(ICON_PATH(lowBP)), {
+	_bp = [_player, _unit] call FUNC(displayBP);
+	_action = ["MIRA_LowBP", format["Blood Pressure (%1)", _bp] , QUOTE(ICON_PATH(bp_low)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
@@ -49,7 +50,8 @@ if(_hasLowBP) then {
 _hasLowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
 if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
-	_action = ["MIRA_LowHR", format["Low Heart Rate (%1)", _unit getVariable ["ace_medical_heartRate", 80]] , QUOTE(ICON_PATH(lowHR)), {
+	_hr = [_player, _unit] call FUNC(displayHR);
+	_action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
