@@ -48,24 +48,20 @@ _modifierFunc = {
 	//Use ascending order of importance, cardiac > bleeding > unconscious
 	if(!_sleepy && !_bleeding && !_cardiac) then {
 		//healthy, default icon
-		LOG("Healthy");
 		_actionData set [2, _statusIcons select 0];
 	}
 	else {
 		if(_sleepy && !_bleeding && !_cardiac) then {
 			//only unconscious, use unconscious icon
-			LOG("Sleepy");
 			_actionData set [2, _statusIcons select 1];
 		}
 		else {
 			if(!_cardiac) then {
 				//not only unconscious, but not in cardiac, must be bleeding
-				LOG("Bleeding");
 				_actionData set [2, _statusIcons select 2];
 			}
 			else {
 				//must be in cardiac, takes priority over bleeding
-				LOG("Cardiac Arrest");
 				_actionData set [2, _statusIcons select 3];
 			};
 		};
