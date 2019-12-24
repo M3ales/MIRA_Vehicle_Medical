@@ -27,7 +27,9 @@ _conditions = {
 	//display action if any are true
 	if(_unit call FUNC(isBleeding)) exitWith {false};
 	_stitch = _unit call FUNC(getStitchableWounds);
-	if(_unit call FUNC(needsBandage) || count _stitch > 0) exitWith {true};
+	_needsBandage = GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage);
+	_needsStitch = GVAR(TrackStitchableWounds) && count _stitch > 0;
+	if(_needsBandage || _needsStitch) exitWith {true};
 	false
 };
 //modify the icon to show the worst 'wound' type
@@ -40,11 +42,11 @@ _modifierFunc = {
 		QUOTE(ICON_PATH(bandage)),
 		QUOTE(ICON_PATH(stitch))
 	];
-	if(_unit call FUNC(needsBandage)) then {
+	if(GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
 		_actionData set [2, _statusIcons select 1];
 	};
 	_stitch = _unit call FUNC(getStitchableWounds);
-	if(count _stitch > 0) then {
+	if(GVAR(TrackStitchableWounds) && count _stitch > 0) then {
 		_actionData set [2, _statusIcons select 2];
 	};
 };

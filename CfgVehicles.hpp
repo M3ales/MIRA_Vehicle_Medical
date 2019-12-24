@@ -1,14 +1,16 @@
 #define MEDICAL_BASE(addition) class MIRA_Medical {\
                 displayName = "Medical";\
-                condition = "alive _target";\
+                condition = "alive _target && GVAR(EnableAVM)";\
                 statement = "if(true)exitWith{}";\
                 ##addition##\
                 class MIRA_Stable {\
                     displayName = "Stable";\
+                    condition = "GVAR(EnableStable)";\
                     insertChildren = QUOTE(_this call FUNC(buildStablePassengerActions));\
                 };\
                 class MIRA_Unstable {\
                     displayName = "Unstable";\
+                    condition = "GVAR(EnableUnstable)";\
                     insertChildren = QUOTE(_this call FUNC(buildUnstablePassengerActions));\
                 };\
             };

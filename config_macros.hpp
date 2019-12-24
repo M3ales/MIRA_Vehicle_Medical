@@ -5,3 +5,4 @@
 #define QUOTE(target) #target
 #define CONCAT(a,b) a##b
 #define COMPILE_FILE(name) compile preprocessFileLineNumbers 'ADDON\##name##.sqf'
+#define GVAR(name) ADDON##_##name
