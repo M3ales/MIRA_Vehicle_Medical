@@ -13,3 +13,4 @@ PREP(hasLowHR);
 PREP(displayHR);
 PREP(hasLowBP);
 PREP(displayBP);
+PREP(getTotalIV);
