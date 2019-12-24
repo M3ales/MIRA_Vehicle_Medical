@@ -46,6 +46,14 @@ _modifierFunc = {
 		QUOTE(ICON_PATH(bp_low)),
 		QUOTE(ICON_PATH(hr_low))
 	];
+	_lowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
+	if(_lowHR) then {
+		_actionData set [2, _statusIcons select 4];
+	};
+	_lowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
+	if(_lowBP) then {
+		_actionData set [2, _statusIcons select 3];
+	};
 	if(GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
 		_actionData set [2, _statusIcons select 1];
 	};
@@ -53,15 +61,6 @@ _modifierFunc = {
 	if(GVAR(TrackStitchableWounds) && count _stitch > 0) then {
 		_actionData set [2, _statusIcons select 2];
 	};
-	_lowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
-	if(_lowBP) then {
-		_actionData set [2, _statusIcons select 3];
-	};
-	_lowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
-	if(_lowHR) then {
-		_actionData set [2, _statusIcons select 4];
-	};
-	
 };
 
  //foreach player/npc in vehicle
