@@ -5,7 +5,7 @@ _params params["_unit"];
 _actions = [];
 
 _stitchWounds = _unit call FUNC(getStitchableWounds);
-_needsStitch = GVAR(TrackStitchableWounds) && count _stitchWounds > 0;
+_needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitchWounds > 0;
 if (_needsStitch) then {
 	LOG(format["'%1' has stitchable wounds", _unit]);
 	_action = ["MIRA_Stitch", format["Stitch (%1)", count _stitchWounds] , QUOTE(ICON_PATH(stitch)), {
@@ -16,7 +16,7 @@ if (_needsStitch) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_needsBandage = GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage);
+_needsBandage = GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage);
 if(_needsBandage) then {
 	_requiredBandages = 0;
 	_openWounds = _unit call FUNC(getOpenWounds);
@@ -35,11 +35,18 @@ if(_needsBandage) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
+_hasLowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
 if(_hasLowBP) then {
 	LOG(format["'%1' has low BP", _unit]);
 	_bp = [_player, _unit] call FUNC(displayBP);
-	_action = ["MIRA_LowBP", format["Blood Pressure (%1)", _bp] , QUOTE(ICON_PATH(bp_low)), {
+	_name = format["Blood Pressure (%1)", _bp];
+	if(GVAR(Stable_TrackIV)) then {
+		_iv =  _unit call FUNC(getTotalIV);
+		if(_iv > 0) then {
+			_name = format["Blood Pressure (%1) [%2ml]", _bp,];
+		};
+	};
+	_action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
@@ -47,7 +54,7 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
+_hasLowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
 if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
 	_hr = [_player, _unit] call FUNC(displayHR);

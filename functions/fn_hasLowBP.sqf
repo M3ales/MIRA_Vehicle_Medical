@@ -1,7 +1,13 @@
 #include "function_macros.hpp"
 #include "medical_macros.hpp"
-params[["_unit", player, [player]], ["_player", player]];
-_threshold = GVAR(ThresholdLowBP);
+params[["_unit", player, [player]], ["_player", player], ["_stable", true]];
+
+if(_stable) then {
+	_threshold = GVAR(Stable_ThresholdLowBP);
+}else {
+	_threshold = GVAR(Unstable_ThresholdLowBP);
+};
+
 _bp = [_unit] call ace_medical_fnc_getBloodPressure;
 _lowBP = _bp select 0;
 _highBP = _bp select 1;

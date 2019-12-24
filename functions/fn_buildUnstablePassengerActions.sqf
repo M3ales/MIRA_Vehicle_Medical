@@ -25,9 +25,9 @@ params["_vehicle", "_player"];
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
-	_bleeding = GVAR(TrackBleeding) && _unit call FUNC(isBleeding);
-	_sleepy = GVAR(TrackUnconscious) && _unit call FUNC(isUnconscious);
-	_cardiac = GVAR(TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
+	_bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
+	_sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
+	_cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
 	//display action if any are true
 	if(_bleeding || _sleepy || _cardiac) exitWith {true};
 	false
@@ -44,9 +44,9 @@ _modifierFunc = {
 		QUOTE(ICON_PATH(bleeding_red)),
 		QUOTE(ICON_PATH(cardiac_arrest_red))
 	];
-	_bleeding = GVAR(TrackBleeding) && _unit call FUNC(isBleeding);
-	_sleepy = GVAR(TrackUnconscious) && _unit call FUNC(isUnconscious);
-	_cardiac = GVAR(TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
+	_bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
+	_sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
+	_cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious
 	if(!_sleepy && !_bleeding && !_cardiac) then {
@@ -61,7 +61,7 @@ _modifierFunc = {
 		else {
 			if(!_cardiac) then {
 				//not only unconscious, but not in cardiac, must be bleeding
-				if(GVAR(TrackBleeding)) then {
+				if(GVAR(Unstable_TrackBleeding)) then {
 					_actionData set [2, _statusIcons select 2];
 				};
 			}

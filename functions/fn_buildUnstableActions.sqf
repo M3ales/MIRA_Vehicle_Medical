@@ -25,7 +25,7 @@ _parameters params ["_unit"];
 _actions = [];
 
 //add cardiac arrest action if applicable
-_cardiacArrest = GVAR(TrackCardiacArrest) &&_unit call FUNC(isCardiacArrest);
+_cardiacArrest = GVAR(Unstable_TrackCardiacArrest) &&_unit call FUNC(isCardiacArrest);
 if (_cardiacArrest) then {
 	LOG(format["'%1' is in Cardiac Arrest", _unit]);
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
@@ -36,7 +36,7 @@ if (_cardiacArrest) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_isBleeding = GVAR(TrackBleeding) && _unit call FUNC(isBleeding);
+_isBleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
 //add bleeding action if applicable
 if (_isBleeding) then {
 	//TODO: collect all wounds, and colour icon based on severity, only have red done for now
@@ -55,7 +55,7 @@ if (_isBleeding) then {
 };
 
 //add unconscious action if applicable
-_isUncon = GVAR(TrackUnconscious) && _unit call FUNC(isUnconscious);
+_isUncon = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
 if (_isUncon) then {
 	LOG(format["'%1' is Unconscious", _unit]);
 	_action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
@@ -66,11 +66,18 @@ if (_isUncon) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowBP = GVAR(UnstableTrackLowBP) && _unit call FUNC(hasLowBP);
+_hasLowBP = GVAR(Unstable_TrackLowBP) && _unit call FUNC(hasLowBP);
 if(_hasLowBP) then {
 	LOG(format["'%1' has low BP", _unit]);
 	_bp = [_player, _unit] call FUNC(displayBP);
-	_action = ["MIRA_LowBP", format["Blood Pressure (%1)", _bp] , QUOTE(ICON_PATH(bp_low)), {
+	_name = format["Blood Pressure (%1)", _bp];
+	if(GVAR(Unstable_TrackIV)) then {
+		_iv =  _unit call FUNC(getTotalIV);
+		if(_iv > 0) then {
+			_name = format["Blood Pressure (%1) [%2ml]", _bp,];
+		};
+	};
+	_action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
@@ -78,7 +85,7 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _unit];
 };
 
-_hasLowHR = GVAR(UnstableTrackLowHR) && _unit call FUNC(hasLowHR);
+_hasLowHR = GVAR(Unstable_TrackLowHR) && _unit call FUNC(hasLowHR);
 if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
 	_hr = [_player, _unit] call FUNC(displayHR);

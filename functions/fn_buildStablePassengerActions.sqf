@@ -27,10 +27,10 @@ _conditions = {
 	//display action if any are true
 	if(_unit call FUNC(isBleeding)) exitWith {false};
 	_stitch = _unit call FUNC(getStitchableWounds);
-	_needsBandage = GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage);
-	_needsStitch = GVAR(TrackStitchableWounds) && count _stitch > 0;
-	_lowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
-	_lowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
+	_needsBandage = GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage);
+	_needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitch > 0;
+	_lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
+	_lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
 	if(_needsBandage || _needsStitch || _lowBP || _lowHR) exitWith {true};
 	false
 };
@@ -38,7 +38,6 @@ _conditions = {
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
 	_parameters params ["_unit"];
-
 	_statusIcons = [
 		"",
 		QUOTE(ICON_PATH(bandage)),
@@ -46,19 +45,19 @@ _modifierFunc = {
 		QUOTE(ICON_PATH(bp_low)),
 		QUOTE(ICON_PATH(hr_low))
 	];
-	_lowHR = GVAR(TrackLowHR) && _unit call FUNC(hasLowHR);
+	_lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
 	if(_lowHR) then {
 		_actionData set [2, _statusIcons select 4];
 	};
-	_lowBP = GVAR(TrackLowBP) && _unit call FUNC(hasLowBP);
+	_lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
 	if(_lowBP) then {
 		_actionData set [2, _statusIcons select 3];
 	};
-	if(GVAR(TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
+	if(GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
 		_actionData set [2, _statusIcons select 1];
 	};
 	_stitch = _unit call FUNC(getStitchableWounds);
-	if(GVAR(TrackStitchableWounds) && count _stitch > 0) then {
+	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
 		_actionData set [2, _statusIcons select 2];
 	};
 };
