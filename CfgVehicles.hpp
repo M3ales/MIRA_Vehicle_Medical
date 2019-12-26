@@ -1,4 +1,3 @@
-#define MEDICAL_BASE() 
 #define STABLE_UNSTABLE_BASE \
                 class MIRA_Stable {\
                     displayName = "Stable";\

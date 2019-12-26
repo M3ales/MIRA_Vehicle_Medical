@@ -31,8 +31,8 @@ _stableCategory = ["ACE Vehicle Medical", "Stable"];
 [QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
 
 //vehicles
-_vehicleCategory = ["ACE Vehicle Medical", "Vechicles"];
-#define VEH_ENABLE(type) [QUOTE(GVAR(CONTCAT(Vehicles_Enable,type))), "CHECKBOX", [QUOTE(CONCAT(Enable on ,type)), QUOTE(CONCAT(Determines if AVM is enabled for ,type))], _vehicleCategory, true, 0, {}] call CBA_fnc_addSetting
+_vehicleCategory = ["ACE Vehicle Medical", "Vehicles"];
+#define VEH_ENABLE(type) [QUOTE(GVAR(CONCAT(Vehicles_Enable,type))), "CHECKBOX", [QUOTE(CONCAT(Enable on ,type)), QUOTE(CONCAT(Determines if AVM is enabled for ,type))], _vehicleCategory, true, 0, {}] call CBA_fnc_addSetting
 VEH_ENABLE(Car);
 VEH_ENABLE(Helicopter);
 VEH_ENABLE(Plane);
