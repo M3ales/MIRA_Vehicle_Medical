@@ -19,7 +19,7 @@
  */
  //discard default _player and _target params, don't need them, called by ace.
 
-params ["_player", "_target", "_parameters"];
+params ["_target", "_player", "_parameters"];
 _parameters params ["_unit"];
 
 _actions = [];
