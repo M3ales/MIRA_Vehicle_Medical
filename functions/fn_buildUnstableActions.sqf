@@ -47,7 +47,7 @@ if (_isBleeding) then {
 	] select 0;
 	LOG(format["'%1' is Bleeding", _unit]);
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
-			pparams ["_target", "_player", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
