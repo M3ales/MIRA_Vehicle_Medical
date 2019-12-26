@@ -7,14 +7,14 @@ if(!_stable) then {
 	_threshold = GVAR(Unstable_ThresholdLowBP);
 };
 _bp = [_target] call ace_medical_fnc_getBloodPressure;
-_bp params ["", "_highBP"];
+_highBP = round (_bp select 1);
 if(_player call ace_medical_fnc_isMedic) then {
 	if(_highBP > _threshold) exitWith {
 		false
 	};
 	true
 }else {
-	if(_highBP > NOTMEDIC_LOWBP_THRESHOLD) exitWith{
+	if(_highBP > NOTMEDIC_LOWBP_THRESHOLD) exitWith {
 		false
 	};
 	true
