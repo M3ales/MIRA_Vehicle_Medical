@@ -1,13 +1,13 @@
 #include "function_macros.hpp"
 #include "medical_macros.hpp"
-params[["_unit", player, [player]], ["_player", player, [player]], ["_stable", true, [true]]];
+params[["_target", player, [player]], ["_player", player, [player]], ["_stable", true, [true]]];
 
 _threshold = GVAR(Stable_ThresholdLowHR);
 if(!_stable) then {
 	_threshold = GVAR(Unstable_ThresholdLowHR);
 };
 
-_hr = _unit getVariable ["ace_medical_heartRate", 80];
+_hr = _target getVariable ["ace_medical_heartRate", 80];
 if(_player call ace_medical_fnc_isMedic) then {
 	if(_hr > _threshold) exitWith {
 		false
