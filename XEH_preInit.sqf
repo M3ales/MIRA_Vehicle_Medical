@@ -30,4 +30,13 @@ _stableCategory = ["ACE Vehicle Medical", "Stable"];
 [QUOTE(GVAR(Stable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
 
+//vehicles
+_vehicleCategory = ["ACE Vehicle Medical", "Vechicles"];
+#define VEH_ENABLE(type) [QUOTE(GVAR(CONTCAT(Vehicles_Enable,type))), "CHECKBOX", [QUOTE(CONCAT(Enable on ,type)), QUOTE(CONCAT(Determines if AVM is enabled for ,type))], _vehicleCategory, true, 0, {}] call CBA_fnc_addSetting
+VEH_ENABLE(Car);
+VEH_ENABLE(Helicopter);
+VEH_ENABLE(Plane);
+VEH_ENABLE(Ship);
+VEH_ENABLE(Tank);
+
 LOG("PreInit Complete");
