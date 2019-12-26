@@ -9,7 +9,7 @@ _needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitchWounds > 0;
 if (_needsStitch) then {
 	LOG(format["'%1' has stitchable wounds", _unit]);
 	_action = ["MIRA_Stitch", format["Stitch (%1)", count _stitchWounds] , QUOTE(ICON_PATH(stitch)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -28,7 +28,7 @@ if(_needsBandage) then {
 	} forEach _openWounds;
 	LOG(format["'%1' has unbandadged wounds", _unit]);
 	_action = ["MIRA_Bandage", format["Bandage (%1)", (_requiredBandages - (count _stitchWounds))] , QUOTE(ICON_PATH(bandage)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -47,7 +47,7 @@ if(_hasLowBP) then {
 		};
 	};
 	_action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -59,7 +59,7 @@ if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
 	_hr = [_player, _unit] call FUNC(displayHR);
 	_action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;

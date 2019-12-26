@@ -29,7 +29,7 @@ _cardiacArrest = GVAR(Unstable_TrackCardiacArrest) &&_unit call FUNC(isCardiacAr
 if (_cardiacArrest) then {
 	LOG(format["'%1' is in Cardiac Arrest", _unit]);
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -47,7 +47,7 @@ if (_isBleeding) then {
 	] select 0;
 	LOG(format["'%1' is Bleeding", _unit]);
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
-			params ["", "", "_parameters"];
+			pparams ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -59,7 +59,7 @@ _isUncon = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
 if (_isUncon) then {
 	LOG(format["'%1' is Unconscious", _unit]);
 	_action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
-			params ["", "", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -78,7 +78,7 @@ if(_hasLowBP) then {
 		};
 	};
 	_action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
@@ -90,7 +90,7 @@ if(_hasLowHR) then {
 	LOG(format["'%1' has low HR", _unit]);
 	_hr = [_player, _unit] call FUNC(displayHR);
 	_action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
-			params ["_player", "_target", "_parameters"];
+			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
 			[_unit] call ace_medical_menu_fnc_openMenu;
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
