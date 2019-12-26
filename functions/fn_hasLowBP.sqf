@@ -1,23 +1,20 @@
 #include "function_macros.hpp"
 #include "medical_macros.hpp"
-params[["_unit", player, [player]], ["_player", player], ["_stable", true]];
+params[["_target", player, [player]], ["_player", player, [player]], ["_stable", true, [true]]];
 
-if(_stable) then {
-	_threshold = GVAR(Stable_ThresholdLowBP);
-}else {
+_threshold = GVAR(Stable_ThresholdLowBP);
+if(!_stable) then {
 	_threshold = GVAR(Unstable_ThresholdLowBP);
 };
-
-_bp = [_unit] call ace_medical_fnc_getBloodPressure;
-_lowBP = _bp select 0;
-_highBP = _bp select 1;
+_bp = [_target] call ace_medical_fnc_getBloodPressure;
+_bp params ["", "_highBP"];
 if(_player call ace_medical_fnc_isMedic) then {
-	if(_lowBP > _threshold && _highBP > _threshold) exitWith {
+	if(_highBP > _threshold) exitWith {
 		false
 	};
 	true
 }else {
-	if(_lowBP > NOTMEDIC_LOWBP_THRESHOLD) exitWith{
+	if(_highBP > NOTMEDIC_LOWBP_THRESHOLD) exitWith{
 		false
 	};
 	true

@@ -2,9 +2,8 @@
 #include "medical_macros.hpp"
 params[["_unit", player, [player]], ["_player", player, [player]], ["_stable", true, [true]]];
 
-if(_stable) then {
-	_threshold = GVAR(Stable_ThresholdLowHR);
-}else {
+_threshold = GVAR(Stable_ThresholdLowHR);
+if(!_stable) then {
 	_threshold = GVAR(Unstable_ThresholdLowHR);
 };
 
