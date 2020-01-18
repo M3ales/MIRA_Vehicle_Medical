@@ -16,3 +16,4 @@ PREP(displayBP);
 PREP(getTotalIV);
 PREP(openMedicalMenu);
 PREP(getBloodPressure);
+PREP(isMedic);
