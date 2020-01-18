@@ -10,7 +10,7 @@ if (count _stitchWounds > 0) then {
 	_action = ["MIRA_Stitch", format["Stitch (%1)", count _stitchWounds] , QUOTE(ICON_PATH(stitch)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
+			[_unit] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
@@ -28,7 +28,7 @@ if(_unit call FUNC(needsBandage)) then {
 	_action = ["MIRA_Bandage", format["Bandage (%1)", (_requiredBandages - (count _stitchWounds))] , QUOTE(ICON_PATH(bandage)), {
 			params ["_player", "_target", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
+			[_unit] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };

@@ -39,6 +39,7 @@ class CfgFunctions {
 			class getOpenWounds {};
 			class getStitchableWounds {};
 			class needsBandage {};
+			class openMedicalMenu {};
         };
 	};
 };
