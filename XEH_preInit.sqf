@@ -2,7 +2,7 @@
 LOG("PreInit Begin");
 //ace_common_getVersion is broken for some patches, we look manually to ensure data is good, probably wont work everywhere.
 getArray(configFile >> "CfgPatches" >> "ace_main" >> "versionAR") params ["_aceMajor", "_aceMinor"];
-if(_aceMajor >= 3 && _aceMinor > 13) then {
+if(_aceMajor >= 3 && _aceMinor >= 13) then {
 	LOG(format["ACE Version is after medical rewrite"]);
 	GVAR(medical_rewrite) = true;
 }else{
