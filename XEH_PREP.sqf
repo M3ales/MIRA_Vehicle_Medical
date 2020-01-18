@@ -15,3 +15,4 @@ PREP(hasLowBP);
 PREP(displayBP);
 PREP(getTotalIV);
 PREP(openMedicalMenu);
+PREP(getBloodPressure);
