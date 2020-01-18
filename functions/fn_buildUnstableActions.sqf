@@ -61,7 +61,7 @@ if (_isUncon) then {
 	_action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
+			[_unit] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
@@ -80,7 +80,7 @@ if(_hasLowBP) then {
 	_action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
+			[_unit] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };

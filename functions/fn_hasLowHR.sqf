@@ -8,7 +8,7 @@ if(!_stable) then {
 };
 
 _hr = _target getVariable ["ace_medical_heartRate", 80];
-if(_player call ace_medical_fnc_isMedic) then {
+if(_player call FUNC(isMedic)) then {
 	if(_hr > _threshold) exitWith {
 		false
 	};

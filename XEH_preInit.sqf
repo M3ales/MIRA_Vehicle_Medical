@@ -1,5 +1,15 @@
 #include "functions\function_macros.hpp"
 LOG("PreInit Begin");
+//ace_common_getVersion is broken for some patches, we look manually to ensure data is good, probably wont work everywhere.
+getArray(configFile >> "CfgPatches" >> "ace_main" >> "versionAR") params ["_aceMajor", "_aceMinor"];
+if(_aceMajor >= 3 && _aceMinor > 13) then {
+	LOG(format["ACE Version is after medical rewrite"]);
+	GVAR(medical_rewrite) = true;
+}else{
+	LOG(format["ACE Version is before medical rewrite"]);
+	GVAR(medical_rewrite) = false;
+};
+
 LOG("PREP Begin");
 #include "XEH_PREP.sqf"
 LOG("PREP Complete");
@@ -7,6 +17,7 @@ LOG("PREP Complete");
 LOG("Creating CBA Addon Options");
 //General
 [QUOTE(GVAR(EnableAVM)), "CHECKBOX", ["Enable AVM", "Determines if ACE Vehicle Medical will be shown at all"], ["ACE Vehicle Medical", "General"], true, 0, {}] call CBA_fnc_addSetting;
+
 //Unstable
 _unstableCategory = ["ACE Vehicle Medical", "Unstable"];
 [QUOTE(GVAR(EnableUnstable)), "CHECKBOX", ["Enable Unstable List", "Determines if Unstable list will be shown"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;

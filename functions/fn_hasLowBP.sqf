@@ -8,7 +8,7 @@ if(!_stable) then {
 };
 _bp = [_target] call ace_medical_fnc_getBloodPressure;
 _highBP = round (_bp select 1);
-if(_player call ace_medical_fnc_isMedic) then {
+if(_player call FUNC(isMedic)) then {
 	if(_highBP > _threshold) exitWith {
 		false
 	};
