@@ -11,7 +11,7 @@ if (_needsStitch) then {
 	_action = ["MIRA_Stitch", format["Stitch (%1)", count _stitchWounds] , QUOTE(ICON_PATH(stitch)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
+			[_unit] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };
@@ -61,7 +61,7 @@ if(_hasLowHR) then {
 	_action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_unit"];
-			[_unit] call ace_medical_menu_fnc_openMenu;
+			[_unit] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_unit]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _unit];
 };

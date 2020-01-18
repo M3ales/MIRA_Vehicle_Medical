@@ -14,3 +14,4 @@ PREP(displayHR);
 PREP(hasLowBP);
 PREP(displayBP);
 PREP(getTotalIV);
+PREP(openMedicalMenu);

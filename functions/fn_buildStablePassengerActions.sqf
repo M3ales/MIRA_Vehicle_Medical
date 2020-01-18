@@ -82,7 +82,7 @@ _modifierFunc = {
 			{
 				params ["", "", "_parameters"];
 				_parameters params ["_unit"];
-				[_unit] call ace_medical_menu_fnc_openMenu;
+				[_unit] call FUNC(openMedicalMenu);
 			},
 			_conditions,
 			{
