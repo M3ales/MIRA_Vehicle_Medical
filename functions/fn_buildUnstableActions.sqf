@@ -24,6 +24,10 @@ _parameters params ["_unit"];
 
 _actions = [];
 
+if(!alive _target) exitWith {
+	[]
+};
+
 //add cardiac arrest action if applicable
 _cardiacArrest = GVAR(Unstable_TrackCardiacArrest) &&_unit call FUNC(isCardiacArrest);
 if (_cardiacArrest) then {

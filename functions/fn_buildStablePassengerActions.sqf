@@ -25,7 +25,7 @@ _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
 	//display action if any are true
-	if(_unit call FUNC(isBleeding)) exitWith {false};
+	if(_unit call FUNC(isBleeding) || !alive _unit) exitWith {false};
 	_stitch = _unit call FUNC(getStitchableWounds);
 	_needsBandage = GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage);
 	_needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitch > 0;

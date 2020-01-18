@@ -1,8 +1,13 @@
 #include "function_macros.hpp"
+
+// [player, player, [player]] call MIRA_Vehicle_Medical_fnc_buildStableActions;
 params["_target", "_player", "_params"];
 _params params["_unit"];
-
 _actions = [];
+
+if(!alive _target) exitWith {
+	[]
+};
 
 _stitchWounds = _unit call FUNC(getStitchableWounds);
 _needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitchWounds > 0;

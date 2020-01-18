@@ -25,6 +25,7 @@ params["_vehicle", "_player"];
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
+	if(!alive _unit) exitWith {false};
 	_bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
 	_sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
 	_cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
