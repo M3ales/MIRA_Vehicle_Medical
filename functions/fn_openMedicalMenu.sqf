@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 params[["_unit", player, [player]]];
 if(GVAR(medical_rewrite)) exitWith {
 	//open for new ace
