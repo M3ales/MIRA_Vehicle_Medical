@@ -1,4 +1,4 @@
-#define PREP(var1) FUNC(var1) = compile preProcessFileLineNumbers QUOTE(ADDON\functions\CONCAT(fn_,var1).sqf)
+#define PREP(var1) FUNC(var1) = compileFinal preProcessFileLineNumbers QUOTE(ADDON\functions\CONCAT(fn_,var1).sqf)
 PREP(buildUnstablePassengerActions);
 PREP(buildUnstableActions);
 PREP(isBleeding);
@@ -17,3 +17,7 @@ PREP(getTotalIV);
 PREP(openMedicalMenu);
 PREP(getBloodPressure);
 PREP(isMedic);
+PREP(getFractures);
+PREP(getNumberOfWoundsToBandage);
+PREP(isStable);
+PREP(getStitchedWounds);
