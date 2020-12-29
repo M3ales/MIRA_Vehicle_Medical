@@ -23,14 +23,7 @@ if (_needsStitch) then {
 
 _needsBandage = GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage);
 if(_needsBandage) then {
-	_requiredBandages = 0;
-	_openWounds = _unit call FUNC(getOpenWounds);
-	{
-		_x params ["", "_bodyPartN", "_amountOf", "_bleeding"];
-		if (_amountOf > 0) then {
-			_requiredBandages = _requiredBandages + 1;
-		};
-	} forEach _openWounds;
+	_requiredBandages = ([_unit] call FUNC(getNumberOfWoundsToBandage));
 	LOG(format["'%1' has unbandadged wounds", _unit]);
 	_action = ["MIRA_Bandage", format["Bandage (%1)", (_requiredBandages - (count _stitchWounds))] , QUOTE(ICON_PATH(bandage)), {
 			params ["_target", "_player", "_parameters"];
@@ -71,4 +64,5 @@ if(_hasLowHR) then {
 	_actions pushBack [_action, [], _unit];
 };
 
+// Add an action that shows if they've still got tourniquets on
 _actions

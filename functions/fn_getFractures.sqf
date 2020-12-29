@@ -1,5 +1,6 @@
 #include "ace_medical_macros.hpp"
 params[
-	["_unit"]
+	["_unit", player]
 ];
-GET_OPEN_WOUNDS(_unit)
+
+GET_FRACTURES(_unit)

@@ -24,16 +24,9 @@ params["_vehicle", "_player"];
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
-	//display action if any are true
-	if(_unit call FUNC(isBleeding) || !alive _unit) exitWith {false};
-	_stitch = _unit call FUNC(getStitchableWounds);
-	_needsBandage = GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage);
-	_needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitch > 0;
-	_lowBP = GVAR(Stable_TrackLowBP) && [_unit, _player, true] call FUNC(hasLowBP);
-	_lowHR = GVAR(Stable_TrackLowHR) && [_unit, _player, true] call FUNC(hasLowHR);
-	if(_needsBandage || _needsStitch || _lowBP || _lowHR) exitWith {true};
-	false
+	_unit call FUNC(isStable);
 };
+
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];

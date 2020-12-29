@@ -1,3 +1,5 @@
+
+#include "ace_medical_macros.hpp"
 /*
  * Author: M3ales
  * Locally defined fuction which grabs if a unit is in cardiac arrest
@@ -15,4 +17,4 @@
  */
 params["_unit"];
 
-_unit getVariable ["ace_medical_inCardiacArrest", false];
+IN_CRDC_ARRST(_unit)
