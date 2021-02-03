@@ -41,17 +41,19 @@ _conditions = {
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	_parameters params ["_unit"];
+	private _parameters params ["_unit"];
 
-	_statusIcons = [
+	private _statusIcons = [
 		"",
 		QUOTE(ICON_PATH(unconscious_white)),
 		QUOTE(ICON_PATH(bleeding_red)),
-		QUOTE(ICON_PATH(cardiac_arrest_red))
+		QUOTE(ICON_PATH(cardiac_arrest_red)),
+		QUOTE(ICON_PATH(fractures))
 	];
-	_bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
-	_sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
-	_cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
+	private _bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
+	private _sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
+	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
+	private _legFractures = GVAR(Unstable_TrackFractures) && _unit call FUNC(hasLegFractures);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious
 	if(!_sleepy && !_bleeding && !_cardiac) then {
@@ -68,6 +70,13 @@ _modifierFunc = {
 				//not only unconscious, but not in cardiac, must be bleeding
 				if(GVAR(Unstable_TrackBleeding)) then {
 					_actionData set [2, _statusIcons select 2];
+				}
+				else
+				{
+					//Fracture (Leg)
+					if(GVAR(Unstable_TrackFractures)) then {
+						_actionData set [2, _statusIcons select 4];
+					};
 				};
 			}
 			else {

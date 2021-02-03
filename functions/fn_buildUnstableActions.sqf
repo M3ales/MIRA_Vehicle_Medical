@@ -114,7 +114,7 @@ private _fractures = [_patient] call FUNC(getFractures);
 if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
 	LOG(format["'%1' has fractures", _patient]);
 	_numLegFractures = (_fractures select HITPOINT_INDEX_LLEG) + (_fractures select HITPOINT_INDEX_RLEG);
-	private _action = ["MIRA_Fractures", format["Leg Fractures (%1)", _numLegFractures], QUOTE(ICON_PATH(hr_low)), {
+	private _action = ["MIRA_Fractures", format["Leg Fractures (%1)", _numLegFractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);

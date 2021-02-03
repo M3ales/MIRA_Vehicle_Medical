@@ -30,6 +30,7 @@ _unstableCategory = ["ACE Vehicle Medical", "Unstable"];
 [QUOTE(GVAR(Unstable_TrackIV)), "CHECKBOX", ["Track IVs", "Determines if total volume of IVs is displayed"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _unstableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
+GVAR(Unstable_TrackFractures) = true;
 
 //Stable
 _stableCategory = ["ACE Vehicle Medical", "Stable"];
@@ -41,6 +42,7 @@ _stableCategory = ["ACE Vehicle Medical", "Stable"];
 [QUOTE(GVAR(Stable_ThresholdLowBP)), "SLIDER", ["Low Blood Pressure Threshold", "Value below which a given patient will have 'low' blood pressure"], _stableCategory, [1, 120, 80, 0], 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
+GVAR(Stable_TrackFractures) = true;
 
 //vehicles
 _vehicleCategory = ["ACE Vehicle Medical", "Vehicles"];

@@ -35,26 +35,31 @@ _conditions = {
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	_parameters params ["_unit"];
-	_statusIcons = [
+	private _parameters params ["_unit"];
+	private _statusIcons = [
 		"",
 		QUOTE(ICON_PATH(bandage)),
 		QUOTE(ICON_PATH(stitch)),
 		QUOTE(ICON_PATH(bp_low)),
-		QUOTE(ICON_PATH(hr_low))
+		QUOTE(ICON_PATH(hr_low)),
+		QUOTE(ICON_PATH(fracture))
 	];
-	_lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
+	private _fractures = _unit call FUNC(getFractures);
+	if(GVAR(Stable_TrackFractures) && count _fractures > 0) then {
+		_actionData set [2, _statusIcons select 5];
+	};
+	private _lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
 	if(_lowHR) then {
 		_actionData set [2, _statusIcons select 4];
 	};
-	_lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
+	private _lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
 	if(_lowBP) then {
 		_actionData set [2, _statusIcons select 3];
 	};
 	if(GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
 		_actionData set [2, _statusIcons select 1];
 	};
-	_stitch = _unit call FUNC(getStitchableWounds);
+	private _stitch = _unit call FUNC(getStitchableWounds);
 	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
 		_actionData set [2, _statusIcons select 2];
 	};
@@ -62,7 +67,7 @@ _modifierFunc = {
 
  //foreach player/npc in vehicle
 {
-	_unit = _x;
+	private _unit = _x;
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display

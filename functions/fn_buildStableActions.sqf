@@ -78,7 +78,7 @@ if(_hasLowHR) then {
 private _fractures = [_patient] call FUNC(getFractures);
 if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
 	LOG(format["'%1' has fractures", _patient]);
-	private _action = ["MIRA_Fractures", format["Fractures (%1)", count _fractures], QUOTE(ICON_PATH(hr_low)), {
+	private _action = ["MIRA_Fractures", format["Fractures (%1)", count _fractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
