@@ -1,8 +1,14 @@
 #include "function_macros.hpp"
-params[["_unit", player, [player]]];
-if(!GVAR(medical_rewrite)) exitWith {
+
+params[
+	"_patient"
+];
+
+if(GVAR(legacyAce)) exitWith {
 	//old ace
-	_unit call ace_medical_fnc_isMedic;
+	_patient call ace_medical_fnc_isMedic;
 };
 //new ace
-_unit call ace_medical_treatment_fnc_isMedic;
+_patient call ace_medical_treatment_fnc_isMedic;
+
+true

@@ -14,6 +14,9 @@
  *
  * Public: Yes
  */
-params["_patient"];
+
+params[
+	"_patient"
+];
 
 IS_BLEEDING(_patient)

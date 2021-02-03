@@ -1,21 +1,29 @@
 #include "function_macros.hpp"
 #include "medical_macros.hpp"
-params[["_target", player, [player]], ["_player", player, [player]], ["_stable", true, [true]]];
+
+params[
+	"_patient", 
+	["_isMedic", false, [false]],
+	["_stable", true, [true]],
+	["_legacyAce", false, [false]]
+];
 
 _threshold = GVAR(Stable_ThresholdLowBP);
 if(!_stable) then {
 	_threshold = GVAR(Unstable_ThresholdLowBP);
 };
-_bp = [_target] call FUNC(getBloodPressure);
+
+_bp = [_patient, _legacyAce] call FUNC(getBloodPressure);
 _highBP = round (_bp select 1);
-if(_player call FUNC(isMedic)) then {
+
+if(_isMedic) exitWith {
 	if(_highBP > _threshold) exitWith {
 		false
 	};
 	true
-}else {
-	if(_highBP > NOTMEDIC_LOWBP_THRESHOLD) exitWith {
-		false
-	};
-	true
 };
+
+if(_highBP > NOTMEDIC_LOWBP_THRESHOLD) exitWith {
+	false
+};
+true

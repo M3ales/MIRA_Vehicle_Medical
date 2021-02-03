@@ -65,5 +65,5 @@
 #define GET_STITCHED_WOUNDS(unit)   (unit getVariable [VAR_STITCHED_WOUNDS, []])
 
 // The following function calls are defined here just for consistency
-#define GET_BLOOD_LOSS(unit)        ([unit] call ace_medical_status_getBloodLoss)
-#define GET_BLOOD_PRESSURE(unit)    ([unit] call ace_medical_status_getBloodPressure)
+#define GET_BLOOD_LOSS(unit)        ([unit] call ace_medical_status_fnc_getBloodLoss)
+#define GET_BLOOD_PRESSURE(unit)    ([unit] call ace_medical_status_fnc_getBloodPressure)

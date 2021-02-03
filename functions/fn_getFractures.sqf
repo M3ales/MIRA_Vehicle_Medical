@@ -1,6 +1,7 @@
 #include "ace_medical_macros.hpp"
+
 params[
-	["_unit", player]
+	"_patient"
 ];
 
-GET_FRACTURES(_unit)
+GET_FRACTURES(_patient)

@@ -19,7 +19,11 @@
 
 params["_vehicle", "_player"];
 
- _actions = [];
+if!(alive _vehicle) exitWith { 
+	[] 
+};
+
+private _actions = [];
 
 //conditions to display the unit's action
 _conditions = {

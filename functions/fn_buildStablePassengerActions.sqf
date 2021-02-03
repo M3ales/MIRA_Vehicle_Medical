@@ -18,6 +18,11 @@
  */
 
 params["_vehicle", "_player"];
+
+if!(alive _vehicle) exitWith { 
+	[] 
+};
+
  _actions = [];
 
 //conditions to display the unit's action

@@ -1,6 +1,9 @@
 #include "function_macros.hpp"
 #include "ace_medical_macros.hpp"
-params["_patient"];
+
+params[
+	"_patient"
+];
 
 _amountToBandage = 0;
 {

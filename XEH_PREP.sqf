@@ -21,3 +21,5 @@ PREP(getFractures);
 PREP(getNumberOfWoundsToBandage);
 PREP(isStable);
 PREP(getStitchedWounds);
+PREP(getHeartRate);
+PREP(hasLegFractures);

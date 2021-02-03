@@ -5,4 +5,4 @@ params[
 	"_patient"
 ];
 
-GET_BLOOD_PRESSURE(_patient)
+GET_HEART_RATE(_patient)

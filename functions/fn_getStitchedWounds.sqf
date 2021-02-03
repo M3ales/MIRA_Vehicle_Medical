@@ -1,4 +1,7 @@
 #include "ace_medical_macros.hpp"
-params["_unit"];
 
-GET_STITCHED_WOUNDS(_unit)
+params[
+	"_patient"
+];
+
+GET_STITCHED_WOUNDS(_patient)

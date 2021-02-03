@@ -1,4 +1,3 @@
-
 #include "ace_medical_macros.hpp"
 /*
  * Author: M3ales
@@ -15,6 +14,9 @@
  *
  * Public: Yes
  */
-params["_unit"];
 
-IN_CRDC_ARRST(_unit)
+params[
+	"_patient"
+];
+
+IN_CRDC_ARRST(_patient)

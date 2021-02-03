@@ -1,3 +1,5 @@
-params ["_unit"];
+params [
+	"_patient"
+];
 
-[_unit] call ace_medical_treatment_fnc_getStitchableWounds
+[_patient] call ace_medical_treatment_fnc_getStitchableWounds

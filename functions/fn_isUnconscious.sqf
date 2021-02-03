@@ -14,6 +14,8 @@
  *
  * Public: Yes
  */
-params["_unit"];
+params[
+	"_patient"
+];
 
-IS_UNCONSCIOUS(_unit)
+IS_UNCONSCIOUS(_patient)
