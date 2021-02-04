@@ -1,4 +1,4 @@
-#define PREP(var1) FUNC(var1) = compileFinal preProcessFileLineNumbers QUOTE(ADDON\functions\CONCAT(fn_,var1).sqf)
+#define PREP(var1) FUNC(var1) = compileFinal preProcessFileLineNumbers QUOTE(ADDON\functions\CONCAT(fn_,var1).sqf); diag_log format["PREP fnc_%1", QUOTE(var1)]
 PREP(buildUnstablePassengerActions);
 PREP(buildUnstableActions);
 PREP(isBleeding);

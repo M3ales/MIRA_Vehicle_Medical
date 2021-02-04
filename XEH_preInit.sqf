@@ -1,22 +1,26 @@
 #include "functions\function_macros.hpp"
-LOG("PreInit Begin");
+LOGF_1("[%1] PreInit Begin", QUOTE(ADDON));
+_version = call FUNC(getVersion);
+LOGF_2("%1 at version %2", QUOTE(ADDON), _version);
 
 //ace_common_getVersion is broken for some patches, we look manually to ensure data is good, probably wont work everywhere.
 getArray(configFile >> "CfgPatches" >> "ace_main" >> "versionAR") params ["_aceMajor", "_aceMinor"];
 if(_aceMajor >= 3 && _aceMinor >= 13) then {
-	LOG(format["ACE Version is after medical rewrite"]);
+	LOG(format["ACE Version is >= 3.13"]);
 	GVAR(legacyAce) = false;
 }else{
-	LOG(format["ACE Version is before medical rewrite"]);
+	LOG(format["ACE Version is < 3.13"]);
 	GVAR(legacyAce) = true;
 };
 
-LOG("PREP Begin");
-#include "XEH_PREP.sqf"
-LOG("PREP Complete");
 
-LOG("Creating CBA Addon Options");
+LOGF_1("[%1] PREP Begin", QUOTE(ADDON));
+#include "XEH_PREP.sqf"
+LOGF_1("[%1] PREP Complete", QUOTE(ADDON));
+
+LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 //General
+[QUOTE(GVAR(VERSION)), "CHECKBOX", [format["Version: %1", _version], "Installed Version of AVM"], ["ACE Vehicle Medical", "General"], false, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(EnableAVM)), "CHECKBOX", ["Enable AVM", "Determines if ACE Vehicle Medical will be shown at all"], ["ACE Vehicle Medical", "General"], true, 0, {}] call CBA_fnc_addSetting;
 
 //Unstable
@@ -30,7 +34,7 @@ _unstableCategory = ["ACE Vehicle Medical", "Unstable"];
 [QUOTE(GVAR(Unstable_TrackIV)), "CHECKBOX", ["Track IVs", "Determines if total volume of IVs is displayed"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _unstableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
-GVAR(Unstable_TrackFractures) = true;
+[QUOTE(GVAR(Unstable_TrackFractures)), "CHECKBOX", ["Track Leg Fractures", "Determines if Leg Fractures will be monitored and reported as unstable by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //Stable
 _stableCategory = ["ACE Vehicle Medical", "Stable"];
@@ -42,7 +46,7 @@ _stableCategory = ["ACE Vehicle Medical", "Stable"];
 [QUOTE(GVAR(Stable_ThresholdLowBP)), "SLIDER", ["Low Blood Pressure Threshold", "Value below which a given patient will have 'low' blood pressure"], _stableCategory, [1, 120, 80, 0], 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
-GVAR(Stable_TrackFractures) = true;
+[QUOTE(GVAR(Stable_TrackFractures)), "CHECKBOX", ["Track Arm Fractures", "Determines if Arm Fractures will be monitored and reported as unstable by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //vehicles
 _vehicleCategory = ["ACE Vehicle Medical", "Vehicles"];
@@ -53,4 +57,6 @@ VEH_ENABLE(Plane);
 VEH_ENABLE(Ship);
 VEH_ENABLE(Tank);
 
-LOG("PreInit Complete");
+LOGF_1("[%1] CBA Options Complete", QUOTE(ADDON));
+
+LOGF_1("[%1] PreInit Complete", QUOTE(ADDON));
