@@ -5,8 +5,9 @@ class CfgPatches {
 	{
 		name = QUOTE(ADDON_NAME);
 		author = "M3ales";
+		version[] = { 2, 0, 0 };
 		url = "https://github.com/M3ales/MIRA_Vehicle_Medical";
-		requiredAddons[] = {"ace_interact_menu", "ace_medical", "cba_settings"};
+		requiredAddons[] = {"ace_interact_menu", "ace_medical", "ace_medical_treatment", "cba_settings"};
 		units[] = {};
 		weapons[] = {};
 	};
