@@ -4,4 +4,4 @@ params[
 	"_patient"
 ];
 
-([_patient] call FUNC(getFractures)) isEqualTo DEFAULT_FRACTURE_VALUES
+!(([_patient] call FUNC(getFractures)) isEqualTo DEFAULT_FRACTURE_VALUES)
