@@ -14,6 +14,20 @@ _params params[
 private _actions = [];
 private _isMedic = _player call FUNC(isMedic);
 
+
+// Bandagable Wounds Action
+private _needsBandage = GVAR(Stable_TrackNeedsBandage) && _patient call FUNC(needsBandage);
+if(_needsBandage) then {
+	private _requiredBandages = [_patient] call FUNC(getNumberOfWoundsToBandage);
+	LOG(format["'%1' has unbandadged wounds", _patient]);
+	private _action = ["MIRA_Bandage", format["Bandage (%1)", _requiredBandages] , QUOTE(ICON_PATH(bandage)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+};
+
 // Stitchable Wounds Action
 private _stitchWounds = _patient call FUNC(getStitchableWounds);
 private _needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitchWounds > 0;
@@ -27,12 +41,12 @@ if (_needsStitch) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-// Bandagable Wounds Action
-private _needsBandage = GVAR(Stable_TrackNeedsBandage) && _patient call FUNC(needsBandage);
-if(_needsBandage) then {
-	private _requiredBandages = [_patient] call FUNC(getNumberOfWoundsToBandage);
-	LOG(format["'%1' has unbandadged wounds", _patient]);
-	private _action = ["MIRA_Bandage", format["Bandage (%1)", _requiredBandages] , QUOTE(ICON_PATH(bandage)), {
+// Low Heartrate Action
+private _hasLowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
+if(_hasLowHR) then {
+	LOG(format["'%1' has low HR", _patient]);
+	private _hr = [_patient, _isMedic] call FUNC(displayHR);
+	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -53,19 +67,6 @@ if(_hasLowBP) then {
 		};
 	};
 	private _action = ["MIRA_LowBP", _name, QUOTE(ICON_PATH(bp_low)), {
-			params ["_target", "_player", "_parameters"];
-			_parameters params ["_patient"];
-			[_patient] call FUNC(openMedicalMenu);
-		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
-	_actions pushBack [_action, [], _patient];
-};
-
-// Low Heartrate Action
-private _hasLowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
-if(_hasLowHR) then {
-	LOG(format["'%1' has low HR", _patient]);
-	private _hr = [_patient, _isMedic] call FUNC(displayHR);
-	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);

@@ -38,24 +38,25 @@ _modifierFunc = {
 	private _parameters params ["_unit"];
 	
 	private _result = "";
+	// bandage > stitch  > lowhr > lowbp > fractures
 	private _fractures = _unit call FUNC(getFractures);
 	if(GVAR(Stable_TrackFractures) && count _fractures > 0) then {
 		_result = QUOTE(ICON_PATH(fracture));
-	};
-	private _lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
-	if(_lowHR) then {
-		_result = QUOTE(ICON_PATH(hr_low));
 	};
 	private _lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
 	if(_lowBP) then {
 		_result = QUOTE(ICON_PATH(bp_low));
 	};
-	if(GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
-		_resutl = QUOTE(ICON_PATH(bandage));
+	private _lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
+	if(_lowHR) then {
+		_result = QUOTE(ICON_PATH(hr_low));
 	};
 	private _stitch = _unit call FUNC(getStitchableWounds);
 	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
 		_result = QUOTE(ICON_PATH(stitch));
+	};
+	if(GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
+		_resutl = QUOTE(ICON_PATH(bandage));
 	};
 	_actionData set [2, _result];
 };

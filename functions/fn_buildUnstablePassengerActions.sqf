@@ -30,10 +30,10 @@ _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
 	if(!alive _unit) exitWith {false};
-	private _bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
-	private _sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
-	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
-	private _legFractures = GVAR(Unstable_TrackFractures) && _unit call FUNC(hasLegFractures);
+	private _bleeding = GVAR(Unstable_TrackBleeding) && [_unit] call FUNC(isBleeding);
+	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_unit] call FUNC(isUnconscious);
+	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_unit] call FUNC(isCardiacArrest);
+	private _legFractures = GVAR(Unstable_TrackFractures) && [_unit] call FUNC(hasLegFractures);
 	//display action if any are true
 	if(_bleeding || _sleepy || _cardiac || _legFractures) exitWith {true};
 	false
@@ -44,18 +44,18 @@ _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
 	private _parameters params ["_unit"];
 	// Get vars to check
-	private _bleeding = GVAR(Unstable_TrackBleeding) && _unit call FUNC(isBleeding);
-	private _sleepy = GVAR(Unstable_TrackUnconscious) && _unit call FUNC(isUnconscious);
-	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && _unit call FUNC(isCardiacArrest);
-	private _legFractures = GVAR(Unstable_TrackFractures) && _unit call FUNC(hasLegFractures);
+	private _bleeding = GVAR(Unstable_TrackBleeding) && [_unit] call FUNC(isBleeding);
+	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_unit] call FUNC(isUnconscious);
+	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_unit] call FUNC(isCardiacArrest);
+	private _legFractures = GVAR(Unstable_TrackFractures) && [_unit] call FUNC(hasLegFractures);
 	// Modify the icon (3rd param)
-	//Use ascending order of importance, cardiac > bleeding > unconscious
+	//Use ascending order of importance, cardiac > bleeding > unconscious > leg fracture
 	private _result = "";
-	if(_sleepy) then {
-		_result = QUOTE(ICON_PATH(unconscious_white));
-	};
 	if(_legFractures) then {
 		_result = QUOTE(ICON_PATH(fracture));
+	};
+	if(_sleepy) then {
+		_result = QUOTE(ICON_PATH(unconscious_white));
 	};
 	if(_bleeding) then {
 		_result = QUOTE(ICON_PATH(bleeding_red));

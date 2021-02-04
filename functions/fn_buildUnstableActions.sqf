@@ -63,11 +63,12 @@ if (_isBleeding) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-// Unconscious Action
-private _isUncon = GVAR(Unstable_TrackUnconscious) && _patient call FUNC(isUnconscious);
-if (_isUncon) then {
-	LOG(format["'%1' is Unconscious", _patient]);
-	private _action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
+// Low HeartRate Action
+private _hasLowHR = GVAR(Unstable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
+if(_hasLowHR) then {
+	LOG(format["'%1' has low HR", _patient]);
+	private _hr = [_patient, _isMedic] call FUNC(displayHR);
+	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -95,12 +96,11 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-// Low HeartRate Action
-private _hasLowHR = GVAR(Unstable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
-if(_hasLowHR) then {
-	LOG(format["'%1' has low HR", _patient]);
-	private _hr = [_patient, _isMedic] call FUNC(displayHR);
-	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
+// Unconscious Action
+private _isUncon = GVAR(Unstable_TrackUnconscious) && _patient call FUNC(isUnconscious);
+if (_isUncon) then {
+	LOG(format["'%1' is Unconscious", _patient]);
+	private _action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
