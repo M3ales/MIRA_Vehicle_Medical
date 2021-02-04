@@ -36,33 +36,28 @@ _conditions = {
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
 	private _parameters params ["_unit"];
-	private _statusIcons = [
-		"",
-		QUOTE(ICON_PATH(bandage)),
-		QUOTE(ICON_PATH(stitch)),
-		QUOTE(ICON_PATH(bp_low)),
-		QUOTE(ICON_PATH(hr_low)),
-		QUOTE(ICON_PATH(fracture))
-	];
+	
+	private _result = "";
 	private _fractures = _unit call FUNC(getFractures);
 	if(GVAR(Stable_TrackFractures) && count _fractures > 0) then {
-		_actionData set [2, _statusIcons select 5];
+		_result = QUOTE(ICON_PATH(fracture));
 	};
 	private _lowHR = GVAR(Stable_TrackLowHR) && _unit call FUNC(hasLowHR);
 	if(_lowHR) then {
-		_actionData set [2, _statusIcons select 4];
+		_result = QUOTE(ICON_PATH(hr_low));
 	};
 	private _lowBP = GVAR(Stable_TrackLowBP) && _unit call FUNC(hasLowBP);
 	if(_lowBP) then {
-		_actionData set [2, _statusIcons select 3];
+		_result = QUOTE(ICON_PATH(bp_low));
 	};
 	if(GVAR(Stable_TrackNeedsBandage) && _unit call FUNC(needsBandage)) then {
-		_actionData set [2, _statusIcons select 1];
+		_resutl = QUOTE(ICON_PATH(bandage));
 	};
 	private _stitch = _unit call FUNC(getStitchableWounds);
 	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
-		_actionData set [2, _statusIcons select 2];
+		_result = QUOTE(ICON_PATH(stitch));
 	};
+	_actionData set [2, _result];
 };
 
  //foreach player/npc in vehicle

@@ -23,3 +23,4 @@ PREP(isStable);
 PREP(getStitchedWounds);
 PREP(getHeartRate);
 PREP(hasLegFractures);
+PREP(hasFractures);

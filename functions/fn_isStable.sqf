@@ -17,8 +17,7 @@
  */
 params[
 	"_patient",
-	["_isMedic", false, [false]],
-	["_legacyAce", false, [false]]
+	["_isMedic", false, [false]]
 ];
 
 if !(alive _patient) exitWith { false };
@@ -31,10 +30,15 @@ if !(alive _patient) exitWith { false };
 		// no fractures on legs
 		!([_patient] call FUNC(hasLegFractures))
 	}
-	/* Don't actually care if low hr/bp, thats stable
+	&& {
+		// Has wounds to stitch, or bandage
+		count ([_patient] call FUNC(getStitchableWounds)) > 0
+		|| ([_patient] call FUNC(getNumberOfWoundsToBandage)) > 0
+	}
+	&& {
+		private _lowBP = [_patient, _isMedic, _legacyAce] call FUNC(hasLowBP);
+		!_lowBP
+	}
 	&& {
 		private _lowHR = [_patient, _isMedic, _legacyAce] call FUNC(hasLowHR);
-		private _lowBP = [_patient, _isMedic, _legacyAce] call FUNC(hasLowBP);
-		!_lowHR && !_lowBP
 	}
-	/*
