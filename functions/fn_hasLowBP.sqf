@@ -4,8 +4,7 @@
 params[
 	"_patient", 
 	["_isMedic", false, [false]],
-	["_stable", true, [true]],
-	["_legacyAce", false, [false]]
+	["_stable", true, [true]]
 ];
 
 _threshold = GVAR(Stable_ThresholdLowBP);
@@ -13,7 +12,7 @@ if(!_stable) then {
 	_threshold = GVAR(Unstable_ThresholdLowBP);
 };
 
-_bp = [_patient, _legacyAce] call FUNC(getBloodPressure);
+_bp = [_patient] call FUNC(getBloodPressure);
 _highBP = round (_bp select 1);
 
 if(_isMedic) exitWith {

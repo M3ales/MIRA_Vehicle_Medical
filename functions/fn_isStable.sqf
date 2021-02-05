@@ -36,9 +36,9 @@ if !(alive _patient) exitWith { false };
 		|| ([_patient] call FUNC(getNumberOfWoundsToBandage)) > 0
 	}
 	&& {
-		private _lowBP = [_patient, _isMedic, _legacyAce] call FUNC(hasLowBP);
+		private _lowBP = [_patient, _isMedic] call FUNC(hasLowBP);
 		!_lowBP
 	}
 	&& {
-		private _lowHR = [_patient, _isMedic, _legacyAce] call FUNC(hasLowHR);
+		private _lowHR = [_patient, _isMedic] call FUNC(hasLowHR);
 	}
