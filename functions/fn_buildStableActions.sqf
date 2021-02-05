@@ -11,6 +11,20 @@ _params params[
 	"_patient"
 ];
 
+if!(alive _patient) exitWith {
+	LOGF_1("'%1' is dead", _patient);
+	private _action = ["MIRA_Bandage", "Dead" , "", {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			if(GVAR(WarnViewingDead)) then {
+				private _patientName = [_patient] call ace_common_fnc_getName;
+				[format["You are viewing %1 who is currently deceased.", _patientName], true, 2, 0] call ACE_common_fnc_displayText;
+			};
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	[[_action, [], _patient]];
+};
+
 private _actions = [];
 private _isMedic = _player call FUNC(isMedic);
 

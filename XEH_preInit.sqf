@@ -22,6 +22,7 @@ LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 //General
 [QUOTE(GVAR(VERSION)), "CHECKBOX", [format["Version: %1", _version], "Installed Version of AVM"], ["ACE Vehicle Medical", "General"], false, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(EnableAVM)), "CHECKBOX", ["Enable AVM", "Determines if ACE Vehicle Medical will be shown at all"], ["ACE Vehicle Medical", "General"], true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(WarnViewingDead)), "CHECKBOX", ["Warn when selecting deceased", "Determines if to show a popup and play a click sound when you view someone who is dead."], ["ACE Vehicle Medical", "General"], true, 0, {}] call CBA_fnc_addSetting;
 
 //Unstable
 _unstableCategory = ["ACE Vehicle Medical", "Unstable"];
