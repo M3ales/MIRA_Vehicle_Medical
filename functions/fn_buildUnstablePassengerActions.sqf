@@ -29,26 +29,19 @@ private _actions = [];
 //conditions to display the unit's action
 _conditions = {
 	params ["", "", "_parameters"];
-	_parameters params ["_unit"];
-	if(!alive _unit) exitWith {false};
-	private _bleeding = GVAR(Unstable_TrackBleeding) && [_unit] call FUNC(isBleeding);
-	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_unit] call FUNC(isUnconscious);
-	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_unit] call FUNC(isCardiacArrest);
-	private _legFractures = GVAR(Unstable_TrackFractures) && [_unit] call FUNC(hasLegFractures);
-	//display action if any are true
-	if(_bleeding || _sleepy || _cardiac || _legFractures) exitWith {true};
-	false
+	_parameters params ["_patient"];
+	[_patient] call FUNC(isUnstable);
 };
 
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	_parameters params ["_unit"];
+	_parameters params ["_patient"];
 	// Get vars to check
-	private _bleeding = GVAR(Unstable_TrackBleeding) && [_unit] call FUNC(isBleeding);
-	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_unit] call FUNC(isUnconscious);
-	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_unit] call FUNC(isCardiacArrest);
-	private _legFractures = GVAR(Unstable_TrackFractures) && [_unit] call FUNC(hasLegFractures);
+	private _bleeding = GVAR(Unstable_TrackBleeding) && [_patient] call FUNC(isBleeding);
+	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
+	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
+	private _legFractures = GVAR(Unstable_TrackFractures) && [_patient] call FUNC(hasLegFractures);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious > leg fracture
 	private _result = "";
@@ -63,6 +56,9 @@ _modifierFunc = {
 	};
 	if(_cardiac) then {
 		_result = QUOTE(ICON_PATH(cardiac_arrest_red));
+	};
+	if!(alive _patient) then {
+		_result = "";
 	};
 	_actionData set [2, _result];
 };

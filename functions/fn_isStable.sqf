@@ -20,25 +20,12 @@ params[
 	["_isMedic", false, [false]]
 ];
 
-if !(alive _patient) exitWith { false };
-
-(!([_patient] call FUNC(isBleeding)))
-	&& { 
-		!([_patient] call FUNC(isUnconscious)) 
-	}
-	&& {
-		// no fractures on legs
-		!([_patient] call FUNC(hasLegFractures))
-	}
+!([_patient] call FUNC(isUnstable))
 	&& {
 		// Has wounds to stitch, or bandage
-		count ([_patient] call FUNC(getStitchableWounds)) > 0
-		|| ([_patient] call FUNC(getNumberOfWoundsToBandage)) > 0
-	}
-	&& {
-		private _lowBP = [_patient, _isMedic] call FUNC(hasLowBP);
-		!_lowBP
-	}
-	&& {
-		private _lowHR = [_patient, _isMedic] call FUNC(hasLowHR);
+		([_patient, _isMedic] call FUNC(hasLowBP))
+		|| { ([_patient, _isMedic] call FUNC(hasLowHR)) }
+		|| { ([_patient] call FUNC(hasFractures)) }
+		|| { count ([_patient] call FUNC(getStitchableWounds)) > 0 }
+		|| { ([_patient] call FUNC(getNumberOfWoundsToBandage)) > 0 }
 	}

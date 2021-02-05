@@ -25,3 +25,4 @@ PREP(getHeartRate);
 PREP(hasLegFractures);
 PREP(hasFractures);
 PREP(getVersion);
+PREP(isUnstable);

@@ -36,29 +36,32 @@ _conditions = {
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	_parameters params ["_unit"];
+	_parameters params ["_patient"];
 	
 	private _result = "";
 	// bandage > stitch  > lowhr > lowbp > fractures
-	private _fractures = _unit call FUNC(getFractures);
+	private _fractures = _patient call FUNC(getFractures);
 	private _isMedic = _player call FUNC(isMedic);
 	if(GVAR(Stable_TrackFractures) && count _fractures > 0) then {
 		_result = QUOTE(ICON_PATH(fracture));
 	};
-	private _lowBP = GVAR(Stable_TrackLowBP) && [_unit, _isMedic] call FUNC(hasLowBP);
+	private _lowBP = GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
 	if(_lowBP) then {
 		_result = QUOTE(ICON_PATH(bp_low));
 	};
-	private _lowHR = GVAR(Stable_TrackLowHR) && [_unit, _isMedic] call FUNC(hasLowHR);
+	private _lowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
 	if(_lowHR) then {
 		_result = QUOTE(ICON_PATH(hr_low));
 	};
-	private _stitch = _unit call FUNC(getStitchableWounds);
+	private _stitch = [_patient] call FUNC(getStitchableWounds);
 	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
 		_result = QUOTE(ICON_PATH(stitch));
 	};
-	if(GVAR(Stable_TrackNeedsBandage) && [_unit] call FUNC(needsBandage)) then {
+	if(GVAR(Stable_TrackNeedsBandage) && [_patient] call FUNC(needsBandage)) then {
 		_resutl = QUOTE(ICON_PATH(bandage));
+	};
+	if!(alive _patient) then {
+		_result = "";
 	};
 	_actionData set [2, _result];
 };
