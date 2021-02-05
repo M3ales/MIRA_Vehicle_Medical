@@ -89,37 +89,36 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-#include "ace_medical_macros.hpp"
 // Fractures (Legs)
-private _fractures = [_patient] call FUNC(getFractures);
-if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
+if([_patient] call FUNC(hasFractures)) then {
 	LOGF_1("'%1' has fractures", _patient);
+	private _fractures = [_patient] call FUNC(getFractures);
 	private _numFractures = 0;
 	if(_fractures select 0 > 0) then
 	{
-		_numFractures += 1;
+		_numFractures = _numFractures +  1;
 	};
 	if(_fractures select 1 > 0) then
 	{
-		_numFractures += 1;
+		_numFractures = _numFractures +  1;
 	};
 	if(_fractures select 2 > 0) then
 	{
-		_numFractures += 1;
+		_numFractures = _numFractures +  1;
 	};
 	if(_fractures select 3 > 0) then
 	{
-		_numFractures += 1;
+		_numFractures = _numFractures +  1;
 	};
 	if(_fractures select 4 > 0) then
 	{
-		_numFractures += 1;
+		_numFractures = _numFractures +  1;
 	};
 	if(_fractures select 5 > 0) then
 	{
-		_numFractures += 1;
+		_numFractures = _numFractures +  1;
 	};
-	private _action = ["MIRA_Fractures", format["Fractures (%1)", _fractures], QUOTE(ICON_PATH(fracture)), {
+	private _action = ["MIRA_Fractures", format["Fractures (%1)", _numFractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
