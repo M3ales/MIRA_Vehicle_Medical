@@ -58,7 +58,7 @@ _modifierFunc = {
 		_result = QUOTE(ICON_PATH(cardiac_arrest_red));
 	};
 	if!(alive _patient) then {
-		_result = "";
+		_result = QUOTE(ICON_PATH(dead));
 	};
 	_actionData set [2, _result];
 };

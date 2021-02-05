@@ -29,22 +29,23 @@ _parameters params [
 	"_patient"
 ];
 
-if!(alive _patient) exitWith {
+private _isMedic = _player call FUNC(isMedic);
+private _actions = [];
+
+// Dead
+if!(alive _patient) then {
 	LOGF_1("'%1' is dead", _patient);
-	private _action = ["MIRA_Bandage", "Dead" , "", {
+	private _action = ["MIRA_Bandage", "Dead" , QUOTE(ICON_PATH(dead)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
 			if(GVAR(WarnViewingDead)) then {
 				private _patientName = [_patient] call ace_common_fnc_getName;
-				[format["You are viewing %1 who is currently deceased.", _patientName], true, 2, 0] call ACE_common_fnc_displayText;
+				[format["You are viewing %1 who is currently deceased.", _patientName], true, 4, 1] call ACE_common_fnc_displayText;
 			};
-			[_patient] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
 	[[_action, [], _patient]];
 };
-
-private _isMedic = _player call FUNC(isMedic);
-private _actions = [];
 
 // Cardiac Arrest Action
 private _cardiacArrest = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
