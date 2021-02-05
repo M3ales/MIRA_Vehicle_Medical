@@ -66,7 +66,6 @@ _modifierFunc = {
 //foreach player/npc in vehicle
 {
 	private _unit = _x;
-	LOGF_1("Unstable for %1", _unit);
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
