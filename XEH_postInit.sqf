@@ -31,7 +31,7 @@
 			{[]},
 			"",
 			4,
-			[false, false, false, true, true]
+			[false, false, false, false, true]
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	 _action = 
@@ -45,7 +45,7 @@
 			{ [] },
 			"",
 			4,
-			[false, false, false, true, true]
+			[false, false, false, false, true]
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	 _action = 
@@ -59,7 +59,7 @@
 			{ [] },
 			"",
 			4,
-			[false, false, false, true, true]
+			[false, false, false, false, true]
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	LOGF_1("Dynamically added interaction to %1", _type);
