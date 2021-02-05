@@ -4,7 +4,7 @@
 #define ICON_PATH(name) ADDON##\ui\##name##.paa
 #define QUOTE(target) #target
 #define CONCAT(a,b) a##b
-#define COMPILE_FILE(name) compile preprocessFileLineNumbers 'ADDON\##name##.sqf'
+#define COMPILE_FILE(name) compileFinal preprocessFileLineNumbers 'ADDON\##name##.sqf'
 #define GVAR(name) ADDON##_##name
 #define ARR_2(a,b) a, b
 #define ARR_3(a,b,c) a, b, c
