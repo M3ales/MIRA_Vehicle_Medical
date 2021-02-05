@@ -20,7 +20,8 @@
 params["_vehicle", "_player"];
 
 if!(alive _vehicle) exitWith { 
-	[] 
+	LOGF_1("%1 not alive, exiting.", _vehicle);
+	[]
 };
 
  _actions = [];
@@ -35,7 +36,7 @@ _conditions = {
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	private _parameters params ["_unit"];
+	_parameters params ["_unit"];
 	
 	private _result = "";
 	// bandage > stitch  > lowhr > lowbp > fractures
@@ -64,6 +65,7 @@ _modifierFunc = {
  //foreach player/npc in vehicle
 {
 	private _unit = _x;
+	LOGF_1("Stable for %1", _unit);
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display

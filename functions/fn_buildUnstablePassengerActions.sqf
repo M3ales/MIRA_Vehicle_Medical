@@ -20,6 +20,7 @@
 params["_vehicle", "_player"];
 
 if!(alive _vehicle) exitWith { 
+	LOGF_1("%1 not alive, exiting.", _vehicle);
 	[] 
 };
 
@@ -42,7 +43,7 @@ _conditions = {
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	private _parameters params ["_unit"];
+	_parameters params ["_unit"];
 	// Get vars to check
 	private _bleeding = GVAR(Unstable_TrackBleeding) && [_unit] call FUNC(isBleeding);
 	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_unit] call FUNC(isUnconscious);
@@ -69,6 +70,7 @@ _modifierFunc = {
 //foreach player/npc in vehicle
 {
 	private _unit = _x;
+	LOGF_1("Unstable for %1", _unit);
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
@@ -111,4 +113,6 @@ _modifierFunc = {
 	false
 }count crew _vehicle;
 
+
+LOGF_1("Completing Unstable with %1", _actions);
 _actions
