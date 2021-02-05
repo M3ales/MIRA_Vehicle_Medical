@@ -35,7 +35,7 @@ private _actions = [];
 // Cardiac Arrest Action
 private _cardiacArrest = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
 if (_cardiacArrest) then {
-	LOG(format["'%1' is in Cardiac Arrest", _patient]);
+	LOGF_1("'%1' is in Cardiac Arrest", _patient);
 	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
@@ -54,7 +54,7 @@ if (_isBleeding) then {
 		QUOTE(ICON_PATH(bleeding_yellow)),
 		QUOTE(ICON_PATH(bleeding_white))
 	] select 0;
-	LOG(format["'%1' is Bleeding", _patient]);
+	LOGF_1("'%1' is Bleeding", _patient);
 	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
@@ -66,7 +66,7 @@ if (_isBleeding) then {
 // Low HeartRate Action
 private _hasLowHR = GVAR(Unstable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
 if(_hasLowHR) then {
-	LOG(format["'%1' has low HR", _patient]);
+	LOGF_1("'%1' has low HR", _patient);
 	private _hr = [_patient, _isMedic] call FUNC(displayHR);
 	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
@@ -79,7 +79,7 @@ if(_hasLowHR) then {
 // Low Blood Pressure Action
 private _hasLowBP = GVAR(Unstable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
 if(_hasLowBP) then {
-	LOG(format["'%1' has low BP", _patient]);
+	LOGF_1("'%1' has low BP", _patient);
 	private _bp = [_patient, _isMedic] call FUNC(displayBP);
 	private _name = format["Blood Pressure (%1)", _bp];
 	if(GVAR(Unstable_TrackIV)) then {
@@ -99,7 +99,7 @@ if(_hasLowBP) then {
 // Unconscious Action
 private _isUncon = GVAR(Unstable_TrackUnconscious) && _patient call FUNC(isUnconscious);
 if (_isUncon) then {
-	LOG(format["'%1' is Unconscious", _patient]);
+	LOGF_1("'%1' is Unconscious", _patient);
 	private _action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
@@ -112,7 +112,7 @@ if (_isUncon) then {
 // Fractures (Legs)
 private _fractures = [_patient] call FUNC(getFractures);
 if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
-	LOG(format["'%1' has fractures", _patient]);
+	LOGF_1("'%1' has fractures", _patient);
 	_numLegFractures = (_fractures select HITPOINT_INDEX_LLEG) + (_fractures select HITPOINT_INDEX_RLEG);
 	private _action = ["MIRA_Fractures", format["Leg Fractures (%1)", _numLegFractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];

@@ -113,6 +113,4 @@ _modifierFunc = {
 	false
 }count crew _vehicle;
 
-
-LOGF_1("Completing Unstable with %1", _actions);
 _actions

@@ -19,7 +19,7 @@ private _isMedic = _player call FUNC(isMedic);
 private _needsBandage = GVAR(Stable_TrackNeedsBandage) && _patient call FUNC(needsBandage);
 if(_needsBandage) then {
 	private _requiredBandages = [_patient] call FUNC(getNumberOfWoundsToBandage);
-	LOG(format["'%1' has unbandadged wounds", _patient]);
+	LOGF_1("'%1' has unbandadged wounds", _patient);
 	private _action = ["MIRA_Bandage", format["Bandage (%1)", _requiredBandages] , QUOTE(ICON_PATH(bandage)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
@@ -32,7 +32,7 @@ if(_needsBandage) then {
 private _stitchWounds = _patient call FUNC(getStitchableWounds);
 private _needsStitch = GVAR(Stable_TrackStitchableWounds) && count _stitchWounds > 0;
 if (_needsStitch) then {
-	LOG(format["'%1' has stitchable wounds", _patient]);
+	LOGF_1("'%1' has stitchable wounds", _patient);
 	private _action = ["MIRA_Stitch", format["Stitch (%1)", count _stitchWounds] , QUOTE(ICON_PATH(stitch)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
@@ -44,7 +44,7 @@ if (_needsStitch) then {
 // Low Heartrate Action
 private _hasLowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
 if(_hasLowHR) then {
-	LOG(format["'%1' has low HR", _patient]);
+	LOGF_1("'%1' has low HR", _patient);
 	private _hr = [_patient, _isMedic] call FUNC(displayHR);
 	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
@@ -57,7 +57,7 @@ if(_hasLowHR) then {
 // Low Blood Pressure Action
 private _hasLowBP = GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
 if(_hasLowBP) then {
-	LOG(format["'%1' has low BP", _patient]);
+	LOGF_1("'%1' has low BP", _patient);
 	private _bp = [_patient, _isMedic] call FUNC(displayBP);
 	private _name = format["Blood Pressure (%1)", _bp];
 	if(GVAR(Stable_TrackIV)) then {
@@ -78,7 +78,7 @@ if(_hasLowBP) then {
 // Fractures (Legs)
 private _fractures = [_patient] call FUNC(getFractures);
 if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
-	LOG(format["'%1' has fractures", _patient]);
+	LOGF_1("'%1' has fractures", _patient);
 	private _action = ["MIRA_Fractures", format["Fractures (%1)", count _fractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
