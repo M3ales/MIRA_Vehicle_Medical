@@ -128,7 +128,15 @@ if (_isUncon) then {
 private _fractures = [_patient] call FUNC(getFractures);
 if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
 	LOGF_1("'%1' has fractures", _patient);
-	_numLegFractures = (_fractures select HITPOINT_INDEX_LLEG) + (_fractures select HITPOINT_INDEX_RLEG);
+	private _numLegFractures = 0;
+	if(_fractures select HITPOINT_INDEX_LLEG > 0) then
+	{
+		_numLegFractures += 1;
+	};
+	if(_fractures select HITPOINT_INDEX_RLEG > 0) then 
+	{
+		_numLegFractures += 1;
+	};
 	private _action = ["MIRA_Fractures", format["Leg Fractures (%1)", _numLegFractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];

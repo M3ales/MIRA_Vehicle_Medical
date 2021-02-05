@@ -94,7 +94,32 @@ if(_hasLowBP) then {
 private _fractures = [_patient] call FUNC(getFractures);
 if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
 	LOGF_1("'%1' has fractures", _patient);
-	private _action = ["MIRA_Fractures", format["Fractures (%1)", count _fractures], QUOTE(ICON_PATH(fracture)), {
+	private _numFractures = 0;
+	if(_fractures select 0 > 0) then
+	{
+		_numFractures += 1;
+	};
+	if(_fractures select 1 > 0) then
+	{
+		_numFractures += 1;
+	};
+	if(_fractures select 2 > 0) then
+	{
+		_numFractures += 1;
+	};
+	if(_fractures select 3 > 0) then
+	{
+		_numFractures += 1;
+	};
+	if(_fractures select 4 > 0) then
+	{
+		_numFractures += 1;
+	};
+	if(_fractures select 5 > 0) then
+	{
+		_numFractures += 1;
+	};
+	private _action = ["MIRA_Fractures", format["Fractures (%1)", _fractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
