@@ -127,7 +127,12 @@ if (_isUncon) then {
 if([_patient] call FUNC(hasLegFractures)) then {
 	LOGF_1("'%1' has leg fractures", _patient);
 	private _numLegFractures = [_patient] call FUNC(getNumberOfLegFractures);
-	private _action = ["MIRA_Fractures", format["Leg Fractures (%1)", _numLegFractures], QUOTE(ICON_PATH(fracture)), {
+	private _fracturesMessage =  format["Leg Fractures (%1)", _numLegFractures];
+	if(_numLegFractures == 0) then {
+		LOGF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		_fracturesMessage = "Leg Fractures (Error Fetching Amount)"
+	};
+	private _action = ["MIRA_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
