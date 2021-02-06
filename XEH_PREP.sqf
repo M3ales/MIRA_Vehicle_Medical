@@ -26,3 +26,5 @@ PREP(hasLegFractures);
 PREP(hasFractures);
 PREP(getVersion);
 PREP(isUnstable);
+PREP(getNumberOfFractures);
+PREP(getNumberOfLegFractures);

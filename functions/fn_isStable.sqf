@@ -22,7 +22,6 @@ params[
 
 !([_patient] call FUNC(isUnstable))
 	&& {
-		// Has wounds to stitch, or bandage
 		([_patient, _isMedic] call FUNC(hasLowBP))
 		|| { ([_patient, _isMedic] call FUNC(hasLowHR)) }
 		|| { ([_patient] call FUNC(hasFractures)) }

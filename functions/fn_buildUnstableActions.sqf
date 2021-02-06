@@ -123,20 +123,10 @@ if (_isUncon) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-#include "ace_medical_macros.hpp"
 // Fractures (Legs)
-private _fractures = [_patient] call FUNC(getFractures);
-if!(_fractures isEqualTo DEFAULT_FRACTURE_VALUES) then {
-	LOGF_1("'%1' has fractures", _patient);
-	private _numLegFractures = 0;
-	if(_fractures select HITPOINT_INDEX_LLEG > 0) then
-	{
-		_numLegFractures = _numLegFractures +  1;
-	};
-	if(_fractures select HITPOINT_INDEX_RLEG > 0) then 
-	{
-		_numLegFractures = _numLegFractures +  1;
-	};
+if!([_patient] call FUNC(hasLegFractures)) then {
+	LOGF_1("'%1' has leg fractures", _patient);
+	private _numLegFractures = [_patient] call FUNC(getNumberOfLegFractures);
 	private _action = ["MIRA_Fractures", format["Leg Fractures (%1)", _numLegFractures], QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];

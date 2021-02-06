@@ -40,9 +40,8 @@ _modifierFunc = {
 	
 	private _result = "";
 	// bandage > stitch  > lowhr > lowbp > fractures
-	private _fractures = _patient call FUNC(getFractures);
 	private _isMedic = _player call FUNC(isMedic);
-	if(GVAR(Stable_TrackFractures) && count _fractures > 0) then {
+	if(GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures)) then {
 		_result = QUOTE(ICON_PATH(fracture));
 	};
 	private _lowBP = GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
@@ -58,7 +57,7 @@ _modifierFunc = {
 		_result = QUOTE(ICON_PATH(stitch));
 	};
 	if(GVAR(Stable_TrackNeedsBandage) && [_patient] call FUNC(needsBandage)) then {
-		_resutl = QUOTE(ICON_PATH(bandage));
+		_result = QUOTE(ICON_PATH(bandage));
 	};
 	if!(alive _patient) then {
 		_result = QUOTE(ICON_PATH(dead));

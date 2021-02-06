@@ -1,8 +1,7 @@
 #include "function_macros.hpp"
-#include "ace_medical_macros.hpp"
 
 params[
 	"_patient"
 ];
 
-!(([_patient] call FUNC(getFractures)) isEqualTo DEFAULT_FRACTURE_VALUES)
+([_patient] call FUNC(getFractures)) findIf { _x == 1 } > -1

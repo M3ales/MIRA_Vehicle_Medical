@@ -92,33 +92,13 @@ if(_hasLowBP) then {
 // Fractures (Legs)
 if([_patient] call FUNC(hasFractures)) then {
 	LOGF_1("'%1' has fractures", _patient);
-	private _fractures = [_patient] call FUNC(getFractures);
-	private _numFractures = 0;
-	if(_fractures select 0 > 0) then
-	{
-		_numFractures = _numFractures +  1;
+	private _numFractures = [_patient] call FUNC(getNumberOfFractures);
+	private _fracturesMessage =  format["Fractures (%1)", _numFractures];
+	if(_numFractures == 0) then {
+		LOGF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		_fracturesMessage = "Fractures (Error Fetching Amount)"
 	};
-	if(_fractures select 1 > 0) then
-	{
-		_numFractures = _numFractures +  1;
-	};
-	if(_fractures select 2 > 0) then
-	{
-		_numFractures = _numFractures +  1;
-	};
-	if(_fractures select 3 > 0) then
-	{
-		_numFractures = _numFractures +  1;
-	};
-	if(_fractures select 4 > 0) then
-	{
-		_numFractures = _numFractures +  1;
-	};
-	if(_fractures select 5 > 0) then
-	{
-		_numFractures = _numFractures +  1;
-	};
-	private _action = ["MIRA_Fractures", format["Fractures (%1)", _numFractures], QUOTE(ICON_PATH(fracture)), {
+	private _action = ["MIRA_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
