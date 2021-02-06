@@ -4,4 +4,4 @@ params[
 	"_patient"
 ];
 
-([_patient] call FUNC(getFractures)) findIf { _x == 1 } > -1
+([_patient] call FUNC(getFractures)) findIf { _x != 0 } > -1

@@ -6,11 +6,11 @@ params["_patient"];
 private _fractures = [_patient] call FUNC(getFractures);
 private _numLegFractures = 0;
 
-if(_fractures select HITPOINT_INDEX_LLEG > 0) then
+if(_fractures select HITPOINT_INDEX_LLEG != 0) then
 {
 	_numLegFractures = _numLegFractures +  1;
 };
-if(_fractures select HITPOINT_INDEX_RLEG > 0) then 
+if(_fractures select HITPOINT_INDEX_RLEG != 0) then 
 {
 	_numLegFractures = _numLegFractures +  1;
 };
