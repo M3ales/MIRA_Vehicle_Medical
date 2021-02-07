@@ -37,7 +37,7 @@ _unstableCategory = ["ACE Vehicle Medical", "Unstable"];
 [QUOTE(GVAR(Unstable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _unstableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackLegFractures)), "CHECKBOX", ["Track Leg Fractures", "Determines if Leg Fractures will be monitored and reported as unstable by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackLegSplints)), "CHECKBOX", ["Track Leg Splints", "Determines if splinted Leg Fractures will be reported in the unstable category by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Unstable_TrackDead)), "CHECKBOX", ["Continue to Track Dead", "Determines if dead members will be reported in the unstable category by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_TrackDead)), "CHECKBOX", ["Track Deaceased", "Determines if dead members will be reported in the unstable category by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //Stable
 _stableCategory = ["ACE Vehicle Medical", "Stable"];
@@ -54,7 +54,7 @@ _stableCategory = ["ACE Vehicle Medical", "Stable"];
 
 //vehicles
 _vehicleCategory = ["ACE Vehicle Medical", "Vehicles"];
-#define VEH_ENABLE(type) [QUOTE(GVAR(CONCAT(Vehicles_Enable,type))), "CHECKBOX", [QUOTE(CONCAT(Enable on ,type)), QUOTE(CONCAT(Determines if AVM is enabled for ,type))], _vehicleCategory, true, 0, {}] call CBA_fnc_addSetting
+#define VEH_ENABLE(type) [QUOTE(GVAR(CONCAT(Vehicles_Enable,type))), "CHECKBOX", [QUOTE(CONCAT(Enable on ,type)), QUOTE(CONCAT(Determines if AVM is enabled for ,type))], _vehicleCategory, true, 0, {}, true] call CBA_fnc_addSetting
 VEH_ENABLE(Car);
 VEH_ENABLE(Helicopter);
 VEH_ENABLE(Plane);
