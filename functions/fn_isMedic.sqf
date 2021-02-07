@@ -10,5 +10,3 @@ if(GVAR(legacyAce)) exitWith {
 };
 //new ace
 _patient call ace_medical_treatment_fnc_isMedic;
-
-true
