@@ -153,6 +153,5 @@ if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)
 	_actions pushBack [_action, [], _patient];
 };
 
-
-// Medication Action
+// TODO: Add an action that shows if medication in system
 _actions

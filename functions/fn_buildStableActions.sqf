@@ -104,5 +104,5 @@ if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-// Add an action that shows if they've still got tourniquets on
+// TODO: Add an action that shows if they've still got tourniquets on
 _actions
