@@ -14,22 +14,6 @@ _params params[
 private _actions = [];
 private _isMedic = _player call FUNC(isMedic);
 
-
-// Dead
-if!(alive _patient) then {
-	LOGF_1("'%1' is dead", _patient);
-	private _action = ["MIRA_Bandage", "Dead" , QUOTE(ICON_PATH(dead)), {
-			params ["_target", "_player", "_parameters"];
-			_parameters params ["_patient"];
-			[_patient] call FUNC(openMedicalMenu);
-			if(GVAR(WarnViewingDead)) then {
-				private _patientName = [_patient] call ace_common_fnc_getName;
-				[format["You are viewing %1 who is currently deceased.", _patientName], true, 4, 1] call ACE_common_fnc_displayText;
-			};
-		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
-	[[_action, [], _patient]];
-};
-
 // Bandagable Wounds Action
 private _needsBandage = GVAR(Stable_TrackNeedsBandage) && _patient call FUNC(needsBandage);
 if(_needsBandage) then {
