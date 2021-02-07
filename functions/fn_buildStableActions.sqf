@@ -96,7 +96,7 @@ if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
 		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Splinted Fractures (Error Fetching Amount)"
 	};
-	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
+	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(splint)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);

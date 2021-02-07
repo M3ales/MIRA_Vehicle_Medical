@@ -30,6 +30,7 @@ if!(alive _vehicle) exitWith {
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
+	if(!alive _patient) exitWith { false };
 	_unit call FUNC(isStable);
 };
 

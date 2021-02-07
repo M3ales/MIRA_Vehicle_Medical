@@ -31,7 +31,7 @@ private _actions = [];
 // Dead
 if(GVAR(Unstable_TrackDead) && !alive _patient ) then {
 	LOGF_1("'%1' is dead", _patient);
-	private _action = ["MIRA_Bandage", "Dead" , QUOTE(ICON_PATH(dead)), {
+	private _action = ["MIRA_Dead", "Deceased" , QUOTE(ICON_PATH(dead)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);

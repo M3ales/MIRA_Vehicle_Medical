@@ -30,7 +30,7 @@ private _actions = [];
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_patient"];
-	if(!Unstable_TrackDead && !alive _patient) exitWith { false };
+	if(!GVAR(Unstable_TrackDead) && !alive _patient) exitWith { false };
 	[_patient] call FUNC(isUnstable);
 };
 
