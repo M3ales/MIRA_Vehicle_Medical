@@ -30,6 +30,7 @@ private _actions = [];
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_patient"];
+	if(!Unstable_TrackDead && !alive _patient) exitWith { false };
 	[_patient] call FUNC(isUnstable);
 };
 
@@ -41,7 +42,7 @@ _modifierFunc = {
 	private _bleeding = GVAR(Unstable_TrackBleeding) && [_patient] call FUNC(isBleeding);
 	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
 	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
-	private _legFractures = GVAR(Unstable_TrackFractures) && [_patient] call FUNC(hasLegFractures);
+	private _legFractures = GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures);
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious > leg fracture
 	private _result = "";

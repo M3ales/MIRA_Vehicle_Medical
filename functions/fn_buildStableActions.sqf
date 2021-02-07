@@ -73,8 +73,8 @@ if(_hasLowBP) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-// Fractures (Legs)
-if([_patient] call FUNC(hasFractures)) then {
+// Fractures
+if(GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures)) then {
 	LOGF_1("'%1' has fractures", _patient);
 	private _numFractures = [_patient] call FUNC(getNumberOfFractures);
 	private _fracturesMessage =  format["Fractures (%1)", _numFractures];
@@ -83,6 +83,24 @@ if([_patient] call FUNC(hasFractures)) then {
 		_fracturesMessage = "Fractures (Error Fetching Amount)"
 	};
 	private _action = ["MIRA_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+};
+
+
+// Splinted Fractures
+if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
+	LOGF_1("'%1' has splinted fractures", _patient);
+	private _numLegFractures = [_patient, true] call FUNC(getNumberOfFractures);
+	private _fracturesMessage =  format["Splinted Fractures (%1)", _numLegFractures];
+	if(_numLegFractures == 0) then {
+		LOG_ERRORF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		_fracturesMessage = "Splinted Fractures (Error Fetching Amount)"
+	};
+	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);

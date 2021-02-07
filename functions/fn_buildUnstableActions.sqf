@@ -33,7 +33,7 @@ private _isMedic = _player call FUNC(isMedic);
 private _actions = [];
 
 // Dead
-if!(alive _patient) then {
+if(GVAR(Unstable_TrackDead) && !alive _patient ) then {
 	LOGF_1("'%1' is dead", _patient);
 	private _action = ["MIRA_Bandage", "Dead" , QUOTE(ICON_PATH(dead)), {
 			params ["_target", "_player", "_parameters"];
@@ -112,7 +112,7 @@ if(_hasLowBP) then {
 };
 
 // Unconscious Action
-private _isUncon = GVAR(Unstable_TrackUnconscious) && _patient call FUNC(isUnconscious);
+private _isUncon = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
 if (_isUncon) then {
 	LOGF_1("'%1' is Unconscious", _patient);
 	private _action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
@@ -124,7 +124,7 @@ if (_isUncon) then {
 };
 
 // Fractures (Legs)
-if([_patient] call FUNC(hasLegFractures)) then {
+if(GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures)) then {
 	LOGF_1("'%1' has leg fractures", _patient);
 	private _numLegFractures = [_patient] call FUNC(getNumberOfLegFractures);
 	private _fracturesMessage =  format["Leg Fractures (%1)", _numLegFractures];
@@ -139,6 +139,24 @@ if([_patient] call FUNC(hasLegFractures)) then {
 		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _patient];
 };
+
+// Splinted Fractures (Legs)
+if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)) then {
+	LOGF_1("'%1' has splinted leg fractures", _patient);
+	private _numLegFractures = [_patient, true] call FUNC(getNumberOfLegFractures);
+	private _fracturesMessage =  format["Splinted Leg Fractures (%1)", _numLegFractures];
+	if(_numLegFractures == 0) then {
+		LOG_ERRORF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		_fracturesMessage = "Splinted Leg Fractures (Error Fetching Amount)"
+	};
+	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+};
+
 
 // Medication Action
 _actions

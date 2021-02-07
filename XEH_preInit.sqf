@@ -35,7 +35,9 @@ _unstableCategory = ["ACE Vehicle Medical", "Unstable"];
 [QUOTE(GVAR(Unstable_TrackIV)), "CHECKBOX", ["Track IVs", "Determines if total volume of IVs is displayed"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _unstableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Unstable_TrackFractures)), "CHECKBOX", ["Track Leg Fractures", "Determines if Leg Fractures will be monitored and reported as unstable by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_TrackLegFractures)), "CHECKBOX", ["Track Leg Fractures", "Determines if Leg Fractures will be monitored and reported as unstable by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_TrackLegSplints)), "CHECKBOX", ["Track Leg Splints", "Determines if splinted Leg Fractures will be reported in the unstable category by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_TrackDead)), "CHECKBOX", ["Continue to Track Dead", "Determines if dead members will be reported in the unstable category by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //Stable
 _stableCategory = ["ACE Vehicle Medical", "Stable"];
@@ -48,6 +50,7 @@ _stableCategory = ["ACE Vehicle Medical", "Stable"];
 [QUOTE(GVAR(Stable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackFractures)), "CHECKBOX", ["Track Arm Fractures", "Determines if Arm Fractures will be monitored and reported as unstable by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackSplints)), "CHECKBOX", ["Track Arm Splints", "Determines if splinted Arm Fractures will be reported in the unstable category by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //vehicles
 _vehicleCategory = ["ACE Vehicle Medical", "Vehicles"];
