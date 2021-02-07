@@ -1,6 +1,11 @@
 #include "functions\function_macros.hpp"
 LOGF_1("[%1] PreInit Begin", QUOTE(ADDON));
-_version = call FUNC(getVersion);
+
+LOGF_1("[%1] PREP Begin", QUOTE(ADDON));
+#include "XEH_PREP.sqf"
+LOGF_1("[%1] PREP Complete", QUOTE(ADDON));
+
+_version = [] call FUNC(getVersion);
 LOGF_2("%1 at version %2", QUOTE(ADDON), _version);
 
 //ace_common_getVersion is broken for some patches, we look manually to ensure data is good, probably wont work everywhere.
@@ -12,11 +17,6 @@ if(_aceMajor >= 3 && _aceMinor >= 13) then {
 	LOG(format["ACE Version is < 3.13"]);
 	GVAR(legacyAce) = true;
 };
-
-
-LOGF_1("[%1] PREP Begin", QUOTE(ADDON));
-#include "XEH_PREP.sqf"
-LOGF_1("[%1] PREP Complete", QUOTE(ADDON));
 
 LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 //General

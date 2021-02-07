@@ -29,7 +29,7 @@ private _isMedic = _player call FUNC(isMedic);
 private _actions = [];
 
 // Dead
-if(GVAR(Unstable_TrackDead) && !alive _patient ) then {
+if(GVAR(Unstable_TrackDead) && !alive _patient) then {
 	LOGF_1("'%1' is dead", _patient);
 	private _action = ["MIRA_Dead", "Deceased" , QUOTE(ICON_PATH(dead)), {
 			params ["_target", "_player", "_parameters"];
