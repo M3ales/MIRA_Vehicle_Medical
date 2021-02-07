@@ -40,7 +40,7 @@ if(GVAR(Unstable_TrackDead) && !alive _patient) then {
 				[format["You are viewing %1 who is currently deceased.", _patientName], true, 4, 1] call ACE_common_fnc_displayText;
 			};
 		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
-	[[_action, [], _patient]];
+	_actions pushBack [_action, [], _patient];
 };
 
 // Cardiac Arrest Action
