@@ -3,10 +3,6 @@
 // [player, player, [player]] call MIRA_Vehicle_Medical_fnc_buildStableActions;
 params["_target", "_player", "_params"];
 
-if!(alive _target) exitWith {
-	[]
-};
-
 _params params[
 	"_patient"
 ];

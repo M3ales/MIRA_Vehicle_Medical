@@ -21,10 +21,6 @@
 
 params ["_target", "_player", "_parameters"];
 
-if!(alive _target) exitWith {
-	[]
-};
-
 _parameters params [
 	"_patient"
 ];

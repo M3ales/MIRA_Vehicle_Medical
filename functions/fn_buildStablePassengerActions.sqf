@@ -71,16 +71,16 @@ _modifierFunc = {
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
-		 _unitname = [_unit] call ace_common_fnc_getName;
+		private _unitName = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
-		_icon = "";
+		private _icon = "";
 		//build the action, use additional params to have runOnHover = true
 		if(_unit == _player) then {
-			_unitname = "You";
+			_unitName = "You";
 		};
-		_action = [
+		private _action = [
 			format["%1", _unit],
-			_unitname,
+			_unitName,
 			_icon,
 			{
 				params ["", "", "_parameters"];

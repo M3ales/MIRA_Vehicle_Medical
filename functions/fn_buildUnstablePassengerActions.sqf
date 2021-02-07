@@ -21,7 +21,7 @@ params["_vehicle", "_player"];
 
 if!(alive _vehicle) exitWith { 
 	LOGF_1("%1 not alive, exiting.", _vehicle);
-	[] 
+	[]
 };
 
 private _actions = [];
@@ -70,16 +70,16 @@ _modifierFunc = {
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
-		private _unitname = [_unit] call ace_common_fnc_getName;
+		private _unitName = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
 		private _icon = "";
 		if(_unit == _player) then {
-			_unitname = "You";
+			_unitName = "You";
 		};
 		//build the action, use additional params to have runOnHover = true
 		private _action = [
 			format["%1", _unit],
-			_unitname,
+			_unitName,
 			_icon,
 			{
 				params ["", "", "_parameters"];
