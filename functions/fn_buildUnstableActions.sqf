@@ -129,7 +129,7 @@ if(GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures)) th
 	private _numLegFractures = [_patient] call FUNC(getNumberOfLegFractures);
 	private _fracturesMessage =  format["Leg Fractures (%1)", _numLegFractures];
 	if(_numLegFractures == 0) then {
-		LOGF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Leg Fractures (Error Fetching Amount)"
 	};
 	private _action = ["MIRA_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
@@ -146,10 +146,10 @@ if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)
 	private _numLegFractures = [_patient, true] call FUNC(getNumberOfLegFractures);
 	private _fracturesMessage =  format["Splinted Leg Fractures (%1)", _numLegFractures];
 	if(_numLegFractures == 0) then {
-		LOG_ERRORF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Splinted Leg Fractures (Error Fetching Amount)"
 	};
-	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
+	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(splint)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);

@@ -79,7 +79,7 @@ if(GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures)) then {
 	private _numFractures = [_patient] call FUNC(getNumberOfFractures);
 	private _fracturesMessage =  format["Fractures (%1)", _numFractures];
 	if(_numFractures == 0) then {
-		LOGF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Fractures (Error Fetching Amount)"
 	};
 	private _action = ["MIRA_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
@@ -97,7 +97,7 @@ if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
 	private _numLegFractures = [_patient, true] call FUNC(getNumberOfFractures);
 	private _fracturesMessage =  format["Splinted Fractures (%1)", _numLegFractures];
 	if(_numLegFractures == 0) then {
-		LOG_ERRORF_1("Found no fractures despite fractures being non default: %1", _fractures);
+		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Splinted Fractures (Error Fetching Amount)"
 	};
 	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(fracture)), {
