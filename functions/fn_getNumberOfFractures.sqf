@@ -1,33 +1,44 @@
 #include "ace_medical_macros.hpp"
 #include "function_macros.hpp"
 
-params["_patient"];
+params[
+	"_patient",
+	["_splintedOnly", false]
+];
 
 private _fractures = [_patient] call FUNC(getFractures);
 private _numFractures = 0;
-
-if(_fractures select HITPOINT_INDEX_HEAD != 0) then
 {
-	_numFractures = _numFractures +  1;
-};
-if(_fractures select HITPOINT_INDEX_BODY != 0) then
-{
-	_numFractures = _numFractures +  1;
-};
-if(_fractures select HITPOINT_INDEX_LARM != 0) then
-{
-	_numFractures = _numFractures +  1;
-};
-if(_fractures select HITPOINT_INDEX_RARM != 0) then
-{
-	_numFractures = _numFractures +  1;
-};
-if(_fractures select HITPOINT_INDEX_LLEG != 0) then
-{
-	_numFractures = _numFractures +  1;
-};
-if(_fractures select HITPOINT_INDEX_RLEG != 0) then
-{
-	_numFractures = _numFractures +  1;
-};
+	private _fracture = _fractures select _x;
+	switch (_fracture) do {
+		case 0: { 
+			// Do nothing, no fracture
+		 };
+		case 1: {
+			// Fractured, no splint
+			if!(_splintedOnly) then {
+				_numFractures = _numFractures + 1;
+			};
+		};
+		case -1: {
+			if(_splintedOnly) then {
+				if(ace_medical_fractures in [2,3]) then {
+					_numFractures = _numFractures + 1;
+				}
+				else {
+					// Splinted, fracture healed automagically
+				};
+			};
+		 };
+		default {
+			LOG_ERRORF_1("Unknown Fracture State '%1'", _fracture);
+		};
+	};
+} forEach [
+	HITPOINT_INDEX_HEAD,
+	HITPOINT_INDEX_BODY,
+	HITPOINT_INDEX_LARM,
+	HITPOINT_INDEX_RARM,
+	HITPOINT_INDEX_LLEG,
+	HITPOINT_INDEX_RLEG];
 _numFractures
