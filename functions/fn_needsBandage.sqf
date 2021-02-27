@@ -1,12 +1,16 @@
 #include "function_macros.hpp"
-params["_unit"];
+
+params[
+    "_patient"
+];
+
 _needBandage = false;
-_wounds = _unit call FUNC(getOpenWounds);
+_wounds = _patient call FUNC(getOpenWounds);
 { 
     _x params ["", "_bodyPartN", "_amountOf", "_bleeding"]; 
-    if ((_amountOf * _bleeding) > 0) exitWith { 
+    if ((_amountOf * _bleeding) > 0) exitWith {
         _needBandage = true;
     }; 
-    false     
+    false
 }forEach _wounds;
 _needBandage

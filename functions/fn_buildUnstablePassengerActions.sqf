@@ -19,75 +19,67 @@
 
 params["_vehicle", "_player"];
 
- _actions = [];
+if!(alive _vehicle) exitWith { 
+	LOGF_1("%1 not alive, exiting.", _vehicle);
+	[]
+};
+
+private _actions = [];
 
 //conditions to display the unit's action
 _conditions = {
 	params ["", "", "_parameters"];
-	_parameters params ["_unit"];
-	//display action if any are true
-	if(_unit call FUNC(isBleeding) || _unit call FUNC(isUnconscious) || _unit call FUNC(isCardiacArrest)) exitWith {true};
-	false
+	_parameters params ["_patient"];
+	if(!GVAR(Unstable_TrackDead) && !alive _patient) exitWith { false };
+	[_patient] call FUNC(isUnstable);
 };
 
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	_parameters params ["_unit"];
-
-	_statusIcons = [
-		"",
-		QUOTE(ICON_PATH(unconscious_white)),
-		QUOTE(ICON_PATH(bleeding_red)),
-		QUOTE(ICON_PATH(cardiac_arrest_red))
-	];
-	_bleeding = _unit call FUNC(isBleeding);
-	_sleepy = _unit call FUNC(isUnconscious);
-	_cardiac = _unit call FUNC(isCardiacArrest);
+	_parameters params ["_patient"];
+	// Get vars to check
+	private _bleeding = GVAR(Unstable_TrackBleeding) && [_patient] call FUNC(isBleeding);
+	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
+	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
+	private _legFractures = GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures);
 	// Modify the icon (3rd param)
-	//Use ascending order of importance, cardiac > bleeding > unconscious
-	if(!_sleepy && !_bleeding && !_cardiac) then {
-		//healthy, default icon
-		LOG("Healthy");
-		_actionData set [2, _statusIcons select 0];
-	}
-	else {
-		if(_sleepy && !_bleeding && !_cardiac) then {
-			//only unconscious, use unconscious icon
-			LOG("Sleepy");
-			_actionData set [2, _statusIcons select 1];
-		}
-		else {
-			if(!_cardiac) then {
-				//not only unconscious, but not in cardiac, must be bleeding
-				LOG("Bleeding");
-				_actionData set [2, _statusIcons select 2];
-			}
-			else {
-				//must be in cardiac, takes priority over bleeding
-				LOG("Cardiac Arrest");
-				_actionData set [2, _statusIcons select 3];
-			};
-		};
+	//Use ascending order of importance, cardiac > bleeding > unconscious > leg fracture
+	private _result = "";
+	if(_legFractures) then {
+		_result = QUOTE(ICON_PATH(fracture));
 	};
+	if(_sleepy) then {
+		_result = QUOTE(ICON_PATH(unconscious_white));
+	};
+	if(_bleeding) then {
+		_result = QUOTE(ICON_PATH(bleeding_red));
+	};
+	if(_cardiac) then {
+		_result = QUOTE(ICON_PATH(cardiac_arrest_red));
+	};
+	if!(alive _patient) then {
+		_result = QUOTE(ICON_PATH(dead));
+	};
+	_actionData set [2, _result];
 };
 
 //foreach player/npc in vehicle
 {
-	_unit = _x;
+	private _unit = _x;
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
-		 _unitname = [_unit] call ace_common_fnc_getName;
+		private _unitName = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
-		_icon = "";
+		private _icon = "";
 		if(_unit == _player) then {
-			_unitname = "You";
+			_unitName = "You";
 		};
 		//build the action, use additional params to have runOnHover = true
-		_action = [
+		private _action = [
 			format["%1", _unit],
-			_unitname,
+			_unitName,
 			_icon,
 			{
 				params ["", "", "_parameters"];

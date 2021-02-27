@@ -1,3 +1,4 @@
+#include "ace_medical_macros.hpp"
 /*
  * Author: M3ales
  * Locally defined fuction which grabs if a unit is unconscious
@@ -13,6 +14,8 @@
  *
  * Public: Yes
  */
-params["_unit"];
+params[
+	"_patient"
+];
 
-_unit getVariable ["ACE_isUnconscious", false];
+IS_UNCONSCIOUS(_patient)

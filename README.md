@@ -1,18 +1,32 @@
-# ACE Vehicle Medical
-## About
-Simple script mod which adds an ace interaction to vehicles (Helicopters only at present), which allows for easy filtering of uninjured or stable personel - giving medics a head start when picking up multiple wounded, unstable members in medevac/casevac or hot extract scenarios.
+# ACE Vehicle Medical 2.0.0
 
 ## Features
+- Dynamically adds itself to anything inheriting from: `Car, Tank, Helicopter, Ship`, using `ace_interact_menu_newControllableObject` for performance.
+- Provides a main interact while inside vehicle, which splits into two subcategories.
+   - Stable
+   - Unstable
+- Filters by severity, with rapidly degrading status effects being listed in Unstable, and more minor afflictions placing the unit under Stable.
+- Tracks deceased members inside a vehicle to easily see if you're working on someone who has passed on.
+- Icons to more easily identify a situation and triage patients quickly - get to those who need it most.
+- Easily access the Ace Medical Menu by selecting either the patient's name, or one of their afflictions.
 
-* Added to anything that inherits from `Helicopter`.
-* Menu which lists unstable passengers
-* Submenus which list what of the 3 afflictions they suffer from
-    * Bleeding (Actively)
-    * Unconscious
-    * Cardiac Arrest
+### Stable
+This category is for most non varying conditions such as: 
+- Bandaging required on a tourinquetted limb.
+- Stitching of bandaged wounds.
+- Low Blood Pressure or Heart Rate (Although not yet in cardiac arrest).
+- Arm Fractures.
 
+### Unstable
+This is for conditions which may quickly lead to the patient dying, or significantly reduce their effectiveness.
+- Cardiac Arrest
+- Unconscious
+- Bleeding
+- Leg Fractures
 
-![arma3_x64_2019-10-28_23-37-40](https://user-images.githubusercontent.com/18268386/67720299-37744980-f9dc-11e9-8e75-1280c7748f56.png)
-(No icons)
-
-![How it works](https://user-images.githubusercontent.com/18268386/68652295-cf704800-0531-11ea-962e-0ee4e068e6a2.png)
+### Configurability
+CBA Settings are provided and can be accessed under Configure Addons -> ACE Vehicle Medical.
+- Enable/Disable tracking of most states.
+- Apply your own thresholds for 'low' heartrate/blood pressure. (Medics only)
+- Enable/Disable dead people being listed as unstable.
+- Enable/Disable warning popups for viewing dead members.

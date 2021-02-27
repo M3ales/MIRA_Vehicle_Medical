@@ -18,53 +18,70 @@
  */
 
 params["_vehicle", "_player"];
+
+if!(alive _vehicle) exitWith { 
+	LOGF_1("%1 not alive, exiting.", _vehicle);
+	[]
+};
+
  _actions = [];
 
 //conditions to display the unit's action
 _conditions = {
 	params ["", "", "_parameters"];
 	_parameters params ["_unit"];
-	//display action if any are true
-	if(_unit call FUNC(isBleeding)) exitWith {false};
-	_stitch = _unit call FUNC(getStitchableWounds);
-	if(_unit call FUNC(needsBandage) || count _stitch > 0) exitWith {true};
-	false
+	if(!alive _patient) exitWith { false };
+	_unit call FUNC(isStable);
 };
+
 //modify the icon to show the worst 'wound' type
 _modifierFunc = {
 	params ["_target", "_player", "_parameters", "_actionData"];
-	_parameters params ["_unit"];
-
-	_statusIcons = [
-		"",
-		QUOTE(ICON_PATH(bandage)),
-		QUOTE(ICON_PATH(stitch))
-	];
-	if(_unit call FUNC(needsBandage)) then {
-		_actionData set [2, _statusIcons select 1];
+	_parameters params ["_patient"];
+	
+	private _result = "";
+	// bandage > stitch  > lowhr > lowbp > fractures
+	private _isMedic = _player call FUNC(isMedic);
+	if(GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures)) then {
+		_result = QUOTE(ICON_PATH(fracture));
 	};
-	_stitch = _unit call FUNC(getStitchableWounds);
-	if(count _stitch > 0) then {
-		_actionData set [2, _statusIcons select 2];
+	private _lowBP = GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
+	if(_lowBP) then {
+		_result = QUOTE(ICON_PATH(bp_low));
 	};
+	private _lowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
+	if(_lowHR) then {
+		_result = QUOTE(ICON_PATH(hr_low));
+	};
+	private _stitch = [_patient] call FUNC(getStitchableWounds);
+	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
+		_result = QUOTE(ICON_PATH(stitch));
+	};
+	if(GVAR(Stable_TrackNeedsBandage) && [_patient] call FUNC(needsBandage)) then {
+		_result = QUOTE(ICON_PATH(bandage));
+	};
+	if!(alive _patient) then {
+		_result = QUOTE(ICON_PATH(dead));
+	};
+	_actionData set [2, _result];
 };
 
  //foreach player/npc in vehicle
 {
-	_unit = _x;
+	private _unit = _x;
 	//ignore drone pilot(s)
 	if(getText (configFile >> "CfgVehicles" >> typeOf _unit >> "simulation") != "UAVPilot") then {
 		//get unit name from ace common to display
-		 _unitname = [_unit] call ace_common_fnc_getName;
+		private _unitName = [_unit] call ace_common_fnc_getName;
 		//icon is blank, defined by modififer func
-		_icon = "";
+		private _icon = "";
 		//build the action, use additional params to have runOnHover = true
 		if(_unit == _player) then {
-			_unitname = "You";
+			_unitName = "You";
 		};
-		_action = [
+		private _action = [
 			format["%1", _unit],
-			_unitname,
+			_unitName,
 			_icon,
 			{
 				params ["", "", "_parameters"];

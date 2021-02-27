@@ -5,43 +5,22 @@ class CfgPatches {
 	{
 		name = QUOTE(ADDON_NAME);
 		author = "M3ales";
+		version[] = { 2, 0, 0, -1 }; //Negative last digit indicates alpha/beta
 		url = "https://github.com/M3ales/MIRA_Vehicle_Medical";
-		requiredAddons[] = {"ace_interact_menu", "ace_medical"};
+		requiredAddons[] = {"ace_interact_menu", "ace_medical", "ace_medical_treatment", "cba_settings"};
 		units[] = {};
 		weapons[] = {};
 	};
 };
 
-class CfgMods {
-    dir = QUOTE(CONCAT(@,ADDON));
-	name = QUOTE(ADDON_NAME);
-	picture = "";
-	logo = "";
-	logoOver = "";
-	tooltip = "";
-	action = "https://github.com/M3ales/MIRA_Vehicle_Medical";
-	overview = "Adds a medical menu accessible from self interact, while inside a vehicle - displays only priority patients who are unstable.";
-}
-
-class CfgFunctions {
-	class ADDON {
-        class VehicleMedical {
-            tag = QUOTE(ADDON);
-            requiredAddons[] = {"ace_interact_menu",  "ace_medical"};
-            file = QUOTE(CONCAT(ADDON,\functions));
-            class buildUnstablePassengerActions {};
-            class buildUnstableActions {};
-            class isBleeding {};
-            class isCardiacArrest {};
-            class isUnconscious {};
-			class buildStablePassengerActions {};
-			class buildStableActions {};
-			class getOpenWounds {};
-			class getStitchableWounds {};
-			class needsBandage {};
-			class openMedicalMenu {};
-        };
-	};
+class Extended_PreInit_EventHandlers {
+    class ADDON {
+        init = QUOTE(call COMPILE_FILE(XEH_preInit));
+    };
 };
 
-#include "CfgVehicles.hpp"
+class Extended_PostInit_EventHandlers {
+    class ADDON {
+        init = QUOTE(call COMPILE_FILE(XEH_postInit));
+    };
+};

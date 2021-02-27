@@ -1,9 +1,10 @@
+#include "ace_medical_macros.hpp"
 /*
  * Author: M3ales
  * Locally defined fuction which grabs the bleeding status of a given unit
  *
  * Arguments:
- * 0: Unit <OBJECT>
+ * 0: Patient <OBJECT>
  *
  * Return Value:
  * If bleeding or not <BOOLEAN>
@@ -13,6 +14,9 @@
  *
  * Public: Yes
  */
-params["_unit"];
 
-[_unit] call ace_medical_blood_fnc_isBleeding;
+params[
+	"_patient"
+];
+
+IS_BLEEDING(_patient)
