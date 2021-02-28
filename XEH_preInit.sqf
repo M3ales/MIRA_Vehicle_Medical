@@ -18,6 +18,10 @@ if(_aceMajor >= 3 && _aceMinor >= 13) then {
 	GVAR(legacyAce) = true;
 };
 
+private _hasKAT = isClass(configFile >> "CfgPatches" >> "kat_main");
+GVAR(KATInstalled) = _hasKAT;
+LOG("KAT detected, enabling...");
+
 LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 //General
 [QUOTE(GVAR(VERSION)), "CHECKBOX", [format["Version: %1", _version], "Installed Version of AVM"], ["ACE Vehicle Medical", "General"], false, 0, {}] call CBA_fnc_addSetting;
