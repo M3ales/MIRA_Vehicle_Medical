@@ -18,9 +18,14 @@ if(_aceMajor >= 3 && _aceMinor >= 13) then {
 	GVAR(legacyAce) = true;
 };
 
+// Integrations Search
+LOG("Searching for Integrations");
+
 private _hasKAT = isClass(configFile >> "CfgPatches" >> "kat_main");
 GVAR(KATInstalled) = _hasKAT;
-LOG("KAT detected, enabling...");
+LOGF_1("Found KAT: %1", _hasKAT);
+
+LOG("Integration Search Complete");
 
 LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 //General
