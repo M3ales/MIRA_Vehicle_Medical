@@ -2,10 +2,6 @@
 
 params["_patient"];
 
-if(GVAR(EnableSupportKAT)) exitWith {
-	false
-};
-
 private _pneumothorax = [_patient] call FUNC(kat_getPneumothorax);
 private _hemopneumothorax = [_patient] call FUNC(kat_getHemopneumothorax);
 private _tensionPneumothorax = [_patient] call FUNC(kat_getTensionPneumothorax);
