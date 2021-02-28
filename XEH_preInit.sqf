@@ -70,6 +70,17 @@ VEH_ENABLE(Plane);
 VEH_ENABLE(Ship);
 VEH_ENABLE(Tank);
 
+//KAT Integration
+if(GVAR(KATInstalled)) then {
+	[QUOTE(GVAR(EnableSupportKAT)), "CHECKBOX", ["Enable KAT Integration", "Determines if ACE Vehicle Medical will show KAT Medical specific actions"], ["ACE Vehicle Medical", "KAT Medical"], true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", ["Track KAT SpO2", "Determines if spO2 will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAT Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Stable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAT Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM as Unstable"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+} else
+{
+	GVAR(EnableSupportKAT) = false;
+};
+
 LOGF_1("[%1] CBA Options Complete", QUOTE(ADDON));
 
 LOGF_1("[%1] PreInit Complete", QUOTE(ADDON));
