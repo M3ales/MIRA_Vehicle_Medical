@@ -54,7 +54,7 @@ _modifierFunc = {
 			|| [_patient] call FUNC(kat_getTensionPneumothorax) 
 			|| [_patient] call FUNC(kat_getHemopneumothorax);
 		_kat_airwayBlocked = [_patient] call FUNC(kat_getAirwayObstruction) || [_patient] call FUNC(kat_getAirwayOcclusion);
-		_kat_spO2Low = ([_patient] call FUNC(getAirwayStatus) < 85);
+		_kat_spO2Low = ([_patient] call FUNC(kat_getAirwayStatus) < 85);
 	};
 
 	// Modify the icon (3rd param)
