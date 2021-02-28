@@ -68,13 +68,20 @@ if(GVAR(EnableSupportKAT)) then {
 	private _pneumothorax = [_patient] call FUNC(kat_getPneumothorax);
 	private _hemopneumothorax = [_patient] call FUNC(kat_getHemopneumothorax);
 	private _tensionPneumothorax = [_patient] call FUNC(kat_getTensionPneumothorax);
+	private _pneumothoraces = [_pneumothorax, _hemopneumothorax, _tensionPneumothorax];
 	if(_pneumothorax || _hemopneumothorax || _tensionPneumothorax) then {
 		private _name = "Pneumothorax";
-		if(_hemopneumothorax) then {
-			_name = "Hemopneumothorax";
-		};
-		if(_tensionPneumothorax) then {
-			_name = "Tension Pneumothorax";
+		if({ _x == true } count _pneumothoraces == 1) then {
+			if(_hemopneumothorax) then {
+				_name = "Hemopneumothorax";
+			};
+			if(_tensionPneumothorax) then {
+				_name = "Tension Pneumothorax";
+			};
+		}
+		else
+		{
+			_name = "Pneumothoraces"
 		};
 
 		_action = ["MIRA_KAT_Pneumothorax", _name, QUOTE(ICON_PATH(kat_pneumothorax)), {
