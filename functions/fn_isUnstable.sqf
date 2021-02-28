@@ -9,4 +9,4 @@ private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isC
 private _legFractures = GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures);
 
 //display action if any are true
-_bleeding || _sleepy || _cardiac || _legFractures || _dead
+_bleeding || _sleepy || _cardiac || _legFractures || _dead || FUNC(kat_isUnstable)
