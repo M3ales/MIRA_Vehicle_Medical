@@ -58,7 +58,7 @@ if (_cardiacArrest) then {
 if(GVAR(EnableSupportKAT)) then {
 	private _spO2 = [_patient] call FUNC(kat_getAirwayStatus);
 	if(GVAR(Unstable_TrackSpO2) && _spO2 < 85) then {
-		_action = ["MIRA_KAT_SpO2", "SpO2 Low", QUOTE(ICON_PATH(kat_spO2_low)), {
+		_action = ["MIRA_KAT_SpO2", format["SpO2 (%1%2)", round _spO2, "%"], QUOTE(ICON_PATH(kat_spO2_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
