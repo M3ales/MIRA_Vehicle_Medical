@@ -72,10 +72,10 @@ VEH_ENABLE(Tank);
 
 //KAT Integration
 if(GVAR(KATInstalled)) then {
-	[QUOTE(GVAR(EnableSupportKAT)), "CHECKBOX", ["Enable KAT Integration", "Determines if ACE Vehicle Medical will show KAT Medical specific actions"], ["ACE Vehicle Medical", "KAT Medical"], true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", ["Track KAT SpO2", "Determines if spO2 will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAT Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Stable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAT Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM as Unstable"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(EnableSupportKAT)), "CHECKBOX", ["Enable KAM Integration", "Determines if ACE Vehicle Medical will show KAT Medical specific actions"], ["ACE Vehicle Medical", "Integrations"], true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", ["Track KAM SpO2", "Determines if KAT Advanced Medical SpO2 will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAM Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAirwayBlocked)), "CHECKBOX", ["Track KAM Blocked Airways", "Determines if Airway Obstruction and Occlusion will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 } else
 {
 	GVAR(EnableSupportKAT) = false;

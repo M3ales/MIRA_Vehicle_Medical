@@ -57,7 +57,7 @@ if (_cardiacArrest) then {
 
 if(GVAR(EnableSupportKAT)) then {
 	private _spO2 = [_patient] call FUNC(getAirwayStatus);
-	if(_spO2 < 85) then {
+	if(GVAR(Unstable_TrackSpO2) && _spO2 < 85) then {
 		_action = ["MIRA_KAT_SpO2", "SpO2 Low", QUOTE(ICON_PATH(kat_spO2_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
@@ -69,7 +69,7 @@ if(GVAR(EnableSupportKAT)) then {
 	private _hemopneumothorax = [_patient] call FUNC(kat_getHemopneumothorax);
 	private _tensionPneumothorax = [_patient] call FUNC(kat_getTensionPneumothorax);
 	private _pneumothoraces = [_pneumothorax, _hemopneumothorax, _tensionPneumothorax];
-	if(_pneumothorax || _hemopneumothorax || _tensionPneumothorax) then {
+	if(GVAR(Unstable_TrackAllPneumothorax) && (_pneumothorax || _hemopneumothorax || _tensionPneumothorax)) then {
 		private _name = "Pneumothorax";
 		if({ _x == true } count _pneumothoraces == 1) then {
 			if(_hemopneumothorax) then {
@@ -93,10 +93,10 @@ if(GVAR(EnableSupportKAT)) then {
 	};
 	private _airwayObstruction = [_patient] call FUNC(kat_getAirwayObstruction);
 	private _airWayOcclusion = [_patient] call FUNC(kat_getAirwayOcclusion);
-	if(_airwayObstruction || _airWayOcclusion) then {
-		private _name = "Airway Obstructed";
-		if(_hemopneumothorax) then {
-			_name = "Airway Occluded";
+	if(GVAR(Unstable_TrackAirwayBlocked) && (_airwayObstruction || _airWayOcclusion)) then {
+		private _name = "Airway Occluded";
+		if(_airwayObstruction) then {
+			_name = "Airway Obstructed";
 		};
 		_action = ["MIRA_KAT_AirwayBlocked", _name, QUOTE(ICON_PATH(kat_airway_blocked)), {
 			params ["_target", "_player", "_parameters"];
