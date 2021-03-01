@@ -18,6 +18,15 @@ if(_aceMajor >= 3 && _aceMinor >= 13) then {
 	GVAR(legacyAce) = true;
 };
 
+// Integrations Search
+LOG("Searching for Integrations");
+
+private _hasKAT = isClass(configFile >> "CfgPatches" >> "kat_main");
+GVAR(KATInstalled) = _hasKAT;
+LOGF_1("Found KAT: %1", _hasKAT);
+
+LOG("Integration Search Complete");
+
 LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 //General
 [QUOTE(GVAR(VERSION)), "CHECKBOX", [format["Version: %1", _version], "Installed Version of AVM"], ["ACE Vehicle Medical", "General"], false, 0, {}] call CBA_fnc_addSetting;
@@ -60,6 +69,17 @@ VEH_ENABLE(Helicopter);
 VEH_ENABLE(Plane);
 VEH_ENABLE(Ship);
 VEH_ENABLE(Tank);
+
+//KAT Integration
+if(GVAR(KATInstalled)) then {
+	[QUOTE(GVAR(EnableSupportKAT)), "CHECKBOX", ["Enable KAM Integration", "Determines if ACE Vehicle Medical will show KAT Medical specific actions"], ["ACE Vehicle Medical", "Integrations"], true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", ["Track KAM SpO2", "Determines if KAT Advanced Medical SpO2 will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAM Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAirwayBlocked)), "CHECKBOX", ["Track KAM Blocked Airways", "Determines if Airway Obstruction and Occlusion will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+} else
+{
+	GVAR(EnableSupportKAT) = false;
+};
 
 LOGF_1("[%1] CBA Options Complete", QUOTE(ADDON));
 

@@ -28,3 +28,12 @@ PREP(getVersion);
 PREP(isUnstable);
 PREP(getNumberOfFractures);
 PREP(getNumberOfLegFractures);
+
+// KAT Integration
+PREP(kat_isUnstable);
+PREP(kat_getAirwayObstruction);
+PREP(kat_getAirwayOcclusion);
+PREP(kat_getAirwayStatus);
+PREP(kat_getHemoPneumothorax);
+PREP(kat_getPneumothorax);
+PREP(kat_getTensionPneumothorax);

@@ -43,6 +43,20 @@ _modifierFunc = {
 	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
 	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
 	private _legFractures = GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures);
+
+	//KAT Priority
+	private _kat_pneumothorax = false;
+	private _kat_airwayBlocked = false;
+	private _kat_spO2Low = false;
+
+	if(GVAR(EnableSupportKAT)) then {
+		_kat_pneumothorax = [_patient] call FUNC(kat_getPneumothorax) 
+			|| [_patient] call FUNC(kat_getTensionPneumothorax) 
+			|| [_patient] call FUNC(kat_getHemopneumothorax);
+		_kat_airwayBlocked = [_patient] call FUNC(kat_getAirwayObstruction) || [_patient] call FUNC(kat_getAirwayOcclusion);
+		_kat_spO2Low = ([_patient] call FUNC(kat_getAirwayStatus) < 85);
+	};
+
 	// Modify the icon (3rd param)
 	//Use ascending order of importance, cardiac > bleeding > unconscious > leg fracture
 	private _result = "";
@@ -52,8 +66,17 @@ _modifierFunc = {
 	if(_sleepy) then {
 		_result = QUOTE(ICON_PATH(unconscious_white));
 	};
+	if(_kat_pneumothorax) then {
+		_result = QUOTE(ICON_PATH(kat_pneumothorax));
+	};
+	if(_kat_airwayBlocked) then {
+		_result = QUOTE(ICON_PATH(kat_airway_blocked));
+	};
 	if(_bleeding) then {
 		_result = QUOTE(ICON_PATH(bleeding_red));
+	};
+	if(_kat_spO2Low) then {
+		_result = QUOTE(ICON_PATH(kat_spo2_low));
 	};
 	if(_cardiac) then {
 		_result = QUOTE(ICON_PATH(cardiac_arrest_red));

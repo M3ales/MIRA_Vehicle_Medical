@@ -55,6 +55,58 @@ if (_cardiacArrest) then {
 	_actions pushBack [_action, [], _patient];
 };
 
+if(GVAR(EnableSupportKAT)) then {
+	private _spO2 = [_patient] call FUNC(kat_getAirwayStatus);
+	if(GVAR(Unstable_TrackSpO2) && _spO2 < 85) then {
+		_action = ["MIRA_KAT_SpO2", format["SpO2 (%1%2)", round _spO2, "%"], QUOTE(ICON_PATH(kat_spO2_low)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+	};
+	private _pneumothorax = [_patient] call FUNC(kat_getPneumothorax);
+	private _hemopneumothorax = [_patient] call FUNC(kat_getHemopneumothorax);
+	private _tensionPneumothorax = [_patient] call FUNC(kat_getTensionPneumothorax);
+	private _pneumothoraces = [_pneumothorax, _hemopneumothorax, _tensionPneumothorax];
+	if(GVAR(Unstable_TrackAllPneumothorax) && (_pneumothorax || _hemopneumothorax || _tensionPneumothorax)) then {
+		private _name = "Pneumothorax";
+		if({ _x == true } count _pneumothoraces == 1) then {
+			if(_hemopneumothorax) then {
+				_name = "Hemopneumothorax";
+			};
+			if(_tensionPneumothorax) then {
+				_name = "Tension Pneumothorax";
+			};
+		}
+		else
+		{
+			_name = "Pneumothoraces"
+		};
+
+		_action = ["MIRA_KAT_Pneumothorax", _name, QUOTE(ICON_PATH(kat_pneumothorax)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+		_actions pushBack [_action, [], _patient];
+	};
+	private _airwayObstruction = [_patient] call FUNC(kat_getAirwayObstruction);
+	private _airWayOcclusion = [_patient] call FUNC(kat_getAirwayOcclusion);
+	if(GVAR(Unstable_TrackAirwayBlocked) && (_airwayObstruction || _airWayOcclusion)) then {
+		private _name = "Airway Occluded";
+		if(_airwayObstruction) then {
+			_name = "Airway Obstructed";
+		};
+		_action = ["MIRA_KAT_AirwayBlocked", _name, QUOTE(ICON_PATH(kat_airway_blocked)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+		_actions pushBack [_action, [], _patient];
+	};
+};
+
 // Bleeding Action
 private _isBleeding = GVAR(Unstable_TrackBleeding) && _patient call FUNC(isBleeding);
 //add bleeding action if applicable
