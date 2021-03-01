@@ -1,0 +1,96 @@
+  
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="MIRA_AVM">
+    <Package name="Interaction">
+        <Key ID="STR_MIRA_AVM_Interaction_Medical">
+            <English>Medical</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Interaction_Stable">
+            <English>Stable</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Interaction_Unstable">
+            <English>Unstable</English>
+        </Key>
+    </Package>
+    <Package name="Unstable">
+        <Key ID="STR_MIRA_AVM_Unstable_Dead">
+            <English>Deceased</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Dead_Warning">
+            <English>You are viewing %1, who is currently deceased.</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Cardiac_Arrest">
+            <English>Cardiac Arrest</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Bleeding">
+            <English>Bleeding</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Low_Heart_Rate">
+            <English>Heart Rate (%1)</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Low_Blood_Pressure">
+            <English>Blood Pressure (%1)</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Unconscious">
+            <English>Unconscious</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Leg_Fractures">
+            <English>Leg Fractures (%1)</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Splinted_Leg_Fractures">
+            <English>Splinted Leg Fractures (%1)</English>
+        </Key>
+    </Package>
+    <Package name="Unstable_KAT">
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_SpO2">
+            <English>SpO2 (%1%2)</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_Pneumothorax">
+            <English>Pneumothorax</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_Hemopneumothorax">
+            <English>Hemopneumothorax</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_Tension_Pneumothorax">
+            <English>Tension Pneumothorax</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_Multiple_Pneumothorax">
+            <English>Pneumothoraces</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Occluded">
+            <English>Airway Occluded</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Obstructed">
+            <English>Airway Obstructed</English>
+        </Key>
+    </Package>
+    <Package name="Stable">
+         <Key ID="STR_MIRA_AVM_Stable_Bandage">
+            <English>Bandage (%1)</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Stitch">
+            <English>Stitch (%1)</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Low_Heart_Rate">
+            <English>Heart Rate (%1)</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Low_Blood_Pressure">
+            <English>Blood Pressure (%1)</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Low_Blood_Pressure_With_IV">
+            <English>Blood Pressure (%1) [%2ml]</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Arm_Fractures">
+            <English>Fractures (%1)</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Splinted_Fractures">
+            <English>Splinted Fractures (%1)</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Stable_Splinted_Fractures_Error">
+            <English>Splinted Fractures (Error Fetching Amount)</English>
+        </Key>
+    </Package>
+    <Package name="Settings">
+        
+    </Package>
+</Project>

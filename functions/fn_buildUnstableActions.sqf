@@ -31,13 +31,13 @@ private _actions = [];
 // Dead
 if(GVAR(Unstable_TrackDead) && !alive _patient) then {
 	LOGF_1("'%1' is dead", _patient);
-	private _action = ["MIRA_Dead", "Deceased" , QUOTE(ICON_PATH(dead)), {
+	private _action = ["MIRA_Dead", localize LSTRING(Unstable,Dead), QUOTE(ICON_PATH(dead)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
 			if(GVAR(WarnViewingDead)) then {
 				private _patientName = [_patient] call ace_common_fnc_getName;
-				[format["You are viewing %1 who is currently deceased.", _patientName], true, 4, 1] call ACE_common_fnc_displayText;
+				[format[localize LSTRING(Unstable,Dead_Warning), _patientName], true, 4, 1] call ACE_common_fnc_displayText;
 			};
 		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
 	_actions pushBack [_action, [], _patient];
@@ -47,7 +47,7 @@ if(GVAR(Unstable_TrackDead) && !alive _patient) then {
 private _cardiacArrest = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
 if (_cardiacArrest) then {
 	LOGF_1("'%1' is in Cardiac Arrest", _patient);
-	_action = ["MIRA_Cardiac", "Cardiac Arrest", QUOTE(ICON_PATH(cardiac_arrest_red)), {
+	_action = ["MIRA_Cardiac", localize LSTRING(Unstable,Cardiac_Arrest), QUOTE(ICON_PATH(cardiac_arrest_red)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -58,7 +58,7 @@ if (_cardiacArrest) then {
 if(GVAR(EnableSupportKAT)) then {
 	private _spO2 = [_patient] call FUNC(kat_getAirwayStatus);
 	if(GVAR(Unstable_TrackSpO2) && _spO2 < 85) then {
-		_action = ["MIRA_KAT_SpO2", format["SpO2 (%1%2)", round _spO2, "%"], QUOTE(ICON_PATH(kat_spO2_low)), {
+		_action = ["MIRA_KAT_SpO2", format[localize LSTRING(Unstable_KAT,SpO2), round _spO2, "%"], QUOTE(ICON_PATH(kat_spO2_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -70,18 +70,18 @@ if(GVAR(EnableSupportKAT)) then {
 	private _tensionPneumothorax = [_patient] call FUNC(kat_getTensionPneumothorax);
 	private _pneumothoraces = [_pneumothorax, _hemopneumothorax, _tensionPneumothorax];
 	if(GVAR(Unstable_TrackAllPneumothorax) && (_pneumothorax || _hemopneumothorax || _tensionPneumothorax)) then {
-		private _name = "Pneumothorax";
+		private _name = localize LSTRING(Unstable_KAT,Pneumothorax);
 		if({ _x == true } count _pneumothoraces == 1) then {
 			if(_hemopneumothorax) then {
-				_name = "Hemopneumothorax";
+				_name = localize LSTRING(Unstable_KAT,Hemopneumothorax);
 			};
 			if(_tensionPneumothorax) then {
-				_name = "Tension Pneumothorax";
+				_name = localize LSTRING(Unstable_KAT,Tension_Pneumothorax);
 			};
 		}
 		else
 		{
-			_name = "Pneumothoraces"
+			_name = localize LSTRING(Unstable_KAT,Multiple_Pneumothorax)
 		};
 
 		_action = ["MIRA_KAT_Pneumothorax", _name, QUOTE(ICON_PATH(kat_pneumothorax)), {
@@ -94,9 +94,9 @@ if(GVAR(EnableSupportKAT)) then {
 	private _airwayObstruction = [_patient] call FUNC(kat_getAirwayObstruction);
 	private _airWayOcclusion = [_patient] call FUNC(kat_getAirwayOcclusion);
 	if(GVAR(Unstable_TrackAirwayBlocked) && (_airwayObstruction || _airWayOcclusion)) then {
-		private _name = "Airway Occluded";
+		private _name = localize LSTRING(Unstable_KAT,Airway_Occluded);
 		if(_airwayObstruction) then {
-			_name = "Airway Obstructed";
+			_name = localize LSTRING(Unstable_KAT,Airway_Obstructed);
 		};
 		_action = ["MIRA_KAT_AirwayBlocked", _name, QUOTE(ICON_PATH(kat_airway_blocked)), {
 			params ["_target", "_player", "_parameters"];
@@ -118,7 +118,7 @@ if (_isBleeding) then {
 		QUOTE(ICON_PATH(bleeding_white))
 	] select 0;
 	LOGF_1("'%1' is Bleeding", _patient);
-	_action = ["MIRA_Bleeding", "Bleeding", _icon, {
+	_action = ["MIRA_Bleeding", localize LSTRING(Unstable,Bleeding), _icon, {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -131,7 +131,7 @@ private _hasLowHR = GVAR(Unstable_TrackLowHR) && [_patient, _isMedic] call FUNC(
 if(_hasLowHR) then {
 	LOGF_1("'%1' has low HR", _patient);
 	private _hr = [_patient, _isMedic] call FUNC(displayHR);
-	private _action = ["MIRA_LowHR", format["Heart Rate (%1)", _hr], QUOTE(ICON_PATH(hr_low)), {
+	private _action = ["MIRA_LowHR", format[localize LSTRING(Unstable,Low_Heart_Rate), _hr], QUOTE(ICON_PATH(hr_low)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -144,7 +144,7 @@ private _hasLowBP = GVAR(Unstable_TrackLowBP) && [_patient, _isMedic] call FUNC(
 if(_hasLowBP) then {
 	LOGF_1("'%1' has low BP", _patient);
 	private _bp = [_patient, _isMedic] call FUNC(displayBP);
-	private _name = format["Blood Pressure (%1)", _bp];
+	private _name = format[localize LSTRING(Unstable,Low_Blood_Pressure), _bp];
 	if(GVAR(Unstable_TrackIV)) then {
 		private _iv =  _patient call FUNC(getTotalIV);
 		if(_iv > 0) then {
@@ -163,7 +163,7 @@ if(_hasLowBP) then {
 private _isUncon = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
 if (_isUncon) then {
 	LOGF_1("'%1' is Unconscious", _patient);
-	private _action = ["MIRA_Sleepy", "Unconscious", QUOTE(ICON_PATH(unconscious_white)), {
+	private _action = ["MIRA_Sleepy", localize LSTRING(Unstable,Unconscious), QUOTE(ICON_PATH(unconscious_white)), {
 			params ["_target", "_player", "_parameters"];
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
@@ -175,7 +175,7 @@ if (_isUncon) then {
 if(GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures)) then {
 	LOGF_1("'%1' has leg fractures", _patient);
 	private _numLegFractures = [_patient] call FUNC(getNumberOfLegFractures);
-	private _fracturesMessage =  format["Leg Fractures (%1)", _numLegFractures];
+	private _fracturesMessage =  format[localize LSTRING(Unstable,Leg_Fractures), _numLegFractures];
 	if(_numLegFractures == 0) then {
 		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Leg Fractures (Error Fetching Amount)"
@@ -192,7 +192,7 @@ if(GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures)) th
 if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)) then {
 	LOGF_1("'%1' has splinted leg fractures", _patient);
 	private _numLegFractures = [_patient, true] call FUNC(getNumberOfLegFractures);
-	private _fracturesMessage =  format["Splinted Leg Fractures (%1)", _numLegFractures];
+	private _fracturesMessage =  format[localize LSTRING(Splinted_Leg_Fractures), _numLegFractures];
 	if(_numLegFractures == 0) then {
 		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Splinted Leg Fractures (Error Fetching Amount)"

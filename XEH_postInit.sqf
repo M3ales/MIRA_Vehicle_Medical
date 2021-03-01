@@ -24,7 +24,7 @@
     private _action = 
 		[
 			"MIRA_Medical",
-			"Medical",
+			localize LSTRING(Interaction,Medical),
 			"",
 			{ if(true) exitWith{} },
 			{ true },
@@ -37,7 +37,7 @@
 	 _action = 
 		[
 			"MIRA_Stable",
-			"Stable",
+			localize LSTRING(Interaction,Stable),
 			"",
 			{ /* Leave statement blank to make ace not show it unless there are visible child actions */ },
 			{ GVAR(EnableStable) },
@@ -51,7 +51,7 @@
 	 _action = 
 		[
 			"MIRA_Unstable",
-			"Unstable",
+			localize LSTRING(Interaction,Unstable),
 			"",
 			{ /* Leave statement blank to make ace not show it unless there are visible child actions */ }, 
 			{ GVAR(EnableUnstable) },
