@@ -39,29 +39,29 @@
         <Key ID="STR_MIRA_AVM_Unstable_Splinted_Leg_Fractures">
             <English>Splinted Leg Fractures (%1)</English>
         </Key>
-    </Package>
-    <Package name="Unstable_KAT">
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_SpO2">
-            <English>SpO2 (%1%2)</English>
-        </Key>
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_Pneumothorax">
-            <English>Pneumothorax</English>
-        </Key>
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_Hemopneumothorax">
-            <English>Hemopneumothorax</English>
-        </Key>
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_Tension_Pneumothorax">
-            <English>Tension Pneumothorax</English>
-        </Key>
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_Multiple_Pneumothorax">
-            <English>Pneumothoraces</English>
-        </Key>
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Occluded">
-            <English>Airway Occluded</English>
-        </Key>
-        <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Obstructed">
-            <English>Airway Obstructed</English>
-        </Key>
+        <Container name="KAT">
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_SpO2">
+                <English>SpO2 (%1%2)</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Pneumothorax">
+                <English>Pneumothorax</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Hemopneumothorax">
+                <English>Hemopneumothorax</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Tension_Pneumothorax">
+                <English>Tension Pneumothorax</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Multiple_Pneumothorax">
+                <English>Pneumothoraces</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Occluded">
+                <English>Airway Occluded</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Obstructed">
+                <English>Airway Obstructed</English>
+            </Key>
+        </Container>
     </Package>
     <Package name="Stable">
          <Key ID="STR_MIRA_AVM_Stable_Bandage">
