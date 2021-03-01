@@ -192,7 +192,7 @@ if(GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures)) th
 if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)) then {
 	LOGF_1("'%1' has splinted leg fractures", _patient);
 	private _numLegFractures = [_patient, true] call FUNC(getNumberOfLegFractures);
-	private _fracturesMessage =  format[localize LSTRING(Splinted_Leg_Fractures), _numLegFractures];
+	private _fracturesMessage =  format[localize LSTRING(Unstable,Splinted_Leg_Fractures), _numLegFractures];
 	if(_numLegFractures == 0) then {
 		LOG_ERROR("Found no fractures despite fractures being non default");
 		_fracturesMessage = "Splinted Leg Fractures (Error Fetching Amount)"
