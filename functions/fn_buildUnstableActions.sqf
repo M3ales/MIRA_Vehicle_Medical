@@ -81,7 +81,7 @@ if(GVAR(EnableSupportKAT)) then {
 		}
 		else
 		{
-			_name = localize LSTRING(Unstable_KAT,Multiple_Pneumothorax)
+			_name = [LSTRING(Unstable_KAT,Multiple_Pneumothorax)] call FUNC(cachedLocalisationCall);
 		};
 
 		_action = ["MIRA_KAT_Pneumothorax", _name, QUOTE(ICON_PATH(kat_pneumothorax)), {
@@ -195,7 +195,7 @@ if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)
 	private _fracturesMessage =  format[[LSTRING(Unstable,Splinted_Leg_Fractures)] call FUNC(cachedLocalisationCall), _numLegFractures];
 	if(_numLegFractures == 0) then {
 		LOG_ERROR("Found no fractures despite fractures being non default");
-		_fracturesMessage = "Splinted Leg Fractures (Error Fetching Amount)"
+		_fracturesMessage = [LSTRING(Unstable,Splinted_Leg_Fractures_Error)] call FUNC(cachedLocalisationCall);
 	};
 	private _action = ["MIRA_Splinted_Fractures", _fracturesMessage, QUOTE(ICON_PATH(splint)), {
 			params ["_target", "_player", "_parameters"];
