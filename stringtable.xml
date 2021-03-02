@@ -107,6 +107,159 @@
         </Key>
     </Package>
     <Package name="Settings">
-        
+        <Key ID="STR_MIRA_AVM_Settings_Addon_Name">
+            <English>ACE Vehicle Medical</English>
+        </Key>
+        <Container name="General">
+            <Key ID="STR_MIRA_AVM_Settings_General_Category">
+                <English>General</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Version">
+                <English>Version: %1</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Version_Tooltip">
+                <English>Installed Version of AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Enable">
+                <English>Enable AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Enable_Tooltip">
+                <English>Determines if ACE Vehicle Medical will be shown at all</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Warn_Selecting_Dead">
+                <English>Warn when selecting deceased</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Warn_Selecting_Dead_Tooltip">
+                <English>Determines if to show a popup and play a click sound when you view someone who is dead</English>
+            </Key>
+        </Container>
+        <Container name="Unstable">
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Category">
+                <English>Unstable</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Enable">
+                <English>Enable Unstable</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Enable_Tooltip">
+                <English>Determines if Unstable list will be shown</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Cardiac_Arrest">
+                <English>Track Cardiac Arrest</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Cardiac_Arrest_Tooltip">
+                <English>Determines if Cardiac Arrest will be monitored and reported by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Bleeding">
+                <English>Track Bleeding</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Bleeding_Tooltip">
+                <English>Determines if Bleeding will be monitored and reported by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Unconscious">
+                <English>Track Unconscious</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Unconscious_Tooltip">
+                <English>Determines if Consciousness will be monitored and reported by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Blood_Pressure">
+                <English>Track Low Blood Pressure</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Blood_Pressure_Tooltip">
+                <English>Determines if low blood pressure will be monitored and reported by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Low_Blood_Pressure_Threshold">
+                <English>Low Blood Pressure Threshold</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Low_Blood_Pressure_Threshold_Tooltip">
+                <English>Value below which a given patient will have 'low' blood pressure</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_IV">
+                <English>Track IVs</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_IV_Tooltip">
+                <English>Determines if total volume of IVs is displayed</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Heart_Rate">
+                <English>Track Low Heart Rate</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Heart_Rate_Tooltip">
+                <English>Determines if low heart rate will be monitored and reported by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Low_Heart_Rate_Threshold">
+                <English>Low Heart Rate Threshold</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Low_Heart_Rate_Threshold_Tooltip">
+                <English>Value below which a given patient will have 'low' heart rate</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Fractures">
+                <English>Track Leg Fractures</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Fractures_Tooltip">
+                <English>Determines if Leg Fractures will be monitored and reported as unstable by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Splints">
+                <English>Track Leg Splints</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Splints_Tooltip">
+                <English>Determines if splinted Leg Fractures will be reported in the unstable category by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Dead">
+                <English>Track Deaceased</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Dead_Tooltip">
+                <English>Determines if dead members will be reported in the unstable category by AVM</English>
+            </Key>
+        </Container>
+        <Container name="Stable">
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Category">
+                <English>Stable</English>
+            </Key>
+        </Container>
+        <Container name="Vehicles">
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Category">
+                <English>Vehicles</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Car">
+                <English>Enable on Car</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Car_Tooltip">
+                <English>Determines if AVM is enabled for Car</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Helicopter">
+                <English>Enable on Helicopter</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Helicopter_Tooltip">
+                <English>Determines if AVM is enabled for Helicopter</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Plane">
+                <English>Enable on Plane</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Plane_Tooltip">
+                <English>Determines if AVM is enabled for Plane</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Ship">
+                <English>Enable on Ship</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Ship_Tooltip">
+                <English>Determines if AVM is enabled for Ship</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Tank">
+                <English>Enable on Tank</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Vehicles_Tank_Tooltip">
+                <English>Determines if AVM is enabled for Tank</English>
+            </Key>
+        </Container>
+        <Container name="Integrations">
+            <Key ID="STR_MIRA_AVM_Settings_Integrations_Category">
+                <English>Integrations</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Integrations_Enable_KAT">
+                <English>Enable KAM Integration</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Integrations_Enable_KAT_Tooltip">
+                <English>Determines if AVM will show KAT Medical specific actions</English>
+            </Key>
+        </Container>
     </Package>
 </Project>
