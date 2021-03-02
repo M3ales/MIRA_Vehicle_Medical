@@ -32,6 +32,6 @@ CBA Settings are provided and can be accessed under Configure Addons -> ACE Vehi
 - Enable/Disable warning popups for viewing dead members.
 
 ## Translations
-- English [@m3ales]
+- English | [m3ales](https://github.com/M3ales)
 
 I am accepting translation PRs.
