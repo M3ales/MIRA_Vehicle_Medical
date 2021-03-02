@@ -8,11 +8,11 @@ params[
 
 _hr = [_patient] call FUNC(getHeartRate);
 if(_hr == 0) exitWith {
-	NO_HR_MESSAGE
+	[LSTRING(Shared,Heart_Rate_None)] call FUNC(cachedLocalisationCall)
 };
 
 if(_isMedic) exitWith {
 	round _hr
 };
 
-NOTMEDIC_LOWHR_MESSAGE
+[LSTRING(Shared,Not_Medic_Heart_Rate_Low)] call FUNC(cachedLocalisationCall)

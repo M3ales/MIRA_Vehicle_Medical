@@ -11,6 +11,17 @@
             <English>Unstable</English>
         </Key>
     </Package>
+    <Package name="Shared">
+        <Key ID="STR_MIRA_AVM_Shared_Heart_Rate_None">
+            <English>None</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Heart_Rate_Low">
+            <English>Weak</English>
+        </Key>
+         <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Blood_Pressure_Low">
+            <English>Low</English>
+        </Key>
+    </Package>
     <Package name="Unstable">
         <Key ID="STR_MIRA_AVM_Unstable_Dead">
             <English>Deceased</English>
