@@ -1,7 +1,7 @@
 # ACE Vehicle Medical 2.0.0
 
 ## Features
-- Dynamically adds itself to anything inheriting from: `Car, Tank, Helicopter, Ship`, using `ace_interact_menu_newControllableObject` for performance.
+- Dynamically adds itself to anything inheriting from: `Car, Tank, Helicopter, Ship, Plane`, using `ace_interact_menu_newControllableObject` for performance.
 - Provides a main interact while inside vehicle, which splits into two subcategories.
    - Stable
    - Unstable
@@ -30,3 +30,8 @@ CBA Settings are provided and can be accessed under Configure Addons -> ACE Vehi
 - Apply your own thresholds for 'low' heartrate/blood pressure. (Medics only)
 - Enable/Disable dead people being listed as unstable.
 - Enable/Disable warning popups for viewing dead members.
+
+## Translations
+- English | [m3ales](https://github.com/M3ales)
+
+I am accepting translation PRs.

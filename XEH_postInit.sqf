@@ -24,7 +24,7 @@
     private _action = 
 		[
 			"MIRA_Medical",
-			"Medical",
+			[LSTRING(Interaction,Medical)] call FUNC(cachedLocalisationCall),
 			"",
 			{ if(true) exitWith{} },
 			{ true },
@@ -37,7 +37,7 @@
 	 _action = 
 		[
 			"MIRA_Stable",
-			"Stable",
+			[LSTRING(Interaction,Stable)] call FUNC(cachedLocalisationCall),
 			"",
 			{ /* Leave statement blank to make ace not show it unless there are visible child actions */ },
 			{ GVAR(EnableStable) },
@@ -51,7 +51,7 @@
 	 _action = 
 		[
 			"MIRA_Unstable",
-			"Unstable",
+			[LSTRING(Interaction,Unstable)] call FUNC(cachedLocalisationCall),
 			"",
 			{ /* Leave statement blank to make ace not show it unless there are visible child actions */ }, 
 			{ GVAR(EnableUnstable) },
