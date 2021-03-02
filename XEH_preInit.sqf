@@ -52,16 +52,16 @@ _unstableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Unstable,Category)];
 
 //Stable
 _stableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Stable,Category)];
-[QUOTE(GVAR(EnableStable)), "CHECKBOX", ["Enable Stable List", "Determines if Stable list will be shown"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackNeedsBandage)), "CHECKBOX", ["Track Open Wounds", "Determines if open wounds to be bandaged will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackStitchableWounds)), "CHECKBOX", ["Track Stitchable Wounds", "Determines if stitchable body parts will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackLowBP)), "CHECKBOX", ["Track Low Blood Pressure", "Determines if low blood pressure will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackIV)), "CHECKBOX", ["Track IVs", "Determines if IV total volume will be displayed"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_ThresholdLowBP)), "SLIDER", ["Low Blood Pressure Threshold", "Value below which a given patient will have 'low' blood pressure"], _stableCategory, [1, 120, 80, 0], 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackLowHR)), "CHECKBOX", ["Track Low Heart Rate", "Determines if low heart rate will be monitored and reported by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", ["Low Heart Rate Threshold", "Value below which a given patient will have 'low' heart rate"], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackFractures)), "CHECKBOX", ["Track Arm Fractures", "Determines if Arm Fractures will be monitored and reported as unstable by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(Stable_TrackSplints)), "CHECKBOX", ["Track Arm Splints", "Determines if splinted Arm Fractures will be reported in the unstable category by AVM"], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(EnableStable)), "CHECKBOX", [LOC(Settings_Stable,Enable),LOC(Settings_Stable,Enable_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackNeedsBandage)), "CHECKBOX", [LOC(Settings_Stable,Track_Open_Wounds),LOC(Settings_Stable,Track_Open_Wounds_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackStitchableWounds)), "CHECKBOX", [LOC(Settings_Stable,Track_Stitchable_Wounds),LOC(Settings_Stable,Track_Stitchable_Wounds_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackLowBP)), "CHECKBOX", [LOC(Settings_Stable,Track_Low_Blood_Pressure),LOC(Settings_Stable,Track_Low_Blood_Pressure_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackIV)), "CHECKBOX", [LOC(Settings_Stable,Track_IV),LOC(Settings_Stable,Track_IV_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_ThresholdLowBP)), "SLIDER", [LOC(Settings_Stable,Low_Blood_Pressure_Threshold),LOC(Settings_Stable,Low_Blood_Pressure_Threshold_Tooltip)], _stableCategory, [1, 120, 80, 0], 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackLowHR)), "CHECKBOX", [LOC(Settings_Stable,Track_Low_Heart_Rate),LOC(Settings_Stable,Track_Low_Heart_Rate_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", [LOC(Settings_Stable,Low_Heart_Rate_Threshold),LOC(Settings_Stable,Low_Heart_Rate_Threshold_Tooltip)], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackFractures)), "CHECKBOX", [LOC(Settings_Stable,Track_Arm_Fractures),LOC(Settings_Stable,Track_Arm_Fractures_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackSplints)), "CHECKBOX", [LOC(Settings_Stable,Track_Arm_Splints),LOC(Settings_Stable,Track_Arm_Splints_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //vehicles
 _vehicleCategory = [LOC(Settings,Addon_Name), LOC(Settings_Vehicles,Category)];
@@ -74,9 +74,9 @@ _vehicleCategory = [LOC(Settings,Addon_Name), LOC(Settings_Vehicles,Category)];
 //KAT Integration
 if(GVAR(KATInstalled)) then {
 	[QUOTE(GVAR(EnableSupportKAT)), "CHECKBOX", [LOC(Settings_Integrations,Enable_KAT), LOC(Settings_Integrations,Enable_KAT_Tooltip)], [LOC(Settings,Addon_Name), LOC(Settings_Integrations,Category)], true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", ["Track KAM SpO2", "Determines if KAT Advanced Medical SpO2 will be monitored and reported by AVM"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", ["Track KAM Pneumothroax", "Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackAirwayBlocked)), "CHECKBOX", ["Track KAM Blocked Airways", "Determines if Airway Obstruction and Occlusion will be monitored and reported by AVM in Unstable"], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", [LOC(Unstable_KAT,SpO2), LOC(Unstable_KAT,SpO2_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", [LOC(Unstable_KAT,Pneumothorax), LOC(Unstable_KAT,Pneumothorax_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAirwayBlocked)), "CHECKBOX", [LOC(Unstable_KAT,Blocked_Airways), LOC(Unstable_KAT,Blocked_Airways_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 } else
 {
 	GVAR(EnableSupportKAT) = false;
