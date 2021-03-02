@@ -285,13 +285,13 @@
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Fractures">
                 <English>Track Arm Fractures</English>
             </Key>
-            <Key ID="STR_MIRA_AVM_Settings_Stable_Arm_Fractures_Tooltip">
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Fractures_Tooltip">
                 <English>Determines if Arm Fractures will be monitored and reported as unstable by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Splints">
                 <English>Track Arm Splints</English>
             </Key>
-            <Key ID="STR_MIRA_AVM_Settings_Stable_Arm_Splints_Tooltip">
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Splints_Tooltip">
                 <English>Determines if splinted Arm Fractures will be reported in the unstable category by AVM</English>
             </Key>
         </Container>

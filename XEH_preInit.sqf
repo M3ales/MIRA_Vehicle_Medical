@@ -74,9 +74,9 @@ _vehicleCategory = [LOC(Settings,Addon_Name), LOC(Settings_Vehicles,Category)];
 //KAT Integration
 if(GVAR(KATInstalled)) then {
 	[QUOTE(GVAR(EnableSupportKAT)), "CHECKBOX", [LOC(Settings_Integrations,Enable_KAT), LOC(Settings_Integrations,Enable_KAT_Tooltip)], [LOC(Settings,Addon_Name), LOC(Settings_Integrations,Category)], true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", [LOC(Unstable_KAT,SpO2), LOC(Unstable_KAT,SpO2_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", [LOC(Unstable_KAT,Pneumothorax), LOC(Unstable_KAT,Pneumothorax_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
-	[QUOTE(GVAR(Unstable_TrackAirwayBlocked)), "CHECKBOX", [LOC(Unstable_KAT,Blocked_Airways), LOC(Unstable_KAT,Blocked_Airways_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackSpO2)), "CHECKBOX", [LOC(Settings_Unstable_KAT,SpO2), LOC(Settings_Unstable_KAT,SpO2_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAllPneumothorax)), "CHECKBOX", [LOC(Settings_Unstable_KAT,Pneumothorax), LOC(Settings_Unstable_KAT,Pneumothorax_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+	[QUOTE(GVAR(Unstable_TrackAirwayBlocked)), "CHECKBOX", [LOC(Settings_Unstable_KAT,Blocked_Airways), LOC(Settings_Unstable_KAT,Blocked_Airways_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 } else
 {
 	GVAR(EnableSupportKAT) = false;
