@@ -1,5 +1,9 @@
-# ACE Vehicle Medical
+# ACE Vehicle Medical [<img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam Workshop Download" width=32px height=32px/>](https://steamcommunity.com/sharedfiles/filedetails/?id=1911374016)
+
+![AVM Example Header](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_example_1.gif)
+
 ## Features
+
 - Dynamically adds itself to anything inheriting from: `Car, Tank, Helicopter, Ship, Plane`, using `ace_interact_menu_newControllableObject` for performance.
 - Provides a main interact while inside vehicle, which splits into two subcategories.
    - Stable
@@ -8,12 +12,31 @@
 - Tracks deceased members inside a vehicle to easily see if you're working on someone who has passed on.
 - Icons to more easily identify a situation and triage patients quickly - get to those who need it most.
 - Easily access the Ace Medical Menu by selecting either the patient's name, or one of their afflictions.
+- Dynamic Updates 
 
-Effective CASEVAC Management Example:
 
-![Icon Updates](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/dynamic_icon_updates.gif)
+## Integrations
+
+Integrations are not required, and will be detected automatically by AVM on startup. The option to disable an integration will be shown in the menu only if AVM detects it, otherwise it is disabled by default.
+
+### [KAT Advanced Medical](https://github.com/Tomcat-SG/KAM)
+
+![Animation of KAT Advanced Medical Interactions](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_example_kat_1.gif)
+
+### Configurability
+
+CBA Settings are provided and can be accessed under Configure Addons -> ACE Vehicle Medical
+- Enable/Disable tracking of most states
+- Apply your own thresholds for 'low' heartrate/blood pressure. (Medics only)
+- Enable/Disable dead people being listed as unstable
+- Enable/Disable warning popups for viewing dead members
+
+![Animation of Configuration Menu](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_cbasettings_0.gif)
+
+## Icons
 
 ### Stable
+
 This category is for most non varying conditions such as:
 - ![Bandage Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/bandage.png) Bandaging required on a tourinquetted limb
 - ![Stitch Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/stitch.png) Stitching of bandaged wounds
@@ -23,6 +46,7 @@ This category is for most non varying conditions such as:
 - ![Splinted Fracture Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/splint.png) Splinted Fractures
 
 ### Unstable
+
 This is for conditions which may quickly lead to the patient dying, or significantly reduce their effectiveness
 - ![Dead Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/dead.png) Deceased
 - ![Cardiac Arrest Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/cardiac_arrest.png) Cardiac Arrest
@@ -34,14 +58,11 @@ This is for conditions which may quickly lead to the patient dying, or significa
 - ![Pneumothorax Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/kat_pneumothroax.png) Pneumothorax [With [KAM](https://github.com/Tomcat-SG/KAM)]
 - ![Airway Blocked Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/kat_blocked_airways.png) Airway Blocked [With [KAM](https://github.com/Tomcat-SG/KAM)]
 
-### Configurability
-CBA Settings are provided and can be accessed under Configure Addons -> ACE Vehicle Medical
-- Enable/Disable tracking of most states
-- Apply your own thresholds for 'low' heartrate/blood pressure. (Medics only)
-- Enable/Disable dead people being listed as unstable
-- Enable/Disable warning popups for viewing dead members
-
 ## Translations
+
 - English | [m3ales](https://github.com/M3ales)
 
 I am accepting translation PRs.
+
+
+![Effective MASCAS Management](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/dynamic_icon_updates.gif)
