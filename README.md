@@ -19,7 +19,7 @@
 
 Integrations are not required, and will be detected automatically by AVM on startup. The option to disable an integration will be shown in the menu only if AVM detects it, otherwise it is disabled by default.
 
-### [KAT Advanced Medical](https://github.com/Tomcat-SG/KAM)
+### [KAT Advanced Medical Integration](https://github.com/Tomcat-SG/KAM)
 
 Basic integration that keeps track of the bare minimums:
 
