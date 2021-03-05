@@ -1,7 +1,6 @@
 # ACE Vehicle Medical [<img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam Workshop Download" width=32px height=32px/>](https://steamcommunity.com/sharedfiles/filedetails/?id=1911374016)
 
-![AVM Example Header](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_example_1.gif)
-
+[![AVM Example Header](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_example_1.gif)](https://steamcommunity.com/sharedfiles/filedetails/?id=1911374016)
 ## Features
 
 - Dynamically adds itself to anything inheriting from: `Car, Tank, Helicopter, Ship, Plane`, using `ace_interact_menu_newControllableObject` for performance.
@@ -38,7 +37,7 @@ CBA Settings are provided and can be accessed under Configure Addons -> ACE Vehi
 - Enable/Disable dead people being listed as unstable
 - Enable/Disable warning popups for viewing dead members
 
-![Animation of Configuration Menu](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_cbasettings_0.gif)
+[![Animation of Configuration Menu](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_cbasettings_0.gif)](https://steamcommunity.com/sharedfiles/filedetails/?id=1911374016)
 
 ## Icons
 
