@@ -21,6 +21,13 @@ Integrations are not required, and will be detected automatically by AVM on star
 
 ### [KAT Advanced Medical](https://github.com/Tomcat-SG/KAM)
 
+Basic integration that keeps track of the bare minimums:
+
+- SpO2 % < 85%
+- Pneumothorax
+- Airway Blocked
+
+
 ![Animation of KAT Advanced Medical Interactions](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/dev/Source/pr/avm_example_kat_1.gif)
 
 ### Configurability
