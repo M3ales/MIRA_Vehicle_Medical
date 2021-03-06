@@ -1,5 +1,4 @@
 #include "functions\function_macros.hpp"
-
 ["ace_interact_menu_newControllableObject", {
     params ["_type"]; // string of the object's classname
 	private _validTypes = [];
@@ -24,42 +23,30 @@
     private _action = 
 		[
 			"MIRA_Medical",
-			"Medical",
+			[LSTRING(Interaction,Medical)] call FUNC(cachedLocalisationCall),
 			"",
 			{ if(true) exitWith{} },
-			{ true },
-			{[]},
-			"",
-			4,
-			[false, false, false, false, true]
+			{ GVAR(EnableAVM) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	 _action = 
 		[
 			"MIRA_Stable",
-			"Stable",
+			[LSTRING(Interaction,Stable)] call FUNC(cachedLocalisationCall),
 			"",
-			{ /* Leave statement blank to make ace not show it unless there are visible child actions */ },
+			{ },
 			{ GVAR(EnableStable) },
-			{ _this call FUNC(buildStablePassengerActions) },
-			{ [] },
-			"",
-			4,
-			[false, false, false, false, true]
+			{ _this call FUNC(buildStablePassengerActions) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	 _action = 
 		[
 			"MIRA_Unstable",
-			"Unstable",
+			[LSTRING(Interaction,Unstable)] call FUNC(cachedLocalisationCall),
 			"",
-			{ /* Leave statement blank to make ace not show it unless there are visible child actions */ }, 
+			{ }, 
 			{ GVAR(EnableUnstable) },
-			{ _this call FUNC(buildUnstablePassengerActions) },
-			{ [] },
-			"",
-			4,
-			[false, false, false, false, true]
+			{ _this call FUNC(buildUnstablePassengerActions) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	LOGF_1("Dynamically added interaction to %1", _type);

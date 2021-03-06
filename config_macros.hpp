@@ -10,3 +10,6 @@
 #define ARR_3(a,b,c) a, b, c
 #define ARR_4(a,b,c,d) a, b, c, d
 #define ARR_5(a,b,c,d,e) a, b, c, d, e
+#define LSTR(module,name) CONCAT(STR_MIRA_AVM_,CONCAT(module,CONCAT(_,name)))
+#define LSTRING(module,name) QUOTE(LSTR(module,name))
+#define CSTRING(module,name) QUOTE(CONCAT($,LSTR(module,name)))
