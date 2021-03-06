@@ -1,3 +1,3 @@
 params["_unit"];
 
-_unit getVariable ["KAT_medical_airwayobstruction", false]
+_unit getVariable ["KAT_airway_obstruction", false]
