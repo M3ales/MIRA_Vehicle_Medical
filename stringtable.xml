@@ -75,6 +75,9 @@
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Obstructed">
                 <English>Airway Obstructed</English>
             </Key>
+            <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Blocked">
+                <English>Airway Blocked</English>
+            </Key>
         </Container>
     </Package>
     <Package name="Stable">

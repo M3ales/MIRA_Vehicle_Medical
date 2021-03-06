@@ -94,9 +94,12 @@ if(GVAR(EnableSupportKAT)) then {
 	private _airwayObstruction = [_patient] call FUNC(kat_getAirwayObstruction);
 	private _airWayOcclusion = [_patient] call FUNC(kat_getAirwayOcclusion);
 	if(GVAR(Unstable_TrackAirwayBlocked) && (_airwayObstruction || _airWayOcclusion)) then {
-		private _name = [LSTRING(Unstable_KAT,Airway_Occluded)] call FUNC(cachedLocalisationCall);
+		private _name = [LSTRING(Unstable_KAT,Airway_Obstructed)] call FUNC(cachedLocalisationCall);
 		if(_airwayObstruction) then {
-			_name = [LSTRING(Unstable_KAT,Airway_Obstructed)] call FUNC(cachedLocalisationCall);
+			_name = [LSTRING(Unstable_KAT,Airway_Occluded)] call FUNC(cachedLocalisationCall);
+			if(_airWayOcclusion) then {
+				_name = [LSTRING(Unstable_KAT,Airway_Blocked)] call FUNC(cachedLocalisationCall);
+			};
 		};
 		_action = ["MIRA_KAT_AirwayBlocked", _name, QUOTE(ICON_PATH(kat_airway_blocked)), {
 			params ["_target", "_player", "_parameters"];
