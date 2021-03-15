@@ -70,6 +70,7 @@ This is for conditions which may quickly lead to the patient dying, or significa
 ## Translations
 
 - English | [m3ales](https://github.com/M3ales)
+- Simplified Chinese | [GoldJohnKing](https://github.com/GoldJohnKing)
 
 I am accepting translation PRs.
 

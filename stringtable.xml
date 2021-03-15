@@ -3,55 +3,71 @@
     <Package name="Interaction">
         <Key ID="STR_MIRA_AVM_Interaction_Medical">
             <English>Medical</English>
+            <Chinesesimp>医疗</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Interaction_Stable">
             <English>Stable</English>
+            <Chinesesimp>伤势稳定</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Interaction_Unstable">
             <English>Unstable</English>
+            <Chinesesimp>需要救治</Chinesesimp>
         </Key>
     </Package>
     <Package name="Shared">
         <Key ID="STR_MIRA_AVM_Shared_Heart_Rate_None">
             <English>None</English>
+            <Chinesesimp>无</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Heart_Rate_Low">
             <English>Weak</English>
+            <Chinesesimp>微弱</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Blood_Pressure_Low">
             <English>Low</English>
+            <Chinesesimp>低</Chinesesimp>
         </Key>
     </Package>
     <Package name="Unstable">
         <Key ID="STR_MIRA_AVM_Unstable_Dead">
             <English>Deceased</English>
+            <Chinesesimp>已阵亡</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Dead_Warning">
             <English>You are viewing %1, who is currently deceased.</English>
+            <Chinesesimp>%1 已经阵亡。</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Cardiac_Arrest">
             <English>Cardiac Arrest</English>
+            <Chinesesimp>心搏停止</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Bleeding">
             <English>Bleeding</English>
+            <Chinesesimp>正在流血</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Low_Heart_Rate">
             <English>Heart Rate (%1)</English>
+            <Chinesesimp>心率 (%1)</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Low_Blood_Pressure">
             <English>Blood Pressure (%1)</English>
+            <Chinesesimp>血压 (%1)</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Unconscious">
             <English>Unconscious</English>
+            <Chinesesimp>昏迷</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Leg_Fractures">
             <English>Leg Fractures (%1)</English>
+            <Chinesesimp>腿部骨折 (%1)</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Splinted_Leg_Fractures">
             <English>Splinted Leg Fractures (%1)</English>
+            <Chinesesimp>已固定的腿部骨折 (%1)</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Splinted_Leg_Fractures_Error">
             <English>Splinted Leg Fractures (Error Fetching Amount)</English>
+            <Chinesesimp>已固定的腿部骨折 (无法获取伤口数量)</Chinesesimp>
         </Key>
         <Container name="KAT">
             <Key ID="STR_MIRA_AVM_Unstable_KAT_SpO2">
@@ -83,30 +99,39 @@
     <Package name="Stable">
          <Key ID="STR_MIRA_AVM_Stable_Bandage">
             <English>Bandage (%1)</English>
+            <Chinesesimp>包扎 (%1)</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Stitch">
             <English>Stitch (%1)</English>
+            <Chinesesimp>缝合 (%1)</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Low_Heart_Rate">
             <English>Heart Rate (%1)</English>
+            <Chinesesimp>心率 (%1)</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Low_Blood_Pressure">
             <English>Blood Pressure (%1)</English>
+            <Chinesesimp>血压 (%1)</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Low_Blood_Pressure_With_IV">
             <English>Blood Pressure (%1) [%2ml]</English>
+            <Chinesesimp>血压 (%1) [%2ml]</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Arm_Fractures">
             <English>Fractures (%1)</English>
+            <Chinesesimp>骨折 (%1)</Chinesesimp>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Arm_Fractures_Error">
             <English>Fractures (Error Fetching Amount)</English>
+            <Chinesesimp>骨折 (无法获取伤口数量)</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Splinted_Fractures">
             <English>Splinted Fractures (%1)</English>
+            <Chinesesimp>已固定的骨折 (%1)</Chinesesimp>
         </Key>
          <Key ID="STR_MIRA_AVM_Stable_Splinted_Fractures_Error">
             <English>Splinted Fractures (Error Fetching Amount)</English>
+            <Chinesesimp>已固定的骨折 (无法获取伤口数量)</Chinesesimp>
         </Key>
     </Package>
     <Package name="Settings">
