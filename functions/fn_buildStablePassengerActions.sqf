@@ -24,7 +24,7 @@ if!(alive _vehicle) exitWith {
 	[]
 };
 
- _actions = [];
+_actions = [];
 
 //conditions to display the unit's action
 _conditions = {
@@ -59,9 +59,6 @@ _modifierFunc = {
 	};
 	if(GVAR(Stable_TrackNeedsBandage) && [_patient] call FUNC(needsBandage)) then {
 		_result = QUOTE(ICON_PATH(bandage));
-	};
-	if!(alive _patient) then {
-		_result = QUOTE(ICON_PATH(dead));
 	};
 	_actionData set [2, _result];
 };

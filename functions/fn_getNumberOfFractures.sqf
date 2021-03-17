@@ -13,7 +13,7 @@ private _numFractures = 0;
 	switch (_fracture) do {
 		case 0: { 
 			// Do nothing, no fracture
-		 };
+		};
 		case 1: {
 			// Fractured, no splint
 			if!(_splintedOnly) then {
@@ -29,7 +29,7 @@ private _numFractures = 0;
 					// Splinted, fracture healed automagically
 				};
 			};
-		 };
+		};
 		default {
 			LOG_ERRORF_1("Unknown Fracture State '%1'", _fracture);
 		};

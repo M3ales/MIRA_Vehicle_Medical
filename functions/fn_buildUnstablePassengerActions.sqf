@@ -43,7 +43,7 @@ _modifierFunc = {
 	private _sleepy = GVAR(Unstable_TrackUnconscious) && [_patient] call FUNC(isUnconscious);
 	private _cardiac = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
 	private _legFractures = GVAR(Unstable_TrackLegFractures) && [_patient] call FUNC(hasLegFractures);
-
+	private _dead = GVAR(Unstable_TrackDead) && !alive _patient;
 	//KAT Priority
 	private _kat_pneumothorax = false;
 	private _kat_airwayBlocked = false;
@@ -81,7 +81,7 @@ _modifierFunc = {
 	if(_cardiac) then {
 		_result = QUOTE(ICON_PATH(cardiac_arrest_red));
 	};
-	if!(alive _patient) then {
+	if(_dead) then {
 		_result = QUOTE(ICON_PATH(dead));
 	};
 	_actionData set [2, _result];
