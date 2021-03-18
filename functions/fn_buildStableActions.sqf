@@ -104,5 +104,16 @@ if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-// TODO: Add an action that shows if they've still got tourniquets on
+private _tourniquets = GVAR(Stable_TrackTourniquets);
+if(_tourniquets) then {
+	LOGF_1("'%1' has tourniquets", _tourniquets);
+	private _amount = [_patient] call FUNC(getNumberOfTourniquets);
+	private _action = ["MIRA_Tourniquets", format[[LSTRING(Stable,Tourniquets)] call FUNC(cachedLocalisationCall), _amount], QUOTE(ICON_PATH(tourniquet)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_patient] call FUNC(openMedicalMenu);
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+};
+
 _actions

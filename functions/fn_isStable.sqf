@@ -25,6 +25,7 @@ params[
 		( GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP))
 		|| { GVAR(Stable_TrackLowHR) && ([_patient, _isMedic] call FUNC(hasLowHR)) }
 		|| { GVAR(Stable_TrackFractures) && ([_patient] call FUNC(hasFractures)) }
-		|| { GVAR(Stable_TrackStitchableWounds) && count ([_patient] call FUNC(getStitchableWounds)) > 0 }
+		|| { GVAR(Stable_TrackStitchableWounds) && (count ([_patient] call FUNC(getStitchableWounds))) > 0 }
 		|| { GVAR(Stable_TrackNeedsBandage) && ([_patient] call FUNC(getNumberOfWoundsToBandage)) > 0 }
+		|| { GVAR(Stable_TrackTourniquets) && [_patient] call FUNC(hasTourniquets) }
 	}

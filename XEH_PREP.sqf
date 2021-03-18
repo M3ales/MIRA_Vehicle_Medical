@@ -28,6 +28,8 @@ PREP(getVersion);
 PREP(isUnstable);
 PREP(getNumberOfFractures);
 PREP(getNumberOfLegFractures);
+PREP(hasTourniquets);
+PREP(getNumberOfTourniquets);
 
 // KAT Integration
 PREP(kat_isUnstable);

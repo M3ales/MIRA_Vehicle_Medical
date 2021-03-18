@@ -50,11 +50,12 @@ _modifierFunc = {
 	private _kat_spO2Low = false;
 
 	if(GVAR(EnableSupportKAT)) then {
-		_kat_pneumothorax = [_patient] call FUNC(kat_getPneumothorax) 
+		_kat_pneumothorax = GVAR(Unstable_TrackAllPneumothorax) &&
+		([_patient] call FUNC(kat_getPneumothorax) 
 			|| [_patient] call FUNC(kat_getTensionPneumothorax) 
-			|| [_patient] call FUNC(kat_getHemopneumothorax);
-		_kat_airwayBlocked = [_patient] call FUNC(kat_getAirwayObstruction) || [_patient] call FUNC(kat_getAirwayOcclusion);
-		_kat_spO2Low = ([_patient] call FUNC(kat_getAirwayStatus) < 85);
+			|| [_patient] call FUNC(kat_getHemopneumothorax));
+		_kat_airwayBlocked = GVAR(Unstable_TrackAirwayBlocked) && ([_patient] call FUNC(kat_getAirwayObstruction) || [_patient] call FUNC(kat_getAirwayOcclusion));
+		_kat_spO2Low = GVAR(Unstable_TrackSpO2) && ([_patient] call FUNC(kat_getAirwayStatus) < 85);
 	};
 
 	// Modify the icon (3rd param)

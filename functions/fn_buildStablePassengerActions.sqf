@@ -41,23 +41,30 @@ _modifierFunc = {
 	
 	private _result = "";
 	// bandage > stitch  > lowhr > lowbp > fractures
+	private _tourniquet = GVAR(Stable_TrackTourniquets) && [_patient] call FUNC(hasTourniquets);
+	private _fractures = GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures);
 	private _isMedic = _player call FUNC(isMedic);
-	if(GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures)) then {
+	private _lowBP = GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
+	private _lowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
+	private _stitch = GVAR(Stable_TrackStitchableWounds) && count ([_patient] call FUNC(getStitchableWounds)) > 0;
+	private _bandage = GVAR(Stable_TrackNeedsBandage) && [_patient] call FUNC(needsBandage);
+
+	if(_tourniquet) then {
+		_result = QUOTE(ICON_PATH(tourniquet));
+	};
+	if(_fractures) then {
 		_result = QUOTE(ICON_PATH(fracture));
 	};
-	private _lowBP = GVAR(Stable_TrackLowBP) && [_patient, _isMedic] call FUNC(hasLowBP);
 	if(_lowBP) then {
 		_result = QUOTE(ICON_PATH(bp_low));
 	};
-	private _lowHR = GVAR(Stable_TrackLowHR) && [_patient, _isMedic] call FUNC(hasLowHR);
 	if(_lowHR) then {
 		_result = QUOTE(ICON_PATH(hr_low));
 	};
-	private _stitch = [_patient] call FUNC(getStitchableWounds);
-	if(GVAR(Stable_TrackStitchableWounds) && count _stitch > 0) then {
+	if(_stitch) then {
 		_result = QUOTE(ICON_PATH(stitch));
 	};
-	if(GVAR(Stable_TrackNeedsBandage) && [_patient] call FUNC(needsBandage)) then {
+	if(_bandage) then {
 		_result = QUOTE(ICON_PATH(bandage));
 	};
 	_actionData set [2, _result];

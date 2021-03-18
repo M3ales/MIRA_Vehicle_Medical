@@ -62,6 +62,7 @@ _stableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Stable,Category)];
 [QUOTE(GVAR(Stable_ThresholdLowHR)), "SLIDER", [LOC(Settings_Stable,Low_Heart_Rate_Threshold),LOC(Settings_Stable,Low_Heart_Rate_Threshold_Tooltip)], _stableCategory, [1, 120, 50, 0], 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackFractures)), "CHECKBOX", [LOC(Settings_Stable,Track_Arm_Fractures),LOC(Settings_Stable,Track_Arm_Fractures_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackSplints)), "CHECKBOX", [LOC(Settings_Stable,Track_Arm_Splints),LOC(Settings_Stable,Track_Arm_Splints_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_TrackTourniquets)), "CHECKBOX", [LOC(Settings_Stable,Track_Tourniquets),LOC(Settings_Stable,Track_Tourniquets_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 //vehicles
 _vehicleCategory = [LOC(Settings,Addon_Name), LOC(Settings_Vehicles,Category)];

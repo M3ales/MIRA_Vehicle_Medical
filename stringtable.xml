@@ -133,6 +133,9 @@
             <English>Splinted Fractures (Error Fetching Amount)</English>
             <Chinesesimp>已固定的骨折 (无法获取伤口数量)</Chinesesimp>
         </Key>
+        <Key ID="STR_MIRA_AVM_Stable_Tourniquets">
+            <English>Tourniquets (%1)</English>
+        </Key>
     </Package>
     <Package name="Settings">
         <Key ID="STR_MIRA_AVM_Settings_Addon_Name">
@@ -314,13 +317,19 @@
                 <English>Track Arm Fractures</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Fractures_Tooltip">
-                <English>Determines if Arm Fractures will be monitored and reported as unstable by AVM</English>
+                <English>Determines if Arm Fractures will be monitored and reported as stable by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Splints">
                 <English>Track Arm Splints</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Splints_Tooltip">
-                <English>Determines if splinted Arm Fractures will be reported in the unstable category by AVM</English>
+                <English>Determines if splinted Arm Fractures will be reported in the stable category by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Tourniquets">
+                <English>Track Tourniquets</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Tourniquets_Tooltip">
+                <English>Determines if splinted Tourniquets will be reported in the stable category by AVM</English>
             </Key>
         </Container>
         <Container name="Vehicles">
