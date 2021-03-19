@@ -135,6 +135,7 @@
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Tourniquets">
             <English>Tourniquets (%1)</English>
+            <Chinesesimp>止血带 (%1)</Chinesesimp>
         </Key>
     </Package>
     <Package name="Settings">
