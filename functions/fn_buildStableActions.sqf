@@ -104,7 +104,7 @@ if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
 	_actions pushBack [_action, [], _patient];
 };
 
-private _tourniquets = GVAR(Stable_TrackTourniquets);
+private _tourniquets = GVAR(Stable_TrackTourniquets) && [_patient] call FUNC(hasTourniquets);
 if(_tourniquets) then {
 	LOGF_1("'%1' has tourniquets", _tourniquets);
 	private _amount = [_patient] call FUNC(getNumberOfTourniquets);
