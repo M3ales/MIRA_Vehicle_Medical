@@ -52,6 +52,7 @@ This category is for most non varying conditions such as:
 - ![Low Heart Rate Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/master/Source/pr/low_heart_rate.png) Low Heart Rate (Although not yet in cardiac arrest)
 - ![Fracture Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/master/Source/pr/fracture.png) Arm Fractures
 - ![Splinted Fracture Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/master/Source/pr/splint.png) Splinted Fractures
+- ![Tourniquet Icon](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/master/Source/pr/tourniquet.png) Applied Tourniquets
 
 ### Unstable
 
