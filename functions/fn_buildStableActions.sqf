@@ -1,9 +1,25 @@
 #include "function_macros.hpp"
+/*
+ * Author: M3ales
+ * Builds a set of subactions for a given passenger, listing their afflictions.
+ *
+ * Arguments:
+ * 0: Target <OBJECT>
+ * 1: Player <OBJECT>
+ * 2: Parameters <OBJECT>
+ *
+ * Return Value:
+ * Children actions <ARRAY>
+ *
+ * Example:
+ * [_player,_target,[_patient]] call MIRA_fnc_buildStableActions
+ *
+ * Public: Yes
+ */
 
-// [player, player, [player]] call MIRA_Vehicle_Medical_fnc_buildStableActions;
-params["_target", "_player", "_params"];
+params["_target", "_player", "_parameters"];
 
-_params params[
+_parameters params [
 	"_patient"
 ];
 
@@ -104,6 +120,7 @@ if(GVAR(Stable_TrackSplints) && [_patient, true] call FUNC(hasFractures)) then {
 	_actions pushBack [_action, [], _patient];
 };
 
+// Tourniquets
 private _tourniquets = GVAR(Stable_TrackTourniquets) && [_patient] call FUNC(hasTourniquets);
 if(_tourniquets) then {
 	LOGF_1("'%1' has tourniquets", _tourniquets);

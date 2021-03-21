@@ -12,7 +12,7 @@
  * Children actions <ARRAY>
  *
  * Example:
- * [vehicle player, player] call MIRA_fnc_buildUnstablePassengerActions
+ * [vehicle player, player] call MIRA_Vehicle_Medical_fnc_buildUnstablePassengerActions
  *
  * Public: Yes
  */

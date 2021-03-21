@@ -2,7 +2,6 @@
 /*
  * Author: M3ales
  * Builds a set of subactions for a given passenger, listing their afflictions.
- * Currently marked afflictions are: Bleeding (actively), Unconscious, and Cardiac Arrest
  *
  * Arguments:
  * 0: Target <OBJECT>
@@ -13,20 +12,19 @@
  * Children actions <ARRAY>
  *
  * Example:
- * [_player,_target,[_patient, _isMedic]] call MIRA_fnc_buildUnstableActions
+ * [_player,_target,[_patient]] call MIRA_fnc_buildUnstableActions
  *
  * Public: Yes
  */
- //discard default _player and _target params, don't need them, called by ace.
 
-params ["_target", "_player", "_parameters"];
+params["_target", "_player", "_parameters"];
 
 _parameters params [
 	"_patient"
 ];
 
-private _isMedic = _player call FUNC(isMedic);
 private _actions = [];
+private _isMedic = _player call FUNC(isMedic);
 
 // Dead
 if(GVAR(Unstable_TrackDead) && !alive _patient) then {
@@ -55,6 +53,7 @@ if (_cardiacArrest) then {
 	_actions pushBack [_action, [], _patient];
 };
 
+// KAT Integration Actions
 if(GVAR(EnableSupportKAT)) then {
 	private _spO2 = [_patient] call FUNC(kat_getAirwayStatus);
 	if(GVAR(Unstable_TrackSpO2) && _spO2 < 85) then {
