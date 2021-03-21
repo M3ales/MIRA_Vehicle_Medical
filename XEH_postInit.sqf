@@ -36,7 +36,7 @@
 			"",
 			{ },
 			{ GVAR(EnableStable) },
-			{ _this call FUNC(buildStablePassengerActions) }
+			{ [_this, FUNC(buildStablePassengerActions), GVAR(StableCache)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	 _action = 
@@ -46,7 +46,7 @@
 			"",
 			{ }, 
 			{ GVAR(EnableUnstable) },
-			{ _this call FUNC(buildUnstablePassengerActions) }
+			{ [_this, FUNC(buildUnstablePassengerActions), GVAR(UnstableCache)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	LOGF_1("Dynamically added interaction to %1", _type);
