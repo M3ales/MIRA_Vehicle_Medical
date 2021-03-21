@@ -34,7 +34,7 @@ LOGF_1("[%1] CBA Options Begin", QUOTE(ADDON));
 private _generalCategory = [LOC(Settings,Addon_Name), LOC(Settings_General,Category)];
 [QUOTE(GVAR(VERSION)), "CHECKBOX", [format[LOC(Settings_General,Version), _version], LOC(Settings_General,Version_Tooltip)], _generalCategory, false, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(EnableAVM)), "CHECKBOX", [LOC(Settings_General,Enable), LOC(Settings_General,Enable_Tooltip)], _generalCategory, true, 0, {}] call CBA_fnc_addSetting;
-[QUOTE(GVAR(WarnViewingDead)), "CHECKBOX", [LOC(Settings_General,Warn_Selecting_Dead), _generalCategory, , true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(WarnViewingDead)), "CHECKBOX", [LOC(Settings_General,Warn_Selecting_Dead)], _generalCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(CacheInterval)), "SLIDER", [LOC(Settings_General,Cache_Interval), LOC(Settings_General,Cache_Interval_Tooltip)], _generalCategory, [0, 10, 0.4, 1], 0, {}] call CBA_fnc_addSetting;
 
 // Unstable
