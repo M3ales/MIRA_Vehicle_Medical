@@ -164,6 +164,12 @@
             <Key ID="STR_MIRA_AVM_Settings_General_Warn_Selecting_Dead_Tooltip">
                 <English>Determines if to show a popup and play a click sound when you view someone who is dead (Rare)</English>
             </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Cached_Interval">
+                <English>Cache Lifetime</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_General_Cached_Interval_Tooltip">
+                <English>The speed at which AVM updates in seconds, a lower value will provide more accurate updates, while a higher value will be more performant but will lose accuracy.</English>
+            </Key>
         </Container>
         <Container name="Unstable">
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Category">

@@ -48,5 +48,6 @@ PREP(kat_getHemoPneumothorax);
 PREP(kat_getPneumothorax);
 PREP(kat_getTensionPneumothorax);
 
-// Localisation Caching
+// Caching
 PREP(cachedLocalisationCall);
+PREP(cachedResult);
