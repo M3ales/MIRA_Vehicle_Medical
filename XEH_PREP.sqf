@@ -14,6 +14,10 @@ PREP(hasLowBP);
 PREP(displayBP);
 PREP(getTotalIV);
 
+// Unloads
+PREP(unloadPatient);
+PREP(unloadAllWithCondition);
+
 // Stable Actions
 PREP(buildStablePassengerActions);
 PREP(buildStableActions);
