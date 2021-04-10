@@ -13,6 +13,9 @@
             <English>Unstable</English>
             <Chinesesimp>需要救治</Chinesesimp>
         </Key>
+        <Key ID="STR_MIRA_AVM_Interaction_Incapacitated">
+            <English>Incapacitated</English>
+        </Key>
     </Package>
     <Package name="Shared">
         <Key ID="STR_MIRA_AVM_Shared_Heart_Rate_None">
@@ -26,6 +29,14 @@
         <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Blood_Pressure_Low">
             <English>Low</English>
             <Chinesesimp>低</Chinesesimp>
+        </Key>
+    </Package>
+    <Package name="Incapacitated">
+        <Key ID="STR_MIRA_AVM_Incapacitated_Unload_All">
+            <English>Unload All Patients</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Incapacitated_Unload">
+            <English>Unload Patient</English>
         </Key>
     </Package>
     <Package name="Unstable">
@@ -169,6 +180,23 @@
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_General_Cache_Interval_Tooltip">
                 <English>The speed at which AVM updates in seconds, a lower value will provide more accurate updates, while a higher value will be more performant but will lose accuracy.</English>
+            </Key>
+        </Container>
+        <Container name="Incapacitated">
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Category">
+                <English>Incapacitated</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Enable">
+                <English>Enable Incapacitated</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Enable_Tooltip">
+                <English>Show incapacitated list</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Allow_Unload_All">
+                <English>Allow Unload All</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Allow_Unload_All_Tooltip">
+                <English>Allow multiple units to be unloaded simeltaneously</English>
             </Key>
         </Container>
         <Container name="Unstable">

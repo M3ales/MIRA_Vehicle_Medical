@@ -1,4 +1,4 @@
-#define PREP(var1) FUNC(var1) = compileFinal preProcessFileLineNumbers QUOTE(ADDON\functions\CONCAT(fn_,var1).sqf); diag_log format["PREP fnc_%1", QUOTE(var1)]
+#define PREP(var1) [QUOTE(ADDON\functions\CONCAT(fn_,var1).sqf), QUOTE(FUNC(var1))] call cba_fnc_compileFunction; diag_log format["PREP fnc_%1", QUOTE(var1)]
 
 // Utility
 PREP(openMedicalMenu);
@@ -14,7 +14,8 @@ PREP(hasLowBP);
 PREP(displayBP);
 PREP(getTotalIV);
 
-// Unloads
+// Incapacitated
+PREP(buildIncapacitatedPassengerActions);
 PREP(unloadPatient);
 PREP(unloadAllWithCondition);
 

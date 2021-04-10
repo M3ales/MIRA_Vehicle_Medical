@@ -29,24 +29,34 @@
 			{ GVAR(EnableAVM) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions"], _action, false] call ace_interact_menu_fnc_addActionToClass;
-	 _action = 
+	_action = 
 		[
 			"MIRA_Stable",
 			[LSTRING(Interaction,Stable)] call FUNC(cachedLocalisationCall),
 			"",
 			{ },
 			{ GVAR(EnableStable) },
-			{ [_this, FUNC(buildStablePassengerActions), GVAR(StableCache)] call FUNC(cachedResult) }
+			{ [QUOTE(GVAR(StableCache)),_this, FUNC(buildStablePassengerActions)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
-	 _action = 
+	_action = 
 		[
 			"MIRA_Unstable",
 			[LSTRING(Interaction,Unstable)] call FUNC(cachedLocalisationCall),
 			"",
 			{ }, 
 			{ GVAR(EnableUnstable) },
-			{ [_this, FUNC(buildUnstablePassengerActions), GVAR(UnstableCache)] call FUNC(cachedResult) }
+			{ [QUOTE(GVAR(UnstableCache)), _this, FUNC(buildUnstablePassengerActions)] call FUNC(cachedResult) }
+		] call ace_interact_menu_fnc_createAction;
+    [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
+	_action = 
+		[
+			"MIRA_Incapacitated",
+			[LSTRING(Interaction,Incapacitated)] call FUNC(cachedLocalisationCall),
+			"",
+			{ }, 
+			{ GVAR(EnableIncapacitated) },
+			{ [QUOTE(GVAR(IncapacitatedCache)), _this, FUNC(buildIncapacitatedPassengerActions)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	LOGF_1("Dynamically added interaction to %1", _type);

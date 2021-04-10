@@ -1,10 +1,9 @@
 #include "function_macros.hpp"
 params["_vehicle", "_medic", ["_conditionCode", {true}]];
 
-if(_conditionCode isEqualType {}) exitWith {
+if(!(_conditionCode isEqualType {})) exitWith {
 	LOGF_1("Provided condition is not code: %1", _conditionCode);
 };
-
 private _passengers = crew _vehicle;
 {
 	if([_x] call _conditionCode) then {

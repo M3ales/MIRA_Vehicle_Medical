@@ -37,6 +37,11 @@ private _generalCategory = [LOC(Settings,Addon_Name), LOC(Settings_General,Categ
 [QUOTE(GVAR(WarnViewingDead)), "CHECKBOX", [LOC(Settings_General,Warn_Selecting_Dead)], _generalCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(CacheInterval)), "SLIDER", [LOC(Settings_General,Cache_Interval), LOC(Settings_General,Cache_Interval_Tooltip)], _generalCategory, [0, 10, 0.4, 1], 0, {}] call CBA_fnc_addSetting;
 
+// Incapacitated
+private _incapacitatedCategory = [LOC(Settings,Addon_Name), LOC(Settings_Incapacitated,Category)];
+[QUOTE(GVAR(EnableIncapacitated)), "CHECKBOX", [LOC(Settings_Incapacitated,Enable), LOC(Settings_Incapacitated,Enable_Tooltip)], _incapacitatedCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Incapacitated_CanUnloadAll)), "CHECKBOX", [LOC(Settings_Incapacitated,Allow_Unload_All), LOC(Settings_Incapacitated,Allow_Unload_All_Tooltip)], _incapacitatedCategory, true, 0, {}] call CBA_fnc_addSetting;
+
 // Unstable
 private _unstableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Unstable,Category)];
 [QUOTE(GVAR(EnableUnstable)), "CHECKBOX", [LOC(Settings_Unstable,Enable), LOC(Settings_Unstable,Enable_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
