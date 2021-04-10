@@ -18,6 +18,7 @@ PREP(getTotalIV);
 PREP(buildIncapacitatedPassengerActions);
 PREP(unloadPatient);
 PREP(unloadAllWithCondition);
+PREP(unloadPatientForceHandler);
 
 // Counts (Cached)
 PREP(countIncapacitated);
