@@ -19,6 +19,11 @@ PREP(buildIncapacitatedPassengerActions);
 PREP(unloadPatient);
 PREP(unloadAllWithCondition);
 
+// Counts (Cached)
+PREP(countIncapacitated);
+PREP(countUnstable);
+PREP(countStable);
+
 // Stable Actions
 PREP(buildStablePassengerActions);
 PREP(buildStableActions);

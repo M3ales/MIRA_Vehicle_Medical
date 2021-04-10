@@ -37,9 +37,20 @@
 			{ },
 			{ 
 				params["_vehicle"];
-				GVAR(EnableStable) && ({ !(alive _x) || _x call FUNC(isStable)} count (crew _vehicle)) > 0
+				private _count = [_vehicle] call FUNC(countStable);
+				GVAR(EnableStable) && _count > 0
 			},
-			{ [QUOTE(GVAR(StableCache)),_this, FUNC(buildStablePassengerActions)] call FUNC(cachedResult) }
+			{ [QUOTE(GVAR(StableCache)),_this, FUNC(buildStablePassengerActions)] call FUNC(cachedResult) },
+			[],
+			[0,0,0],
+			4,
+			[],
+			{
+				params ["_target", "_player", "_params", "_actionData"];
+				private _name = _actionData select 1;
+				_name = format[_name + " (%1)", [_target] call FUNC(countStable)];
+				_actionData set [1, _name];
+			}
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	_action = 
@@ -50,9 +61,20 @@
 			{ }, 
 			{ 
 				params["_vehicle"];
-				GVAR(EnableUnstable) && ({ !(alive _x) || _x call FUNC(isUnstable)} count (crew _vehicle)) > 0 
+				private _count = [_vehicle] call FUNC(countUnstable);
+				GVAR(EnableUnstable) && _count > 0 
 			},
-			{ [QUOTE(GVAR(UnstableCache)), _this, FUNC(buildUnstablePassengerActions)] call FUNC(cachedResult) }
+			{ [QUOTE(GVAR(UnstableCache)), _this, FUNC(buildUnstablePassengerActions)] call FUNC(cachedResult) },
+			[],
+			[0,0,0],
+			4,
+			[],
+			{
+				params ["_target", "_player", "_params", "_actionData"];
+				private _name = _actionData select 1;
+				_name = format[_name + " (%1)", [_target] call FUNC(countUnstable)];
+				_actionData set [1, _name];
+			}
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	_action = 
@@ -63,9 +85,20 @@
 			{ }, 
 			{ 
 				params["_vehicle"];
-				GVAR(EnableIncapacitated) && ({ !(alive _x) || _x call FUNC(isUnconscious)} count (crew _vehicle)) > 0
+				private _count = [_vehicle] call FUNC(countIncapacitated);
+				GVAR(EnableIncapacitated) && _count > 0
 			},
-			{ [QUOTE(GVAR(IncapacitatedCache)), _this, FUNC(buildIncapacitatedPassengerActions)] call FUNC(cachedResult) }
+			{ [QUOTE(GVAR(IncapacitatedCache)), _this, FUNC(buildIncapacitatedPassengerActions)] call FUNC(cachedResult) },
+			[],
+			[0,0,0],
+			4,
+			[],
+			{
+				params ["_target", "_player", "_params", "_actionData"];
+				private _name = _actionData select 1;
+				_name = format[_name + " (%1)", [_target] call FUNC(countIncapacitated)];
+				_actionData set [1, _name];
+			}
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
 	LOGF_1("Dynamically added interaction to %1", _type);
