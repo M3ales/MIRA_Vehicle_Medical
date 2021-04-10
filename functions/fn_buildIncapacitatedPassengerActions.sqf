@@ -15,23 +15,40 @@ _modifierFunc = {
 
 private _actions = [];
 
-private _action = ["MIRA_UnloadAll", 
-	[LSTRING(Incapacitated,Unload)] call FUNC(cachedLocalisationCall), 
+// Unload All Children
+private _fnc_forceUnloadAllAction = { 
+	params["_patient"];
+	private _forceUnload = [
+		"MIRA_UnloadAll_Force",
+		[LSTRING(Incapacitated,Unload_Force)] call FUNC(cachedLocalisationCall), 
+		QUOTE(ICON_PATH(bandage)), 
+		{
+			params ["_vehicle", "_player", "_parameters"];
+			[_vehicle, _player, {true}, true] call FUNC(unloadAllWithCondition);
+		},
+		{true},
+		{},
+		[]
+	] call ace_interact_menu_fnc_createAction;
+	[[_forceUnload, [], _patient]]
+};
+
+// Unload All Action
+private _unloadAllAction = ["MIRA_UnloadAll", 
+	[LSTRING(Incapacitated,Unload_All)] call FUNC(cachedLocalisationCall), 
 	QUOTE(ICON_PATH(bandage)), 
 	{
-		params ["_target", "_player", "_parameters"];
-		_parameters params ["_vehicle"];
+		params ["_vehicle", "_player", "_parameters"];
 		[_vehicle, _player, {
-			params["_patient"]; 
+			params["_patient"];
 			_patient != player && ([_patient] call FUNC(isUnconscious) || !(alive _patient))
 		}] call FUNC(unloadAllWithCondition);
 	},
 	{true},
-	{},
-	[_vehicle]
+	_fnc_forceUnloadAllAction,
+	[]
 ] call ace_interact_menu_fnc_createAction;
-
-_actions pushBack [_action, [], player];
+_actions pushBack [_unloadAllAction, [], _vehicle];
 
  //foreach player/npc in vehicle
 {
@@ -43,16 +60,10 @@ _actions pushBack [_action, [], player];
 		//icon is blank, defined by modififer func
 		private _icon = "";
 
-		private _conditions = {
-			params["_target", "_player", "_parameters"];
-
-			_parameters params [
-				"_patient"
-			];
-
+		private _fnc_conditions = {
+			params["_patient", "_player", "_parameters"];
 			!(alive _patient) || _patient call FUNC(isUnconscious)
 		};
-
 		private _action = [
 			format["%1", _unit],
 			_unitName,
@@ -62,25 +73,40 @@ _actions pushBack [_action, [], player];
 				_parameters params ["_unit"];
 				[_unit] call FUNC(openMedicalMenu);
 			},
-			_conditions,
+			_fnc_conditions,
 			{
-				params["_target", "_player", "_parameters"];
-				
-				_parameters params [
-					"_patient"
-				];
+				params["_patient", "_player", "_parameters"];
+
 				//when creating children, only create children of unit who is being hovered over, otherwise empty children
 				//probably performance thing, unsure
-				if(ace_interact_menu_selectedTarget isEqualTo _target) then {
+				if(ace_interact_menu_selectedTarget isEqualTo _patient) then {
 					private _subActions = [];
 					private _isMedic = _player call FUNC(isMedic);
 
 					if([_patient] call FUNC(isUnconscious) || !alive _patient) then {
+						
+						private _forceUnloadAction = { 
+							params["_patient"];
+							private _forceUnload = [
+								"MIRA_Unload_Force",
+								[LSTRING(Incapacitated,Unload_Force)] call FUNC(cachedLocalisationCall), 
+								QUOTE(ICON_PATH(bandage)), 
+								{
+									params ["_patient", "_player", "_parameters"];
+									[_patient, _player, true] call FUNC(unloadPatient)
+								},
+								{true},
+								{},
+								[]
+							] call ace_interact_menu_fnc_createAction;
+							[[_forceUnload, [], _patient]]
+						};
+
 						private _action = ["MIRA_Unload", [LSTRING(Incapacitated,Unload)] call FUNC(cachedLocalisationCall), QUOTE(ICON_PATH(bandage)), {
 								params ["_target", "_player", "_parameters"];
-								_parameters params ["_patient"];
-								[_patient, _player] call FUNC(unloadPatient);
-							}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+								[_target, _player] call FUNC(unloadPatient);
+							}, {true}, _forceUnloadAction] call ace_interact_menu_fnc_createAction;
+						
 						_subActions pushBack [_action, [], _patient];
 					};
 
@@ -89,7 +115,7 @@ _actions pushBack [_action, [], player];
 					[]
 				};
 			},
-			[_unit],
+			[],
 			{[0, 0, 0]},
 			2,
 			[false, false, false, false, false],

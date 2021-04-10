@@ -38,6 +38,9 @@
         <Key ID="STR_MIRA_AVM_Incapacitated_Unload">
             <English>Unload Patient</English>
         </Key>
+        <Key ID="STR_MIRA_AVM_Incapacitated_Unload_Force">
+            <English>Force Unload</English>
+        </Key>
     </Package>
     <Package name="Unstable">
         <Key ID="STR_MIRA_AVM_Unstable_Dead">
