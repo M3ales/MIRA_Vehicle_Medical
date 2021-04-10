@@ -43,10 +43,11 @@
 			{ [QUOTE(GVAR(StableCache)),_this, FUNC(buildStablePassengerActions)] call FUNC(cachedResult) },
 			[],
 			[0,0,0],
-			4,
+			10,
 			[],
 			{
 				params ["_target", "_player", "_params", "_actionData"];
+				if(!GVAR(Stable_ShowCount)) exitWith {};
 				private _name = _actionData select 1;
 				_name = format[_name + " (%1)", [_target] call FUNC(countStable)];
 				_actionData set [1, _name];
@@ -67,10 +68,11 @@
 			{ [QUOTE(GVAR(UnstableCache)), _this, FUNC(buildUnstablePassengerActions)] call FUNC(cachedResult) },
 			[],
 			[0,0,0],
-			4,
+			10,
 			[],
 			{
 				params ["_target", "_player", "_params", "_actionData"];
+				if(!GVAR(Unstable_ShowCount)) exitWith {};
 				private _name = _actionData select 1;
 				_name = format[_name + " (%1)", [_target] call FUNC(countUnstable)];
 				_actionData set [1, _name];
@@ -91,10 +93,11 @@
 			{ [QUOTE(GVAR(IncapacitatedCache)), _this, FUNC(buildIncapacitatedPassengerActions)] call FUNC(cachedResult) },
 			[],
 			[0,0,0],
-			4,
+			10,
 			[],
 			{
 				params ["_target", "_player", "_params", "_actionData"];
+				if(!GVAR(Incapacitated_ShowCount)) exitWith {};
 				private _name = _actionData select 1;
 				_name = format[_name + " (%1)", [_target] call FUNC(countIncapacitated)];
 				_actionData set [1, _name];

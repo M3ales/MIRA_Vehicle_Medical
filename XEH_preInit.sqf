@@ -40,11 +40,13 @@ private _generalCategory = [LOC(Settings,Addon_Name), LOC(Settings_General,Categ
 // Incapacitated
 private _incapacitatedCategory = [LOC(Settings,Addon_Name), LOC(Settings_Incapacitated,Category)];
 [QUOTE(GVAR(EnableIncapacitated)), "CHECKBOX", [LOC(Settings_Incapacitated,Enable), LOC(Settings_Incapacitated,Enable_Tooltip)], _incapacitatedCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Incapacitated_ShowCount)), "CHECKBOX", [format[LOC(Settings_Incapacitated,Show_Count), _version], LOC(Settings_Incapacitated,Show_Count_Tooltip)], _incapacitatedCategory, false, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Incapacitated_CanUnloadAll)), "CHECKBOX", [LOC(Settings_Incapacitated,Allow_Unload_All), LOC(Settings_Incapacitated,Allow_Unload_All_Tooltip)], _incapacitatedCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 // Unstable
 private _unstableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Unstable,Category)];
 [QUOTE(GVAR(EnableUnstable)), "CHECKBOX", [LOC(Settings_Unstable,Enable), LOC(Settings_Unstable,Enable_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_ShowCount)), "CHECKBOX", [LOC(Settings_Unstable,Show_Count), LOC(Settings_Unstable,Show_Count_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackCardiacArrest)), "CHECKBOX", [LOC(Settings_Unstable,Track_Cardiac_Arrest), LOC(Settings_Unstable,Track_Cardiac_Arrest)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackBleeding)), "CHECKBOX", [LOC(Settings_Unstable,Track_Bleeding), LOC(Settings_Unstable,Track_Bleeding_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackUnconscious)), "CHECKBOX", [LOC(Settings_Unstable,Track_Unconscious), LOC(Settings_Unstable,Track_Unconscious_Tooltip)] ,_unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
@@ -60,6 +62,7 @@ private _unstableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Unstable,Cat
 // Stable
 private _stableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Stable,Category)];
 [QUOTE(GVAR(EnableStable)), "CHECKBOX", [LOC(Settings_Stable,Enable),LOC(Settings_Stable,Enable_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Stable_ShowCount)), "CHECKBOX", [LOC(Settings_Stable,Show_Count), LOC(Settings_Stable,Show_Count_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackNeedsBandage)), "CHECKBOX", [LOC(Settings_Stable,Track_Open_Wounds),LOC(Settings_Stable,Track_Open_Wounds_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackStitchableWounds)), "CHECKBOX", [LOC(Settings_Stable,Track_Stitchable_Wounds),LOC(Settings_Stable,Track_Stitchable_Wounds_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Stable_TrackLowBP)), "CHECKBOX", [LOC(Settings_Stable,Track_Low_Blood_Pressure),LOC(Settings_Stable,Track_Low_Blood_Pressure_Tooltip)], _stableCategory, true, 0, {}] call CBA_fnc_addSetting;

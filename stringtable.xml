@@ -195,6 +195,12 @@
             <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Enable_Tooltip">
                 <English>Show incapacitated list</English>
             </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Show_Count">
+                <English>Show Number of Incapacitated</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Show_Count_Tooltip">
+                <English>Display the number of incapacitated units on the root action</English>
+            </Key>
             <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Allow_Unload_All">
                 <English>Allow Unload All</English>
             </Key>
@@ -211,6 +217,12 @@
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Enable_Tooltip">
                 <English>Determines if Unstable list will be shown</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Show_Count">
+                <English>Show Number of Unstable</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Show_Count_Tooltip">
+                <English>Display the number of unstable units on the root action</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Cardiac_Arrest">
                 <English>Track Cardiac Arrest</English>
@@ -308,6 +320,12 @@
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Enable_Tooltip">
                 <English>Determines if Stable list will be shown</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Show_Count">
+                <English>Show Number of Stable</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Stable_Show_Count_Tooltip">
+                <English>Display the number of stable units on the root action</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Open_Wounds">
                 <English>Track Open Wounds</English>
