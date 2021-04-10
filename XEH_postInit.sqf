@@ -35,7 +35,10 @@
 			[LSTRING(Interaction,Stable)] call FUNC(cachedLocalisationCall),
 			"",
 			{ },
-			{ GVAR(EnableStable) },
+			{ 
+				params["_vehicle"];
+				GVAR(EnableStable) && ({ !(alive _x) || _x call FUNC(isStable)} count (crew _vehicle)) > 0
+			},
 			{ [QUOTE(GVAR(StableCache)),_this, FUNC(buildStablePassengerActions)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
@@ -45,7 +48,10 @@
 			[LSTRING(Interaction,Unstable)] call FUNC(cachedLocalisationCall),
 			"",
 			{ }, 
-			{ GVAR(EnableUnstable) },
+			{ 
+				params["_vehicle"];
+				GVAR(EnableUnstable) && ({ !(alive _x) || _x call FUNC(isUnstable)} count (crew _vehicle)) > 0 
+			},
 			{ [QUOTE(GVAR(UnstableCache)), _this, FUNC(buildUnstablePassengerActions)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
@@ -55,7 +61,10 @@
 			[LSTRING(Interaction,Incapacitated)] call FUNC(cachedLocalisationCall),
 			"",
 			{ }, 
-			{ GVAR(EnableIncapacitated) },
+			{ 
+				params["_vehicle"];
+				GVAR(EnableIncapacitated) && ({ !(alive _x) || _x call FUNC(isUnconscious)} count (crew _vehicle)) > 0
+			},
 			{ [QUOTE(GVAR(IncapacitatedCache)), _this, FUNC(buildIncapacitatedPassengerActions)] call FUNC(cachedResult) }
 		] call ace_interact_menu_fnc_createAction;
     [_type, 1, ["ACE_SelfActions", "MIRA_Medical"], _action, false] call ace_interact_menu_fnc_addActionToClass;
