@@ -83,6 +83,12 @@
             <English>Splinted Leg Fractures (Error Fetching Amount)</English>
             <Chinesesimp>已固定的腿部骨折 (无法获取伤口数量)</Chinesesimp>
         </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Dogtags_Take">
+            <English>Take Dogtags</English>
+        </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Dogtags_Already_Taken">
+            <English>Dogtags Missing</English>
+        </Key>
         <Container name="KAT">
             <Key ID="STR_MIRA_AVM_Unstable_KAT_SpO2">
                 <English>SpO2 (%1%2)</English>
@@ -289,6 +295,18 @@
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Dead_Tooltip">
                 <English>Determines if dead members will be reported in the unstable category by AVM</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Take_Dogtags">
+                <English>Track Dogtags</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Take_Dogtags_Tooltip">
+                <English>Adds an action to take dogtags off unconscious or dead units.</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Take_Dogtags_Dead_Only">
+                <English>Take Dogtags from Deceased Only</English>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Take_Dogtags_Dead_Only_Tooltip">
+                <English>Only allows you to take dogtags off deceased units, requires Track Dogtags to be on to work.</English>
             </Key>
         </Container>
         <Container name="Unstable_KAT">

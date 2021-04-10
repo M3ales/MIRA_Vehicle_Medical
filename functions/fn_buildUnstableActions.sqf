@@ -41,6 +41,21 @@ if(GVAR(Unstable_TrackDead) && !alive _patient) then {
 	_actions pushBack [_action, [], _patient];
 };
 
+private _canTakeDogtag = GVAR(Unstable_TakeDogtags) && [_player, _patient] call ace_dogtags_fnc_canTakeDogtag;
+// Take Dogtags Action
+if(_canTakeDogtag && {(GVAR(Unstable_DogtagsDeadOnly) && !alive _patient) || !GVAR(Unstable_DogtagsDeadOnly)}) then {
+	private _taken = [LSTRING(Unstable,Dogtags_Take)] call FUNC(cachedLocalisationCall);
+	if(_patient getVariable["ace_dogtags_dogtagTaken", objNull] == _target) then {
+		_taken =  [LSTRING(Unstable,Dogtags_Already_Taken)] call FUNC(cachedLocalisationCall);
+	};
+	private _action = ["MIRA_Dogtags_Take", _taken, QUOTE(ICON_PATH(dogtags)), {
+			params ["_target", "_player", "_parameters"];
+			_parameters params ["_patient"];
+			[_player, _patient] call ace_dogtags_fnc_takeDogtag;
+		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+};
+
 // Cardiac Arrest Action
 private _cardiacArrest = GVAR(Unstable_TrackCardiacArrest) && [_patient] call FUNC(isCardiacArrest);
 if (_cardiacArrest) then {
