@@ -6,11 +6,13 @@ if(!(_conditionCode isEqualType {})) exitWith {
 };
 private _passengers = crew _vehicle;
 {
-	if([_x] call _conditionCode) then {
-		[_x, _medic, _force] call FUNC(unloadPatient);
-	}
-	else
-	{
-		LOGF_1("Unable to unload %1", _x);
+	if(_medic != _x) then {
+		if([_x] call _conditionCode) then {
+			[_x, _medic, _force] call FUNC(unloadPatient);
+		}
+		else
+		{
+			LOGF_1("Unable to unload %1", _x);
+		};
 	};
 }forEach _passengers;
