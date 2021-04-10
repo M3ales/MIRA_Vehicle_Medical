@@ -58,6 +58,8 @@ private _unstableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Unstable,Cat
 [QUOTE(GVAR(Unstable_TrackLegFractures)), "CHECKBOX", [LOC(Settings_Unstable,Track_Leg_Fractures), LOC(Settings_Unstable,Track_Leg_Fractures_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackLegSplints)), "CHECKBOX", [LOC(Settings_Unstable,Track_Leg_Splints), LOC(Settings_Unstable,Track_Leg_Splints_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TrackDead)), "CHECKBOX", [LOC(Settings_Unstable,Track_Dead), LOC(Settings_Unstable,Track_Dead_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_TakeDogtags)), "CHECKBOX", [LOC(Settings_Unstable,Take_Dogtags), LOC(Settings_Unstable,Take_Dogtags_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_DogtagsDeadOnly)), "CHECKBOX", [LOC(Settings_Unstable,Take_Dogtags_Dead_Only), LOC(Settings_Unstable,Take_Dogtags_Dead_Only_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 // Stable
 private _stableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Stable,Category)];
