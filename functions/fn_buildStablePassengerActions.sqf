@@ -40,7 +40,7 @@ _modifierFunc = {
 	_parameters params ["_patient"];
 	
 	private _result = "";
-	// bandage > stitch  > lowhr > lowbp > fractures
+	// bandage > stitch  > lowhr > lowbp > fractures > tourniquets
 	private _tourniquet = GVAR(Stable_TrackTourniquets) && [_patient] call FUNC(hasTourniquets);
 	private _fractures = GVAR(Stable_TrackFractures) && [_patient] call FUNC(hasFractures);
 	private _isMedic = _player call FUNC(isMedic);
