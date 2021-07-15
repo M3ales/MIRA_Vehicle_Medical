@@ -39,7 +39,7 @@ private _generalCategory = [LOC(Settings,Addon_Name), LOC(Settings_General,Categ
 
 // Incapacitated
 private _incapacitatedCategory = [LOC(Settings,Addon_Name), LOC(Settings_Incapacitated,Category)];
-[QUOTE(GVAR(EnableIncapacitated)), "CHECKBOX", [LOC(Settings_Incapacitated,Enable), LOC(Settings_Incapacitated,Enable_Tooltip)], _incapacitatedCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(EnableIncapacitated)), "CHECKBOX", [LOC(Settings_Incapacitated,Enable), LOC(Settings_Incapacitated,Enable_Tooltip)], _incapacitatedCategory, false, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Incapacitated_ShowCount)), "CHECKBOX", [format[LOC(Settings_Incapacitated,Show_Count), _version], LOC(Settings_Incapacitated,Show_Count_Tooltip)], _incapacitatedCategory, false, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Incapacitated_CanUnloadAll)), "CHECKBOX", [LOC(Settings_Incapacitated,Allow_Unload_All), LOC(Settings_Incapacitated,Allow_Unload_All_Tooltip)], _incapacitatedCategory, true, 0, {}] call CBA_fnc_addSetting;
 
