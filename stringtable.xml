@@ -4,115 +4,205 @@
         <Key ID="STR_MIRA_AVM_Interaction_Medical">
             <English>Medical</English>
             <Chinesesimp>医疗</Chinesesimp>
+            <Italian>Medico</Italian>
+            <French>Médical</French>
+            <Spanish>Médico</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Interaction_Stable">
             <English>Stable</English>
             <Chinesesimp>伤势稳定</Chinesesimp>
+            <Italian>Stabile</Italian>
+            <French>Stable</French>
+            <Spanish>Estable</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Interaction_Unstable">
             <English>Unstable</English>
             <Chinesesimp>需要救治</Chinesesimp>
+            <Italian>Instabile</Italian>
+            <French>Instable</French>
+            <Spanish>Inestable</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Interaction_Incapacitated">
             <English>Incapacitated</English>
+            <Italian>Invalido</Italian>
+            <French>Invalide</French>
+            <Spanish>Incapacitado</Spanish>
         </Key>
     </Package>
     <Package name="Shared">
         <Key ID="STR_MIRA_AVM_Shared_Heart_Rate_None">
             <English>None</English>
             <Chinesesimp>无</Chinesesimp>
+            <Italian>Nessuno</Italian>
+            <French>Aucun</French>
+            <Spanish>Ninguno</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Heart_Rate_Low">
             <English>Weak</English>
             <Chinesesimp>微弱</Chinesesimp>
+            <Italian>Debole</Italian>
+            <French>Faible</French>
+            <Spanish>Débil</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Shared_Not_Medic_Blood_Pressure_Low">
             <English>Low</English>
             <Chinesesimp>低</Chinesesimp>
+            <Italian>Basso</Italian>
+            <French>Bas</French>
+            <Spanish>Bajo</Spanish>
         </Key>
     </Package>
     <Package name="Incapacitated">
         <Key ID="STR_MIRA_AVM_Incapacitated_Unload_All">
             <English>Unload All Patients</English>
+            <Italian>Scarica Tutti i Pazienti</Italian>
+            <French>Décharge tous les patients</French>
+            <Spanish></Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Incapacitated_Unload">
             <English>Unload Patient</English>
+            <Italian>Scarica Paziente</Italian>
+            <French>Décharge le patient</French>
+            <Spanish>Descargar paciente</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Incapacitated_Unload_Force">
             <English>Force Unload</English>
+            <Italian>Forza Scaricamento</Italian>
+            <French>Décharge forcé </French>
+            <Spanish>Forzar descarga</Spanish>
         </Key>
     </Package>
     <Package name="Unstable">
         <Key ID="STR_MIRA_AVM_Unstable_Dead">
             <English>Deceased</English>
             <Chinesesimp>已阵亡</Chinesesimp>
+            <Italian>Deceduto</Italian>
+            <French>Décédé</French>
+            <Spanish>Fallecido</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Dead_Warning">
             <English>You are viewing %1, who is currently deceased.</English>
             <Chinesesimp>%1 已经阵亡。</Chinesesimp>
+            <Italian>Stai visualizzando %1, che è attualmente deceduto.</Italian>
+            <French>Vous regardez %1, qui est actuellement décédé.</French>
+            <Spanish>Estás viendo %1, que ha fallecido actualmente.</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Cardiac_Arrest">
             <English>Cardiac Arrest</English>
             <Chinesesimp>心搏停止</Chinesesimp>
+            <Italian>Arresto Cardiaco</Italian>
+            <French>Arrêt cardiaque</French>
+            <Spanish>Paro cardiaco</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Bleeding">
             <English>Bleeding</English>
             <Chinesesimp>正在流血</Chinesesimp>
+            <Italian>Sanguinamento</Italian>
+            <French>Saignement</French>
+            <Spanish>Sangrado</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Low_Heart_Rate">
             <English>Heart Rate (%1)</English>
             <Chinesesimp>心率 (%1)</Chinesesimp>
+            <Italian>Pulsazioni (%1)</Italian>
+            <French>Fréquence cardiaque (%1)</French>
+            <Spanish>Presión arterial (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Low_Blood_Pressure">
             <English>Blood Pressure (%1)</English>
             <Chinesesimp>血压 (%1)</Chinesesimp>
+            <Italian>Pressione Sanguigna (%1)</Italian>
+            <French>Pression artérielle (%1)</French>
+            <Spanish></Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Unconscious">
             <English>Unconscious</English>
             <Chinesesimp>昏迷</Chinesesimp>
+            <Italian>Incosciente</Italian>
+            <French>Inconscient</French>
+            <Spanish>Inconsciente</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Leg_Fractures">
             <English>Leg Fractures (%1)</English>
             <Chinesesimp>腿部骨折 (%1)</Chinesesimp>
+            <Italian>Gambe Fratturate (%1)</Italian>
+            <French>Jambes Fracturées (%1)</French>
+            <Spanish>Fracturas de pierna (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Splinted_Leg_Fractures">
             <English>Splinted Leg Fractures (%1)</English>
             <Chinesesimp>已固定的腿部骨折 (%1)</Chinesesimp>
+            <Italian>Fratture gambe Steccate (%1)</Italian>
+            <French>Fractures de jambe avec attelle (%1)</French>
+            <Spanish>Fracturas de pierna entablilladas (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Splinted_Leg_Fractures_Error">
             <English>Splinted Leg Fractures (Error Fetching Amount)</English>
             <Chinesesimp>已固定的腿部骨折 (无法获取伤口数量)</Chinesesimp>
+            <Italian>Fratture gamba Steccate (Errore Recupero Valore)</Italian>
+            <French>Fractures de la jambe avec attelle (Erreur de récupération valeur)</French>
+            <Spanish>Fracturas de pierna entablilladas (Error de recuperación del valor)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Dogtags_Take">
             <English>Take Dogtags</English>
+            <Italian>Prendi Piastrine</Italian>
+            <French>Prenez les plaques d'identité</French>
+            <Spanish>Toma las placas de identificación</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Dogtags_Already_Taken">
             <English>Dogtags Missing</English>
+            <Italian>Piastrine Mancanti</Italian>
+            <French>Plaques d'identité manquantes</French>
+            <Spanish>Faltan placas de identificación</Spanish>
         </Key>
         <Container name="KAT">
             <Key ID="STR_MIRA_AVM_Unstable_KAT_SpO2">
                 <English>SpO2 (%1%2)</English>
+                <Italian>SpO2 (%1%2)</Italian>
+                <French>SpO2 (%1%2)</French>
+                <Spanish>SpO2 (%1%2)</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Pneumothorax">
                 <English>Pneumothorax</English>
+                <Italian>Pneumotorace</Italian>
+                <French>Pneumothorax</French>
+                <Spanish>Neumotórax</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Hemopneumothorax">
                 <English>Hemopneumothorax</English>
+                <Italian>Emopneumotorace</Italian>
+                <French>Hémopneumothorax</French>
+                <Spanish>Hemoneumotórax</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Tension_Pneumothorax">
                 <English>Tension Pneumothorax</English>
+                <Italian>Pneumotorace Iperteso</Italian>
+                <French>Pneumothorax compressif</French>
+                <Spanish>Neumotórax hipertensivo</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Multiple_Pneumothorax">
                 <English>Pneumothoraces</English>
+                <Italian>Pneumotoraci</Italian>
+                <French>Pneumothorax</French>
+                <Spanish>Neumotórax</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Occluded">
                 <English>Airway Occluded</English>
+                <Italian>Vie Aeree Occluse</Italian>
+                <French>Occlusion de voies respiratoires</French>
+                <Spanish>Vía respiratoria ocluida</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Obstructed">
                 <English>Airway Obstructed</English>
+                <Italian>Vie Aeree Ostruite</Italian>
+                <French>Voies respiratoires obstruées</French>
+                <Spanish>Vías respiratorias obstruidas</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Unstable_KAT_Airway_Blocked">
                 <English>Airway Blocked</English>
+                <Italian>Vie Aeree Bloccate</Italian>
+                <French>Voies respiratoires bloquées</French>
+                <Spanish>Vía respiratoria bloqueada</Spanish>
             </Key>
         </Container>
     </Package>
@@ -120,42 +210,72 @@
         <Key ID="STR_MIRA_AVM_Stable_Bandage">
             <English>Bandage (%1)</English>
             <Chinesesimp>包扎 (%1)</Chinesesimp>
+            <Italian>Bendaggio (%1)</Italian>
+            <French>Bandage (%1)</French>
+            <Spanish>Vendaje (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Stitch">
             <English>Stitch (%1)</English>
             <Chinesesimp>缝合 (%1)</Chinesesimp>
+            <Italian>Sutura (%1)</Italian>
+            <French>Suture (%1)</French>
+            <Spanish>Sutura (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Low_Heart_Rate">
             <English>Heart Rate (%1)</English>
             <Chinesesimp>心率 (%1)</Chinesesimp>
+            <Italian>Pulsazioni (%1)</Italian>
+            <French>Fréquence cardiaque (%1)</French>
+            <Spanish>Frecuencia cardíaca (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Low_Blood_Pressure">
             <English>Blood Pressure (%1)</English>
             <Chinesesimp>血压 (%1)</Chinesesimp>
+            <Italian>Pressione Sanguigna (%1)</Italian>
+            <French>Tension artérielle (%1)</French>
+            <Spanish>Presión arterial (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Low_Blood_Pressure_With_IV">
             <English>Blood Pressure (%1) [%2ml]</English>
             <Chinesesimp>血压 (%1) [%2ml]</Chinesesimp>
+            <Italian>Pressione Sanguigna (%1) [%2ml]</Italian>
+            <French>Tension artérielle (%1) [%2ml]</French>
+            <Spanish>Presión arterial (%1) [%2ml]</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Arm_Fractures">
             <English>Fractures (%1)</English>
             <Chinesesimp>骨折 (%1)</Chinesesimp>
+            <Italian>Fratture (%1)</Italian>
+            <French>Fractures (%1)</French>
+            <Spanish>Fracturas (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Arm_Fractures_Error">
             <English>Fractures (Error Fetching Amount)</English>
             <Chinesesimp>骨折 (无法获取伤口数量)</Chinesesimp>
+            <Italian>Fratture (Errore Recupero Valore)</Italian>
+            <French>Fractures (Erreur de récupération valeur)</French>
+            <Spanish>Fracturas (Error de recuperación de valor)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Splinted_Fractures">
             <English>Splinted Fractures (%1)</English>
             <Chinesesimp>已固定的骨折 (%1)</Chinesesimp>
+            <Italian>Fratture Steccate (%1)</Italian>
+            <French>Fractures attelles (%1)</French>
+            <Spanish>Fracturas entablilladas (%1)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Splinted_Fractures_Error">
             <English>Splinted Fractures (Error Fetching Amount)</English>
             <Chinesesimp>已固定的骨折 (无法获取伤口数量)</Chinesesimp>
+            <Italian>Fratture Steccate (Errore Recupero Valore)</Italian>
+            <French>Fractures attelles (Erreur de récupération valeur)</French>
+            <Spanish>Fracturas entablilladas (Error de recuperación de valor)</Spanish>
         </Key>
         <Key ID="STR_MIRA_AVM_Stable_Tourniquets">
             <English>Tourniquets (%1)</English>
             <Chinesesimp>止血带 (%1)</Chinesesimp>
+            <Italian>Laccio Emostatico (%1)</Italian>
+            <French>Garrots (%1)</French>
+            <Spanish>Torniquetes (%1)</Spanish>
         </Key>
     </Package>
     <Package name="Settings">

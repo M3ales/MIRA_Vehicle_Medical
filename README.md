@@ -72,8 +72,8 @@ This is for conditions which may quickly lead to the patient dying, or significa
 
 - English | [m3ales](https://github.com/M3ales)
 - Simplified Chinese | [GoldJohnKing](https://github.com/GoldJohnKing)
+- Italian, French, and Spanish | [BSM] PRODIGY
 
 I am accepting translation PRs.
-
 
 ![Effective MASCAS Management](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/master/Source/pr/dynamic_icon_updates.gif)
