@@ -26,7 +26,6 @@ Basic integration that keeps track of the bare minimums:
 - Pneumothorax
 - Airway Blocked
 
-
 ![Animation of KAT Advanced Medical Interactions](https://raw.githubusercontent.com/M3ales/MIRA_Vehicle_Medical/master/Source/pr/avm_example_kat_1.gif)
 
 ### Configurability
