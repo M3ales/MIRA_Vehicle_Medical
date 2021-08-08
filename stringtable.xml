@@ -296,19 +296,19 @@
                 <English>Enable AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_General_Enable_Tooltip">
-                <English>Determines if ACE Vehicle Medical will be shown at all</English>
+                <English>Show or hide all ACE Vehicle Medical actions</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_General_Warn_Selecting_Dead">
                 <English>Warn when selecting deceased</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_General_Warn_Selecting_Dead_Tooltip">
-                <English>Determines if to show a popup and play a click sound when you view someone who is dead (Rare)</English>
+                <English>Display a popup and play a click sound when you view someone who is dead (Rare)</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_General_Cache_Interval">
                 <English>Cache Lifetime</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_General_Cache_Interval_Tooltip">
-                <English>The speed at which AVM updates in seconds, a lower value will provide more accurate updates, while a higher value will be more performant but will lose accuracy.</English>
+                <English>The speed at which AVM updates in seconds, a lower value will provide more accurate updates, while a higher value will be more performant but be less accurate.</English>
             </Key>
         </Container>
         <Container name="Incapacitated">
@@ -319,13 +319,13 @@
                 <English>Enable Incapacitated</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Enable_Tooltip">
-                <English>Show incapacitated list</English>
+                <English>Display incapacitated list</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Show_Count">
-                <English>Show Number of Incapacitated</English>
+                <English>Display Number of Incapacitated</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Show_Count_Tooltip">
-                <English>Display the number of incapacitated units on the root action</English>
+                <English>Display the number of incapacitated units on the action</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Incapacitated_Allow_Unload_All">
                 <English>Allow Unload All</English>
@@ -342,7 +342,7 @@
                 <English>Enable Unstable</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Enable_Tooltip">
-                <English>Determines if Unstable list will be shown</English>
+                <English>Unstable list will be shown</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Show_Count">
                 <English>Show Number of Unstable</English>
@@ -354,25 +354,25 @@
                 <English>Track Cardiac Arrest</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Cardiac_Arrest_Tooltip">
-                <English>Determines if Cardiac Arrest will be monitored and reported by AVM</English>
+                <English>Cardiac Arrest will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Bleeding">
                 <English>Track Bleeding</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Bleeding_Tooltip">
-                <English>Determines if Bleeding will be monitored and reported by AVM</English>
+                <English>Bleeding will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Unconscious">
                 <English>Track Unconscious</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Unconscious_Tooltip">
-                <English>Determines if Consciousness will be monitored and reported by AVM</English>
+                <English>Consciousness will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Blood_Pressure">
                 <English>Track Low Blood Pressure</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Blood_Pressure_Tooltip">
-                <English>Determines if low blood pressure will be monitored and reported by AVM</English>
+                <English>Low blood pressure will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Low_Blood_Pressure_Threshold">
                 <English>Low Blood Pressure Threshold</English>
@@ -384,13 +384,13 @@
                 <English>Track IVs</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_IV_Tooltip">
-                <English>Determines if total volume of IVs is displayed</English>
+                <English>Total volume of IVs is displayed</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Heart_Rate">
                 <English>Track Low Heart Rate</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Low_Heart_Rate_Tooltip">
-                <English>Determines if low heart rate will be monitored and reported by AVM</English>
+                <English>Low heart rate will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Low_Heart_Rate_Threshold">
                 <English>Low Heart Rate Threshold</English>
@@ -402,19 +402,19 @@
                 <English>Track Leg Fractures</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Fractures_Tooltip">
-                <English>Determines if Leg Fractures will be monitored and reported as unstable by AVM</English>
+                <English>Leg Fractures will be monitored and reported as unstable by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Splints">
                 <English>Track Leg Splints</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Leg_Splints_Tooltip">
-                <English>Determines if splinted Leg Fractures will be reported in the unstable category by AVM</English>
+                <English>Splinted Leg Fractures will be reported in the unstable category by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Dead">
                 <English>Track Deaceased</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Dead_Tooltip">
-                <English>Determines if dead members will be reported in the unstable category by AVM</English>
+                <English>Dead members will be reported in the unstable category by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Take_Dogtags">
                 <English>Track Dogtags</English>
@@ -434,19 +434,19 @@
                 <English>Track KAM SpO2</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_KAT_Track_SpO2_Tooltip">
-                <English>Determines if KAT Advanced Medical SpO2 will be monitored and reported by AVM</English>
+                <English>KAT Advanced Medical SpO2 will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_KAT_Track_Pneumothorax">
                 <English>Track KAM Pneumothroax</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_KAT_Track_Pneumothorax_Tooltip">
-                <English>Determines if Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM</English>
+                <English>Pneumothorax, Hemopneumothroax, and Tension Pneumothorax will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_KAT_Track_Blocked_Airways">
                 <English>Track KAM Blocked Airways</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_KAT_Track_Blocked_Airways_Tooltip">
-                <English>Determines if Airway Obstruction and Occlusion will be monitored and reported by AVM</English>
+                <English>Airway Obstruction and Occlusion will be monitored and reported by AVM</English>
             </Key>
         </Container>
         <Container name="Stable">
@@ -457,7 +457,7 @@
                 <English>Enable Stable List</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Enable_Tooltip">
-                <English>Determines if Stable list will be shown</English>
+                <English>Stable list will be shown</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Show_Count">
                 <English>Show Number of Stable</English>
@@ -469,25 +469,25 @@
                 <English>Track Open Wounds</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Open_Wounds_Tooltip">
-                <English>Determines if open wounds to be bandaged will be monitored and reported by AVM</English>
+                <English>Open wounds that need to be bandaged will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Stitchable_Wounds">
                 <English>Track Stitchable Wounds</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Stitchable_Wounds_Tooltip">
-                <English>Determines if stitchable body parts will be monitored and reported by AVM</English>
+                <English>Stitchable body parts will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Low_Blood_Pressure">
                 <English>Track Low Blood Pressure</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Low_Blood_Pressure_Tooltip">
-                <English>Determines if low blood pressure will be monitored and reported by AVM</English>
+                <English>Low blood pressure will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_IV">
                 <English>Track IVs</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_IV_Tooltip">
-                <English>Determines if IV total volume will be displayed</English>
+                <English>IV total volume will be displayed</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Low_Blood_Pressure_Threshold">
                 <English>Low Blood Pressure Threshold</English>
@@ -499,7 +499,7 @@
                 <English>Track Low Heart Rate</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Low_Heart_Rate_Tooltip">
-                <English>Determines if low heart rate will be monitored and reported by AVM</English>
+                <English>Low heart rate will be monitored and reported by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Low_Heart_Rate_Threshold">
                 <English>Low Heart Rate Threshold</English>
@@ -511,19 +511,19 @@
                 <English>Track Arm Fractures</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Fractures_Tooltip">
-                <English>Determines if Arm Fractures will be monitored and reported as stable by AVM</English>
+                <English>Arm Fractures will be monitored and reported as stable by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Splints">
                 <English>Track Arm Splints</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Arm_Splints_Tooltip">
-                <English>Determines if splinted Arm Fractures will be reported in the stable category by AVM</English>
+                <English>Splinted Arm Fractures will be reported in the stable category by AVM</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Tourniquets">
                 <English>Track Tourniquets</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Tourniquets_Tooltip">
-                <English>Determines if splinted Tourniquets will be reported in the stable category by AVM</English>
+                <English>Tourniquets will be reported in the stable category by AVM</English>
             </Key>
         </Container>
         <Container name="Vehicles">
@@ -534,31 +534,31 @@
                 <English>Enable on Car</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Car_Tooltip">
-                <English>Determines if AVM is enabled for Car</English>
+                <English>AVM is enabled for Cars</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Helicopter">
                 <English>Enable on Helicopter</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Helicopter_Tooltip">
-                <English>Determines if AVM is enabled for Helicopter</English>
+                <English>AVM is enabled for Helicopters</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Plane">
                 <English>Enable on Plane</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Plane_Tooltip">
-                <English>Determines if AVM is enabled for Plane</English>
+                <English>AVM is enabled for Planes</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Ship">
                 <English>Enable on Ship</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Ship_Tooltip">
-                <English>Determines if AVM is enabled for Ship</English>
+                <English>AVM is enabled for Ships</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Tank">
                 <English>Enable on Tank</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Vehicles_Tank_Tooltip">
-                <English>Determines if AVM is enabled for Tank</English>
+                <English>AVM is enabled for Tanks</English>
             </Key>
         </Container>
         <Container name="Integrations">
@@ -569,7 +569,7 @@
                 <English>Enable KAM Integration</English>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Integrations_Enable_KAT_Tooltip">
-                <English>Determines if AVM will show KAT Medical specific actions</English>
+                <English>AVM will show KAT Medical specific actions</English>
             </Key>
         </Container>
     </Package>
