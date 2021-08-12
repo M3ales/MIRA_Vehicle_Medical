@@ -280,7 +280,7 @@
     </Package>
     <Package name="Settings">
         <Key ID="STR_MIRA_AVM_Settings_Addon_Name">
-            <Original>ACE Medical Vehicle</Original>
+            <Original>ACE Vehicle Medical</Original>
             <Italian>ACE Veicolo Medico</Italian>
             <French>ACE Véhicule Médical</French>
             <Spanish>ACE vehículo médico</Spanish>
@@ -663,7 +663,7 @@
                 <French>Les parties du corps suturables seront surveillées et signalées par AVM</French>
                 <Spanish>Las partes del cuerpo que se pueden coser serán monitoreadas e informadas por AVM</Spanish>
             </Key>
-            
+
             <Key ID="STR_MIRA_AVM_Settings_Stable_Track_Low_Blood_Pressure">
                 <Original>Track Low Blood Pressure</Original>
                 <Italian>Controlla Pressione Saguigna Bassa</Italian>
