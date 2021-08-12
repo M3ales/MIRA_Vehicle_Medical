@@ -432,6 +432,7 @@
                 <Original>Track Bleeding</Original>
                 <Italian>Controlla Sanguinamento</Italian>
                 <French>Vérifier les saignements</French>
+                <Spanish>Comprobar si hai perdida de sangre</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Bleeding_Tooltip">
                 <Original>Bleeding will be monitored and reported by AVM</Original>
@@ -443,7 +444,7 @@
                 <Original>Track Unconscious</Original>
                 <Italian>Controlla Incoscienza </Italian>
                 <French>Vérifier l'inconscience</French>
-                <Spanish> inconsciente</Spanish>
+                <Spanish>Comprobar si el paciente es inconsciente</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Unstable_Track_Unconscious_Tooltip">
                 <Original>Consciousness will be monitored and reported by AVM</Original>
@@ -626,6 +627,8 @@
             <Key ID="STR_MIRA_AVM_Settings_Stable_Enable_Tooltip">
                 <Original>Stable list will be shown</Original>
                 <Italian>Verrà mostrato un elenco stabile</Italian>
+                <French>S'affichera une liste stable</French>
+                <Spanish>Se le mostrará una lista de pacientes estables</Spanish>
             </Key>
             <Key ID="STR_MIRA_AVM_Settings_Stable_Show_Count">
                 <Original>Show Number of Stable</Original>
