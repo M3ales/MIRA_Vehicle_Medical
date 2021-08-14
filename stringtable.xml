@@ -30,6 +30,9 @@
         </Key>
     </Package>
     <Package name="Shared">
+        <Key ID="STR_MIRA_AVM_Shared_Confirm">
+            <Original>Confirm</Original>
+        </Key>
         <Key ID="STR_MIRA_AVM_Shared_Heart_Rate_None">
             <Original>None</Original>
             <Chinesesimp>无</Chinesesimp>

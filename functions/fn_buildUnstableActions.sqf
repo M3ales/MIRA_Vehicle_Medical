@@ -27,7 +27,8 @@ private _actions = [];
 private _isMedic = _player call FUNC(isMedic);
 
 // Dead
-if(GVAR(Unstable_TrackDead) && !alive _patient) then {
+private _isDead = GVAR(Unstable_TrackDead) && !alive _patient;
+if(_isDead) then {
 	LOGF_1("'%1' is dead", _patient);
 	private _action = ["MIRA_Dead", [LSTRING(Unstable,Dead)] call FUNC(cachedLocalisationCall), QUOTE(ICON_PATH(dead)), {
 			params ["_target", "_player", "_parameters"];
@@ -219,6 +220,34 @@ if(GVAR(Unstable_TrackLegSplints) && [_patient, true] call FUNC(hasLegFractures)
 			_parameters params ["_patient"];
 			[_patient] call FUNC(openMedicalMenu);
 		}, {true}, {}, [_patient]] call ace_interact_menu_fnc_createAction;
+	_actions pushBack [_action, [], _patient];
+};
+
+// Unload Action
+if (_isUncon || _isDead) then {
+	LOGF_1("'%1' is unloadable", _patient);
+
+	private _confirmUnloadAction = { 
+		params["_patient"];
+		private _confirmUnload = [
+			"MIRA_Unload_Confirm",
+			[LSTRING(Shared,Confirm)] call FUNC(cachedLocalisationCall), 
+			QUOTE(ICON_PATH(unload)), 
+			{
+				params ["_patient", "_player", "_parameters"];
+				[_patient, _player] call FUNC(unloadPatient);
+			},
+			{true},
+			{},
+			[]
+		] call ace_interact_menu_fnc_createAction;
+		[[_confirmUnload, [], _patient]]
+	};
+
+	private _action = ["MIRA_Unload", [LSTRING(Incapacitated,Unload)] call FUNC(cachedLocalisationCall), QUOTE(ICON_PATH(unload)), {
+			params ["_target", "_player", "_parameters"];
+		}, {true}, _confirmUnloadAction] call ace_interact_menu_fnc_createAction;
+
 	_actions pushBack [_action, [], _patient];
 };
 
