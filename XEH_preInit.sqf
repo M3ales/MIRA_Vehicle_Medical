@@ -60,6 +60,7 @@ private _unstableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Unstable,Cat
 [QUOTE(GVAR(Unstable_TrackDead)), "CHECKBOX", [LOC(Settings_Unstable,Track_Dead), LOC(Settings_Unstable,Track_Dead_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_TakeDogtags)), "CHECKBOX", [LOC(Settings_Unstable,Take_Dogtags), LOC(Settings_Unstable,Take_Dogtags_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 [QUOTE(GVAR(Unstable_DogtagsDeadOnly)), "CHECKBOX", [LOC(Settings_Unstable,Take_Dogtags_Dead_Only), LOC(Settings_Unstable,Take_Dogtags_Dead_Only_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
+[QUOTE(GVAR(Unstable_AllowUnload)), "CHECKBOX", [LOC(Settings_Unstable,Allow_Unload), LOC(Settings_Unstable,Allow_Unload_Tooltip)], _unstableCategory, true, 0, {}] call CBA_fnc_addSetting;
 
 // Stable
 private _stableCategory = [LOC(Settings,Addon_Name), LOC(Settings_Stable,Category)];

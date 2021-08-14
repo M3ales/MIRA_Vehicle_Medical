@@ -575,6 +575,12 @@
                 <French>Il vous permet uniquement de retirer les plaques d'identification du personnel décédé, nécessite que les plaques d'identification soient actives pour fonctionner.</French>
                 <Spanish>Solo le permite llevar placas de identificación de unidades fallecidas, requiere que las placas de identificación de seguimiento funcionen.</Spanish>
             </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Allow_Unload">
+                <Original>Enable Unload</Original>
+            </Key>
+            <Key ID="STR_MIRA_AVM_Settings_Unstable_Allow_Unload_Tooltip">
+                <Original>Adds an action to unload unconscious or dead units.</Original>
+            </Key>
         </Container>
         <Container name="Unstable_KAT">
             <Key ID="STR_MIRA_AVM_Settings_Unstable_KAT_Track_SpO2">
