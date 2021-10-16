@@ -118,6 +118,13 @@
             <French>Pression artérielle (%1)</French>
             <Spanish>Presión sanguínea</Spanish>
         </Key>
+        <Key ID="STR_MIRA_AVM_Unstable_Low_Blood_Pressure_With_IV">
+            <Original>Blood Pressure (%1) [%2ml]</Original>
+            <Chinesesimp>血压 (%1) [%2ml]</Chinesesimp>
+            <Italian>Pressione Sanguigna (%1) [%2ml]</Italian>
+            <French>Tension artérielle (%1) [%2ml]</French>
+            <Spanish>Presión arterial (%1) [%2ml]</Spanish>
+        </Key>
         <Key ID="STR_MIRA_AVM_Unstable_Unconscious">
             <Original>Unconscious</Original>
             <Chinesesimp>昏迷</Chinesesimp>
