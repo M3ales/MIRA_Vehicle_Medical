@@ -44,7 +44,7 @@
 			[],
 			[0,0,0],
 			10,
-			[],
+			nil,
 			{
 				params ["_target", "_player", "_params", "_actionData"];
 				if(!GVAR(Stable_ShowCount)) exitWith {};
@@ -69,7 +69,7 @@
 			[],
 			[0,0,0],
 			10,
-			[],
+			nil,
 			{
 				params ["_target", "_player", "_params", "_actionData"];
 				if(!GVAR(Unstable_ShowCount)) exitWith {};
@@ -94,7 +94,7 @@
 			[],
 			[0,0,0],
 			10,
-			[],
+			nil,
 			{
 				params ["_target", "_player", "_params", "_actionData"];
 				if(!GVAR(Incapacitated_ShowCount)) exitWith {};
