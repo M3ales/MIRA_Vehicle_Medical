@@ -4,9 +4,8 @@ params[
 	"_patient"
 ];
 
-if(GVAR(legacyAce)) exitWith {
-	//old ace
-	_patient call ace_medical_fnc_isMedic;
+if(GVAR(aceAfter_313)) exitWith {
+	_patient call ace_medical_treatment_fnc_isMedic
 };
-//new ace
-_patient call ace_medical_treatment_fnc_isMedic;
+
+_patient call ace_medical_fnc_isMedic;

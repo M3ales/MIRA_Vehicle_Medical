@@ -10,12 +10,21 @@ LOGF_2("%1 at version %2", QUOTE(ADDON), _version);
 
 // ace_common_getVersion is broken for some patches, we look manually to ensure data is good, probably wont work everywhere.
 getArray(configFile >> "CfgPatches" >> "ace_main" >> "versionAR") params ["_aceMajor", "_aceMinor"];
+
 if(_aceMajor >= 3 && _aceMinor >= 13) then {
 	LOG(format["ACE Version is >= 3.13"]);
-	GVAR(legacyAce) = false;
+	GVAR(aceAfter_313) = true;
 }else{
 	LOG(format["ACE Version is < 3.13"]);
-	GVAR(legacyAce) = true;
+	GVAR(aceAfter_313) = false;
+};
+
+if(_aceMajor >= 3 && _aceMinor >= 16) then {
+	LOG(format["ACE Version is >= 3.16"]);
+	GVAR(aceAfter_316) = true;
+}else{
+	LOG(format["ACE Version is < 3.16"]);
+	GVAR(aceAfter_316) = false;
 };
 
 // Integrations Search

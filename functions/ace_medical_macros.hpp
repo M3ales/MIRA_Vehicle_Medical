@@ -60,10 +60,26 @@
 #define IS_BLEEDING(unit)           (GET_WOUND_BLEEDING(unit) > 0)
 #define IS_IN_PAIN(unit)            (unit getVariable [VAR_IN_PAIN, false])
 #define IS_UNCONSCIOUS(unit)        (unit getVariable [VAR_UNCON, false])
-#define GET_OPEN_WOUNDS(unit)       (unit getVariable [VAR_OPEN_WOUNDS, []])
-#define GET_BANDAGED_WOUNDS(unit)   (unit getVariable [VAR_BANDAGED_WOUNDS, []])
-#define GET_STITCHED_WOUNDS(unit)   (unit getVariable [VAR_STITCHED_WOUNDS, []])
+#define GET_OPEN_WOUNDS(unit)       (unit getVariable [VAR_OPEN_WOUNDS, createHashMap])
+#define GET_BANDAGED_WOUNDS(unit)   (unit getVariable [VAR_BANDAGED_WOUNDS, createHashMap])
+#define GET_STITCHED_WOUNDS(unit)   (unit getVariable [VAR_STITCHED_WOUNDS, createHashMap])
 
 // The following function calls are defined here just for consistency
 #define GET_BLOOD_LOSS(unit)        ([unit] call ace_medical_status_fnc_getBloodLoss)
 #define GET_BLOOD_PRESSURE(unit)    ([unit] call ace_medical_status_fnc_getBloodPressure)
+
+// New in 3.16
+
+
+// Used to color interaction icons and body image selections
+#define BLOOD_LOSS_RED_THRESHOLD 0.5
+#define BLOOD_LOSS_TOTAL_COLORS 10
+#define DAMAGE_BLUE_THRESHOLD 0.8
+#define DAMAGE_TOTAL_COLORS 10
+
+// Qualitative bleed rate thresholds as a fraction of knock out blood loss
+// Note that half of knock out blood loss is considered unstable, and knock out blood loss is considered critical
+#define BLEED_RATE_SLOW 0.1 // Slow - One fifth of unstable blood loss
+#define BLEED_RATE_MODERATE 0.5 // Moderate - Vitals considered stable
+#define BLEED_RATE_SEVERE 1.0 // Severe - Vitals considered unstable
+// Massive - Vitals considered critical
