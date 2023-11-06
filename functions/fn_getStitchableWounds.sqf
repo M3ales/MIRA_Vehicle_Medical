@@ -1,4 +1,5 @@
 #include "ace_medical_macros.hpp"
+#include "function_macros.hpp"
 
 params [
 	"_patient"
