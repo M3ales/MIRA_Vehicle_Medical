@@ -67,6 +67,11 @@ _modifierFunc = {
 	if(_bandage) then {
 		_result = QUOTE(ICON_PATH(bandage));
 	};
+
+	if(_result == "") then {
+		private _set = format["Tourniquet: %1, Fractures: %2, Low BP: %3, Low HR: %4, Stitch: %5, Bandage: %6, isMedic: %7",_tourniquet,_fractures,_lowBP,_lowHR,_stitch,_bandage,_isMedic];
+		LOG_ERRORF_1("Couldnt find matching icon for stable given set: %1",_set);
+	};
 	_actionData set [2, _result];
 };
 
